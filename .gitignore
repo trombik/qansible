@@ -9,3 +9,5 @@
 /tmp/
 /vendor/
 /spec/unit/fixtures/ansible-role-latest/
+/ansible-role-qa
+/bin/ansible-role-qa.rb
