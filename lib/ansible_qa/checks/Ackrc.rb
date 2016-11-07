@@ -1,4 +1,3 @@
-
 module AnsibleQA
   module Checks
     class Ackrc < AnsibleQA::Checks::Base
