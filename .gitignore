@@ -8,3 +8,4 @@
 /spec/reports/
 /tmp/
 /vendor/
+/spec/unit/fixtures/ansible-role-latest/
