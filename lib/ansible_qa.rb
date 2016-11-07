@@ -2,6 +2,7 @@ require "ansible_qa/version"
 require "ansible_qa/checks/base_check"
 require "ansible_qa/checks/Gemfile"
 require "ansible_qa/checks/Ackrc"
+require "ansible_qa/checks/Gitignore"
 
 module AnsibleQA
   class Base
