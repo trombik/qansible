@@ -61,7 +61,7 @@ module AnsibleQA
 
         msg = "[info] %s" % msg
         msg = colorize(msg, 'cyan', 'black')
-        STDOUT.puts(msg)
+        STDOUT.puts(msg) unless ENV['ANSIBLE_QA_SILENT']
 
       end
 
@@ -69,7 +69,7 @@ module AnsibleQA
 
         msg = "[notice] %s" % msg
         msg = colorize(msg, 'green', 'black')
-        STDOUT.puts(msg)
+        STDOUT.puts(msg) unless ENV['ANSIBLE_QA_SILENT']
 
       end
 
