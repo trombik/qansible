@@ -100,8 +100,8 @@ module AnsibleQA
       context 'when file exists' do
 
         let(:base) do
-          AnsibleQA::Base.tmp_root_dir('spec/unit/fixtures/ansible-role-latest/')
-          AnsibleQA::Base.root_dir('spec/unit/fixtures/ansible-role-latest/')
+          AnsibleQA::Base::tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Base::root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Base.new('.ackrc')
         end
 
@@ -117,6 +117,30 @@ module AnsibleQA
             base.should_exist
           end
         end
+
+        describe '.read_file' do
+          it 'reads the file and returns its content as String' do
+            expect(base.read_file).to match(/--ignore-dir=vendor\n--ignore-dir=.kitchen/)
+            expect(base.read_file.class).to eq(String)
+          end
+        end
+
+      end
+
+      context 'when file does not exist' do
+
+        let(:base) do
+          AnsibleQA::Base::tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Base::root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
+          Base.new('no_such_file')
+        end
+
+        describe '.read_file' do
+          it 'raises an exception' do
+            expect { base.read_file }.to raise_error(Errno::ENOENT)
+          end
+        end
+
       end
 
       context 'when non-existent YAML file is given' do

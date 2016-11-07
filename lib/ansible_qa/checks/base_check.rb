@@ -46,6 +46,12 @@ module AnsibleQA
 
       end
 
+      def read_file
+
+        File.read(@root_dir.join(@path).to_s)
+
+      end
+
       def is_tty?
 
         STDOUT.isatty
