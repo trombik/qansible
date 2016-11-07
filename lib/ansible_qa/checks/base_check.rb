@@ -27,8 +27,11 @@ module AnsibleQA
       end
 
       def should_exist
+
         result = File.exist?(@root_dir + @path)
         warn "File `%s` should exist but not found" % [ @path ] if !result
+        result
+
       end
 
       def must_be_yaml
@@ -168,6 +171,7 @@ module AnsibleQA
             raise ArgumentError, "unknown action %s" % [ opts[:action] ]
           end
         end
+        is_same
 
       end
 
