@@ -1,0 +1,10 @@
+---
+galaxy_info:
+  author:
+  #company:
+  description: Configures something
+  galaxy_tags: [ ]
+  license:
+  min_ansible_version: 0.1
+  platforms: [ ]
+  categories: [ foo ]
