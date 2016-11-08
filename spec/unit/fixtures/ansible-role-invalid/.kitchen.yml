@@ -1,0 +1,28 @@
+---
+transport:
+  name: sftp
+
+provisioner:
+  idempotency_test: false
+
+platforms:
+  - name: ansible-freebsd-10.3-amd64
+    transport:
+      name: rsync
+    driver:
+      box: trombik/ansible-freebsd-10.3-amd64
+    driver_config:
+      ssh:
+        shell: '/bin/sh'
+    provisioner:
+      extra_vars:
+        ansible_python_interpreter: '/usr/local/bin/python'
+
+suites:
+  - name: default
+    provisioner:
+      name: ansible_playbook
+      playbook: test/serverspec/default.yml
+    verifier:
+      name: shell
+      command: rspec -c -f d -I test/serverspec test/serverspec/default_spec.rb

@@ -8,6 +8,7 @@ require "ansible_qa/checks/Hier"
 require "ansible_qa/checks/travis"
 require "ansible_qa/checks/meta_main_yml"
 require "ansible_qa/checks/license"
+require "ansible_qa/checks/kitchen_yml"
 
 module AnsibleQA
   class Base
