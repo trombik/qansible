@@ -13,6 +13,7 @@ require "ansible_qa/checks/kitchen_local_yml"
 require "ansible_qa/checks/Rakefile"
 require "ansible_qa/checks/README"
 require "ansible_qa/checks/CHANGELOG"
+require "ansible_qa/checks/tasks"
 
 module AnsibleQA
   class Base

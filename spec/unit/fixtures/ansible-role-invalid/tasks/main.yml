@@ -1,0 +1,11 @@
+---
+
+- name: Create a file without validating
+  template:
+    src: foo.j2
+    dest: /foo
+
+- command: ls
+
+- name: doing something
+  command: ls
