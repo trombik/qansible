@@ -4,7 +4,7 @@ module AnsibleQA
   module Checks
     describe README do
 
-      context 'When README.md is identical' do
+      context 'When README.md is invalid' do
         let(:instance) do
           AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid/'))
           AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
@@ -47,6 +47,12 @@ module AnsibleQA
 
           it 'does not raise_error' do
             expect { instance.should_have_required_sections_at_level_one }.not_to raise_error
+          end
+        end
+
+        describe '.check' do
+          it 'raise_error' do
+            expect { instance.check }.to raise_error(SystemExit)
           end
         end
       end

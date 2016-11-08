@@ -15,6 +15,10 @@ module AnsibleQA
 
       def check
         must_exist
+        should_not_have_dash_as_heading
+        should_not_have_equal_as_heading_two
+        must_have_required_sections
+        should_have_required_sections_at_level_one
       end
 
       def should_not_have_dash_as_heading
@@ -62,7 +66,6 @@ module AnsibleQA
         end
         not_found_sections = @required_sections - found_sections
         if not_found_sections.length > 0
-          puts not_found_sections.inspect
           warn "Required sections are:"
           @required_sections.sort.each do |s|
             warn "%s" % [ s ]

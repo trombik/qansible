@@ -55,6 +55,12 @@ module AnsibleQA
           end
         end
 
+        describe '.check' do
+          it 'does not raise_error' do
+            expect { instance.check }.not_to raise_error
+          end
+        end
+
       end
 
     end
