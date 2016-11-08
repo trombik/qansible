@@ -10,6 +10,7 @@ require "ansible_qa/checks/meta_main_yml"
 require "ansible_qa/checks/license"
 require "ansible_qa/checks/kitchen_yml"
 require "ansible_qa/checks/kitchen_local_yml"
+require "ansible_qa/checks/Rakefile"
 
 module AnsibleQA
   class Base

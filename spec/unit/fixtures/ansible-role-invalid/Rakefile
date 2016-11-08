@@ -1,0 +1,8 @@
+require "rspec/core/rake_task"
+
+task :default => :spec
+
+desc "dummy"
+task :spec do
+  sh "echo foo"
+end
