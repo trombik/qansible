@@ -5,6 +5,7 @@ require "ansible_qa/checks/Ackrc"
 require "ansible_qa/checks/Gitignore"
 require "ansible_qa/checks/Jenkinsfile"
 require "ansible_qa/checks/Hier"
+require "ansible_qa/checks/travis"
 
 module AnsibleQA
   class Base
