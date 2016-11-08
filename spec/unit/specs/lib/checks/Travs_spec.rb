@@ -13,7 +13,6 @@ module AnsibleQA
 
         describe '.check' do
           it 'does not warn' do
-            puts instance.methods.sort.to_yaml
             expect(instance).not_to receive(:warn)
             instance.check
           end
