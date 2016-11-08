@@ -11,6 +11,7 @@ require "ansible_qa/checks/license"
 require "ansible_qa/checks/kitchen_yml"
 require "ansible_qa/checks/kitchen_local_yml"
 require "ansible_qa/checks/Rakefile"
+require "ansible_qa/checks/README"
 
 module AnsibleQA
   class Base
