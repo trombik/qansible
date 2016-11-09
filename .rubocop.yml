@@ -1,0 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - "spec/unit/fixtures/**/*"
+    - "tmp/**/*"
+    - "ansible-role-qa"
+    - "lib/ansible_init/templates/**/*"
+  TargetRubyVersion: 2.1
