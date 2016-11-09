@@ -78,16 +78,16 @@ module AnsibleQA
 
         describe '.should_have_at_least_one_tag' do
           it 'does not warn' do
-            pending "ansible-role-init creates empty galaxy_tags"
             expect(instance).not_to receive(:warn)
             instance.should_have_at_least_one_tag
           end
         end
 
         describe '.check' do
-          it 'does not warn' do
-            pending "ansible-role-init creates empty galaxy_tags"
-            expect(instance).not_to receive(:warn)
+          it 'does not warn more than once' do
+            # by design, should_not_have_default_description cannot be
+            # surpressed
+            expect(instance).to receive(:warn).with(/description should describe the role, rather than the default. Add description in/).once
             instance.check
           end
         end
