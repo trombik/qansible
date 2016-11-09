@@ -3,7 +3,7 @@ class AnsibleQA
     class KitchenLocalYml < AnsibleQA::Check::Base
 
       def initialize
-        super('.kitchen.local.yml')
+        super(".kitchen.local.yml")
       end
 
       def check

@@ -3,7 +3,7 @@ class AnsibleQA
     class LICENSE < AnsibleQA::Check::Base
 
       def initialize
-        super('LICENSE')
+        super("LICENSE")
       end
 
       def check

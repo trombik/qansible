@@ -3,7 +3,7 @@ class AnsibleQA
     class Rakefile < AnsibleQA::Check::Base
 
       def initialize
-        super('Rakefile')
+        super("Rakefile")
       end
 
       def check
@@ -20,7 +20,7 @@ class AnsibleQA
             case status
             when 0
               stdout.each_line do |line|
-                if line.split('#').first !~ /^rake\s+test\b/
+                if line.split("#").first !~ /^rake\s+test\b/
                   crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [ @path ]
                 end
               end

@@ -1,11 +1,11 @@
-require 'pathname'
+require "pathname"
 
 class AnsibleQA
   class Check
     class Gemfile < AnsibleQA::Check::Base
 
       def initialize
-        super('Gemfile')
+        super("Gemfile")
       end
 
       def check

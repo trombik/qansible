@@ -1,14 +1,14 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
-require 'pathname'
+require "pathname"
 
-fixtures_dir = Pathname.new('spec') + 'unit' + 'fixtures'
-ansible_role_init = Pathname.new('bin').join('ansible-role-init.rb').expand_path
+fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
+ansible_role_init = Pathname.new("bin").join("ansible-role-init.rb").expand_path
 
 task :default => :spec
 
 desc "Run unit tests"
-task :spec => [ 'clean', 'spec:setup', 'spec:unit' ]
+task :spec => [ "clean", "spec:setup", "spec:unit" ]
 
 namespace :spec do
   RSpec::Core::RakeTask.new("unit") do |task|

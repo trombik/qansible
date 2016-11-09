@@ -16,7 +16,7 @@ class AnsibleQA
           tests
           vars
         ].map { |d| Pathname.new(d) }
-        super('')
+        super("")
       end
 
       def check
@@ -45,8 +45,8 @@ class AnsibleQA
           end
         end
         if not_found.length > 0
-          warn "mkdir %s" % [ not_found.sort.join(' ') ]
-          warn "touch %s" % [ not_found.sort.map { |d| d + '.keepme' }.join(' ') ]
+          warn "mkdir %s" % [ not_found.sort.join(" ") ]
+          warn "touch %s" % [ not_found.sort.map { |d| d + ".keepme" }.join(" ") ]
         end
         not_found.length == 0
 
@@ -56,23 +56,23 @@ class AnsibleQA
 
         not_found = []
         @required_directories.each do |d|
-          keepme = @@root + d + '.keepme'
+          keepme = @@root + d + ".keepme"
           if ! File.file?(keepme)
             not_found << keepme
           end
         end
         if not_found.length > 0
-          warn "touch %s" % [ not_found.sort.join(' ') ]
+          warn "touch %s" % [ not_found.sort.join(" ") ]
         end
         not_found.length == 0
 
       end
 
       def must_not_have_test
-        if File.directory?(@@root + 'test')
-          warn "Directory `%s` must not exist" % [ @@root + 'test' ]
+        if File.directory?(@@root + "test")
+          warn "Directory `%s` must not exist" % [ @@root + "test" ]
         end
-        not File.directory?(@@root + 'test')
+        not File.directory?(@@root + "test")
       end
 
     end

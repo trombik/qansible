@@ -8,3 +8,6 @@ AllCops:
     - "ansible-role-qa"
     - "lib/ansible_init/templates/**/*"
   TargetRubyVersion: 2.1
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

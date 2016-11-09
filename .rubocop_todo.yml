@@ -397,13 +397,6 @@ Style/SpaceInsideStringInterpolation:
     - 'lib/ansible_qa.rb'
     - 'lib/ansible_qa/checks/base_check.rb'
 
-# Offense count: 916
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Enabled: false
-
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.

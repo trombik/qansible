@@ -5,7 +5,7 @@ class AnsibleQA
       def initialize
         @task_files = []
         @task_yaml_content = {}
-        super('foo')
+        super("foo")
         _find_all_task_files
         _load_all_tasks_as_yaml
       end
@@ -21,7 +21,7 @@ class AnsibleQA
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
           yaml.each do |task|
-            if task.has_key?('template') && ! task['template'].has_key?('validate')
+            if task.has_key?("template") && ! task["template"].has_key?("validate")
               warn "In %s, the following template task does not have validate. Consider validating the file" % [ file ]
               warn "%s" % [ task.to_yaml ]
             end
@@ -43,7 +43,7 @@ class AnsibleQA
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
           yaml.each do |task|
-            if ! task.has_key?('name')
+            if ! task.has_key?("name")
               if (task.keys & exceptions).any?
                 # adding name to these modules has little point
               else
@@ -59,8 +59,8 @@ class AnsibleQA
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
           yaml.each do |task|
-            if task.has_key?('name') && task['name'].match(/^[a-z]/)
-              warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [ file, task['name'] ]
+            if task.has_key?("name") && task["name"].match(/^[a-z]/)
+              warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [ file, task["name"] ]
             end
           end
         end
@@ -111,12 +111,12 @@ class AnsibleQA
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
           yaml.each do |task|
-            if task.has_key?('name')
-              verb = task['name'].split(' ').first.downcase
+            if task.has_key?("name")
+              verb = task["name"].split(" ").first.downcase
               if verbs.any? { |v| v == verb }
                 # the name starts with one of the verbs
               else
-                warn "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:" % [ file, task['name'], verb ]
+                warn "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:" % [ file, task["name"], verb ]
                 verbs.sort.each do |v|
                   warn "%s" % [ v ]
                 end
@@ -128,7 +128,7 @@ class AnsibleQA
       end
 
       def _find_all_task_files
-        tasks_dir = @@root + 'tasks'
+        tasks_dir = @@root + "tasks"
         @task_files = tasks_dir.children.select { |f| f.file? && f.basename.to_s =~ /\.yml$/ }
       end
 

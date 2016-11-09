@@ -1,4 +1,4 @@
-require 'yaml'
+require "yaml"
 
 class FileNotFound < StandardError
 end
@@ -79,7 +79,7 @@ class AnsibleQA
       def debug(msg)
 
         msg = "[debug] %s" % msg
-        msg = colorize(msg, 'gray', 'black')
+        msg = colorize(msg, "gray", "black")
         STDOUT.puts(msg) if @options[:verbose]
 
       end
@@ -87,24 +87,24 @@ class AnsibleQA
       def info(msg)
 
         msg = "[info] %s" % msg
-        msg = colorize(msg, 'cyan', 'black')
-        STDOUT.puts(msg) unless ENV['ANSIBLE_QA_SILENT']
+        msg = colorize(msg, "cyan", "black")
+        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
 
       end
 
       def notice(msg)
 
         msg = "[notice] %s" % msg
-        msg = colorize(msg, 'green', 'black')
-        STDOUT.puts(msg) unless ENV['ANSIBLE_QA_SILENT']
+        msg = colorize(msg, "green", "black")
+        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
 
       end
 
       def warn(msg)
 
         msg = "[warn] %s" % msg
-        msg = colorize(msg, 'red', 'black')
-        STDOUT.puts(msg) unless ENV['ANSIBLE_QA_SILENT']
+        msg = colorize(msg, "red", "black")
+        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
         @number_of_warnings += 1
 
       end
@@ -112,8 +112,8 @@ class AnsibleQA
       def crit(text)
 
         msg = "[crit] %s" % [ text ]
-        msg = colorize(msg, 'red', 'black')
-        STDOUT.puts(msg) unless ENV['ANSIBLE_QA_SILENT']
+        msg = colorize(msg, "red", "black")
+        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
         exit 1
 
       end

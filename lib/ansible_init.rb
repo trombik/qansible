@@ -1,7 +1,7 @@
 require "ansible_init/version"
 require "ansible_init/author"
 
-require 'pathname'
+require "pathname"
 
 class InvalidRoleName < StandardError
 end
@@ -15,8 +15,8 @@ class AnsibleInit
 
   def initialize(opts = {})
     default = {
-      :role_name => 'ansible-role-default',
-      :box_name => 'trombik/ansible-freebsd-10.3-amd64',
+      :role_name => "ansible-role-default",
+      :box_name => "trombik/ansible-freebsd-10.3-amd64",
     }
     @options = default.merge(opts)
     validate_role_name(@options[:role_name])
@@ -24,15 +24,15 @@ class AnsibleInit
   end
 
   def platform_name
-    platform_name = @options[:box_name].split('/').last
+    platform_name = @options[:box_name].split("/").last
     if platform_name.match(/^ansible-/)
-      platform_name.gsub!(/^ansible-/, '')
+      platform_name.gsub!(/^ansible-/, "")
     end
     platform_name
   end
 
   def this_year
-    Time.new.strftime('%Y')
+    Time.new.strftime("%Y")
   end
 
   def validate_role_name(name)
@@ -52,7 +52,7 @@ class AnsibleInit
   end
 
   def templates_directory
-    Pathname.new(__FILE__).dirname.join('ansible_init').join('templates')
+    Pathname.new(__FILE__).dirname.join("ansible_init").join("templates")
   end
 
   def run
@@ -61,19 +61,19 @@ class AnsibleInit
     end
     Dir.mkdir(dest_directory)
     Dir.chdir(dest_directory) do
-      FileUtils.cp_r "#{ templates_directory }/.", '.'
+      FileUtils.cp_r "#{ templates_directory }/.", "."
       current_dir = Pathname.pwd
       current_dir.find do |file|
         next if ! file.file?
         content = File.read(file)
-        content.gsub!('CHANGEME', options[:role_name].gsub('ansible-role-', ''))
-        content.gsub!('YYYY', this_year)
-        content.gsub!('DESTNAME', dest_directory.to_s)
-        content.gsub!('MYNAME', author.fullname )
-        content.gsub!('EMAIL', author.email)
-        content.gsub!('PLATFORMNAME', platform_name)
-        content.gsub!('BOXNAME', options[:box_name])
-        file = File.open(file, 'w')
+        content.gsub!("CHANGEME", options[:role_name].gsub("ansible-role-", ""))
+        content.gsub!("YYYY", this_year)
+        content.gsub!("DESTNAME", dest_directory.to_s)
+        content.gsub!("MYNAME", author.fullname )
+        content.gsub!("EMAIL", author.email)
+        content.gsub!("PLATFORMNAME", platform_name)
+        content.gsub!("BOXNAME", options[:box_name])
+        file = File.open(file, "w")
         file.write(content)
       end
 

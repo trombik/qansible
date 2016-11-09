@@ -3,7 +3,7 @@ class AnsibleQA
     class Travis < AnsibleQA::Check::Base
 
       def initialize
-        super('.travis.yml')
+        super(".travis.yml")
       end
 
       def check

@@ -1,33 +1,33 @@
-require 'spec_helper'
+require "spec_helper"
 
 class AnsibleQA
   class Check
     describe Rakefile do
-      context 'When Rakefile is identical' do
+      context "When Rakefile is identical" do
 
         let(:instance) do
-          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
-          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           Rakefile.new
         end
 
-        describe '.must_accept_test_as_target' do
-          it 'does not raise_error' do
+        describe ".must_accept_test_as_target" do
+          it "does not raise_error" do
             expect { instance.must_accept_test_as_target }.not_to raise_error
           end
 
-          it 'does not warn' do
+          it "does not warn" do
             expect(instance).not_to receive(:warn)
             instance.must_accept_test_as_target
           end
         end
 
-        describe '.check' do
-          it 'does not raise_error' do
+        describe ".check" do
+          it "does not raise_error" do
             expect { instance.check }.not_to raise_error
           end
 
-          it 'does not warn' do
+          it "does not warn" do
             expect(instance).not_to receive(:warn)
             instance.check
           end

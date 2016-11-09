@@ -3,19 +3,19 @@ class AnsibleQA
     class Gitignore < AnsibleQA::Check::Base
 
       def initialize
-        super('.gitignore')
+        super(".gitignore")
       end
 
       def check
         must_exist
 
         ignores = [
-          '.bundle/',
-          'Gemfile.lock',
-          '/.kitchen/',
-          '.kitchen.local.yml',
-          '*.swp',
-          'vendor/',
+          ".bundle/",
+          "Gemfile.lock",
+          "/.kitchen/",
+          ".kitchen.local.yml",
+          "*.swp",
+          "vendor/",
         ]
         found = []
         f  = read_file

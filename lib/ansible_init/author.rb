@@ -1,4 +1,4 @@
-require 'etc'
+require "etc"
 
 class AnsibleInit
   class Author

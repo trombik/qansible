@@ -1,4 +1,4 @@
-require 'pathname'
+require "pathname"
 require "ansible_qa/version"
 require "ansible_qa/checks/base_check"
 require "ansible_qa/checks/gemfile"
@@ -32,7 +32,7 @@ class AnsibleQA
     end
 
     @options = default.merge(opts)
-    @ansible_role_init = Pathname.new('bin/ansible-role-init.rb').realpath
+    @ansible_role_init = Pathname.new("bin/ansible-role-init.rb").realpath
     @role_name = @options[:root].expand_path.basename
     @root = @options[:root]
     @failed = false
