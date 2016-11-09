@@ -3,6 +3,7 @@ require "rspec/core/rake_task"
 require 'pathname'
 
 fixtures_dir = Pathname.new('spec') + 'unit' + 'fixtures'
+ansible_role_init = Pathname.new('bin').join('ansible-role-init.rb').expand_path
 
 task :default => :spec
 
@@ -17,7 +18,7 @@ namespace :spec do
   desc "setup test environment"
   task :setup do
     Dir.chdir(fixtures_dir) do
-      sh "ansible-role-init ansible-role-latest"
+      sh "#{ ansible_role_init } ansible-role-latest"
     end
   end
 end
