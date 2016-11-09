@@ -27,6 +27,7 @@
   template:
     src: CHANGEME.conf.j2
     dest: "{{ CHANGEME_conf_file }}"
+    validate: echo %s
   notify: Restart CHANGEME
 
 - name: Start CHANGEME

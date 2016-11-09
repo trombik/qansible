@@ -13,7 +13,6 @@ module AnsibleQA
 
         describe '.should_have_templates_with_validate' do
           it 'does not warn' do
-            pending "ansible-role-init creates a template task without `validate`"
             expect(instance).not_to receive(:warn)
             instance.should_have_templates_with_validate
           end
@@ -58,7 +57,6 @@ module AnsibleQA
 
         describe '.check' do
           it 'does not warn' do
-            pending "ansible-role-init creates a template task without `validate`"
             expect(instance).not_to receive(:warn)
             instance.check
           end
