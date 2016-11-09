@@ -1,0 +1,8 @@
+CHANGEME_user: CHANGEME
+CHANGEME_group: CHANGEME
+CHANGEME_log_dir: /var/log/CHANGEME
+CHANGEME_db_dir: "{{ __CHANGEME_db_dir }}"
+CHANGEME_service: CHANGEME
+CHANGEME_conf_dir: "{{ __CHANGEME_conf_dir }}"
+CHANGEME_conf_file: "{{ __CHANGEME_conf_dir }}/CHANGEME.conf"
+CHANGEME_flags: ""

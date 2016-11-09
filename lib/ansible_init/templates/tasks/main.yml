@@ -1,0 +1,36 @@
+---
+# tasks file for ansible-role-CHANGEME
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: "install-{{ ansible_os_family }}.yml"
+
+- name: Create log directory
+  file:
+    path: "{{ CHANGEME_log_dir }}"
+    mode: 0755
+    owner: "{{ CHANGEME_user }}"
+    group: "{{ CHANGEME_group }}"
+    state: directory
+  notify: Restart CHANGEME
+
+- name: Create db directory
+  file:
+    path: "{{ CHANGEME_db_dir }}"
+    mode: 0755
+    owner: "{{ CHANGEME_user }}"
+    group: "{{ CHANGEME_group }}"
+    state: directory
+  notify: Restart CHANGEME
+
+- name: Create CHANGEME.conf
+  template:
+    src: CHANGEME.conf.j2
+    dest: "{{ CHANGEME_conf_file }}"
+  notify: Restart CHANGEME
+
+- name: Start CHANGEME
+  service:
+    name: "{{ CHANGEME_service }}"
+    enabled: true
+    state: started

@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+    - ansible-role-CHANGEME
+  vars:
+    CHANGEME_config: ""
