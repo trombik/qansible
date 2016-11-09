@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 class AnsibleQA
-  class Checks
+  class Check
     describe Hier do
 
       context 'When required directories do not exist' do
 
         let(:hier) do
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-empty/'))
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-empty/'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
           Hier.new
         end
 

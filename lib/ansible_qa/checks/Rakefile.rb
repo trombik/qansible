@@ -1,6 +1,6 @@
 class AnsibleQA
-  class Checks
-    class Rakefile < AnsibleQA::Checks::Base
+  class Check
+    class Rakefile < AnsibleQA::Check::Base
 
       def initialize
         super('Rakefile')
@@ -14,7 +14,7 @@ class AnsibleQA
 
       def must_accept_test_as_target
         command = "rake -T"
-        Dir.chdir(AnsibleQA::Checks::Base.root) do
+        Dir.chdir(AnsibleQA::Check::Base.root) do
           Open3.popen3(command) do |stdin, stdout, stderr, process|
             status = process.value.exitstatus
             case status

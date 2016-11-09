@@ -1,6 +1,6 @@
 class AnsibleQA
-  class Checks
-    class README < AnsibleQA::Checks::Base
+  class Check
+    class README < AnsibleQA::Check::Base
 
       def initialize
         @required_sections = [

@@ -7,7 +7,7 @@ class CommandFailed < StandardError
 end
 
 class AnsibleQA
-  class Checks
+  class Check
     class Base
 
       @@root = nil

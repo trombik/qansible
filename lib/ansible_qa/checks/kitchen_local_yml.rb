@@ -1,6 +1,6 @@
 class AnsibleQA
-  class Checks
-    class KitchenLocalYml < AnsibleQA::Checks::Base
+  class Check
+    class KitchenLocalYml < AnsibleQA::Check::Base
 
       def initialize
         super('.kitchen.local.yml')

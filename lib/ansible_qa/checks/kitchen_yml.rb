@@ -1,8 +1,8 @@
 require 'erb'
 
 class AnsibleQA
-  class Checks
-    class KitchenYml < AnsibleQA::Checks::Base
+  class Check
+    class KitchenYml < AnsibleQA::Check::Base
 
       def initialize
         @yaml = nil

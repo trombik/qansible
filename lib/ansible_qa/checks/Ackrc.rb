@@ -1,6 +1,6 @@
 class AnsibleQA
-  class Checks
-    class Ackrc < AnsibleQA::Checks::Base
+  class Check
+    class Ackrc < AnsibleQA::Check::Base
 
       def initialize
         super('.ackrc')

@@ -1,6 +1,6 @@
 class AnsibleQA
-  class Checks
-    class Gitignore < AnsibleQA::Checks::Base
+  class Check
+    class Gitignore < AnsibleQA::Check::Base
 
       def initialize
         super('.gitignore')

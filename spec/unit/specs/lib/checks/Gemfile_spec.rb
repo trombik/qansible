@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 class AnsibleQA
-  class Checks
+  class Check
     context 'When Gemfile is identical' do
       describe Gemfile do
         let(:gemfile) do
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Gemfile.new
         end
 
@@ -24,8 +24,8 @@ class AnsibleQA
     context 'When Gemfile is not identical' do
       describe Gemfile do
         let(:gemfile) do
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Gemfile.new
         end
 

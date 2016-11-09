@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 class AnsibleQA
-  class Checks
+  class Check
     describe Tasks do
 
       context 'When task files are valid' do
         let(:instance) do
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
           Tasks.new
         end
 

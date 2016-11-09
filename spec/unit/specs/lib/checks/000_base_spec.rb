@@ -2,17 +2,17 @@ require 'spec_helper'
 
 
 class AnsibleQA
-  class Checks
+  class Check
     describe Base do
         let(:base) do
-          AnsibleQA::Checks::Base.tmp('spec/unit/fixtures/ansible-role-latest')
-          AnsibleQA::Checks::Base.root('spec/unit/fixtures/ansible-role-latest')
+          AnsibleQA::Check::Base.tmp('spec/unit/fixtures/ansible-role-latest')
+          AnsibleQA::Check::Base.root('spec/unit/fixtures/ansible-role-latest')
           Base.new('foo')
         end
 
       describe "#new" do
         it 'returns an object' do
-          expect(base.class).to eq(AnsibleQA::Checks::Base)
+          expect(base.class).to eq(AnsibleQA::Check::Base)
         end
 
         it 'has zero warning' do
@@ -56,8 +56,8 @@ class AnsibleQA
       context 'when file is identical' do
 
         let(:base) do
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Base.new('.ackrc')
         end
 
@@ -78,8 +78,8 @@ class AnsibleQA
       context 'when file exists' do
 
         let(:base) do
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Base.new('.ackrc')
         end
 
@@ -118,8 +118,8 @@ class AnsibleQA
       context "when a valid yaml file is given" do
         describe '.must_be_yaml' do
           let(:base) do
-            AnsibleQA::Checks::Base.tmp('spec/unit/fixtures/ansible-role-latest/')
-            AnsibleQA::Checks::Base.root('spec/unit/fixtures/ansible-role-latest/')
+            AnsibleQA::Check::Base.tmp('spec/unit/fixtures/ansible-role-latest/')
+            AnsibleQA::Check::Base.root('spec/unit/fixtures/ansible-role-latest/')
             Base.new('tasks/install-FreeBSD.yml')
           end
 

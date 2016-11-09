@@ -1,6 +1,6 @@
 class AnsibleQA
-  class Checks
-    class LICENSE < AnsibleQA::Checks::Base
+  class Check
+    class LICENSE < AnsibleQA::Check::Base
 
       def initialize
         super('LICENSE')

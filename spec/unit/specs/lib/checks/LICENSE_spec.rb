@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 class AnsibleQA
-  class Checks
+  class Check
     describe LICENSE do
 
       context 'When LICENSE exists' do
         
         let(:instance) do
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
           MetaMainYaml.new
         end
 

@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 class AnsibleQA
-  class Checks
+  class Check
     describe CHANGELOG do
 
       context 'When CHANGELOG.md does not exist' do
 
         let(:instance) do
-          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-empty/'))
-          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Check::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-empty/'))
+          AnsibleQA::Check::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
           CHANGELOG.new
         end
 
