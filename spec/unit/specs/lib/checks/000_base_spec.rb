@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     describe Base do
         let(:base) do
-          AnsibleQA::Base.tmp_root_dir('spec/unit/fixtures/ansible-role-latest')
-          AnsibleQA::Base.root_dir('spec/unit/fixtures/ansible-role-latest')
+          AnsibleQA::Checks::Base.tmp('spec/unit/fixtures/ansible-role-latest')
+          AnsibleQA::Checks::Base.root('spec/unit/fixtures/ansible-role-latest')
           Base.new('foo')
         end
 
@@ -20,7 +20,7 @@ module AnsibleQA
         end
 
         it 'returns path to the file' do
-          expect(base.path).to eq('foo')
+          expect(base.path).to eq(Pathname.new('foo'))
         end
       end
 
@@ -56,8 +56,8 @@ module AnsibleQA
       context 'when file is identical' do
 
         let(:base) do
-          AnsibleQA::Base::tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Base::root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Base.new('.ackrc')
         end
 
@@ -75,33 +75,11 @@ module AnsibleQA
 
       end
 
-      context 'when file is not identical' do
-
-        let(:base) do
-          AnsibleQA::Base::tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Base::root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
-          Base.new('.ackrc')
-        end
-
-        describe '.should_be_identical' do
-          it 'does not raise error' do
-            expect { base.should_be_identical }.not_to raise_error
-          end
-        end
-
-        describe '.must_be_identical' do
-          it 'raises error' do
-            expect { base.must_be_identical }.to raise_error(SystemExit)
-          end
-        end
-
-      end
-
       context 'when file exists' do
 
         let(:base) do
-          AnsibleQA::Base::tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Base::root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Base.new('.ackrc')
         end
 
@@ -127,22 +105,6 @@ module AnsibleQA
 
       end
 
-      context 'when file does not exist' do
-
-        let(:base) do
-          AnsibleQA::Base::tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Base::root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
-          Base.new('no_such_file')
-        end
-
-        describe '.read_file' do
-          it 'raises an exception' do
-            expect { base.read_file }.to raise_error(Errno::ENOENT)
-          end
-        end
-
-      end
-
       context 'when non-existent YAML file is given' do
 
         describe '.must_be_yaml' do
@@ -156,27 +118,13 @@ module AnsibleQA
       context "when a valid yaml file is given" do
         describe '.must_be_yaml' do
           let(:base) do
-            AnsibleQA::Base.tmp_root_dir('spec/unit/fixtures/ansible-role-latest/')
-            AnsibleQA::Base.root_dir('spec/unit/fixtures/ansible-role-latest/')
+            AnsibleQA::Checks::Base.tmp('spec/unit/fixtures/ansible-role-latest/')
+            AnsibleQA::Checks::Base.root('spec/unit/fixtures/ansible-role-latest/')
             Base.new('tasks/install-FreeBSD.yml')
           end
 
           it 'returns an Array' do
             expect(base.must_be_yaml.class).to eq(Array)
-          end
-        end
-      end
-
-      context "when an invalid yaml file is given" do
-        describe '.must_be_yaml' do
-          let(:base) do
-            AnsibleQA::Base.tmp_root_dir('spec/unit/fixtures/ansible-role-latest/')
-            AnsibleQA::Base.root_dir('spec/unit/fixtures/ansible-role-invalid/')
-            Base.new('invalid.yml')
-          end
-
-          it 'raises Psych::SyntaxError' do
-            expect { base.must_be_yaml }.to raise_error(Psych::SyntaxError)
           end
         end
       end

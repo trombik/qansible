@@ -1,15 +1,16 @@
 require 'spec_helper'
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class MetaMainYaml
 
       context 'When .travis.yml is invalid' do
         let(:instance) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid/'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-invalid/'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
           MetaMainYaml.new
         end
+          puts "root: %s" % [ AnsibleQA::Checks::Base.root ]
 
         describe '.must_exist' do
           it 'does not raise_error' do

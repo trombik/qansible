@@ -6,29 +6,47 @@ end
 class CommandFailed < StandardError
 end
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class Base
 
-      attr_reader :self, :number_of_warnings, :path, :tmp_root_dir, :root_dir
+      @@root = nil
+      @@tmp = nil
+
+      def self.root(arg = nil)
+        if arg
+          @@root = arg.is_a?(Pathname) ? arg : Pathname.new(arg)
+        end
+        @@root
+      end
+
+      def self.tmp(arg = nil)
+        if arg
+          @@tmp = arg.is_a?(Pathname) ? arg : Pathname.new(arg)
+        end
+        @@tmp
+      end
+
+      attr_reader :self, :number_of_warnings, :path
 
       def initialize(path)
         @number_of_warnings = 0
-        @path = path
-        @tmp_root_dir = AnsibleQA::Base.tmp_root_dir
-        @root_dir = AnsibleQA::Base.root_dir
+        @path = path.is_a?(Pathname) ? path : Pathname.new(path)
+        #@tmp_root_dir = @@root
+        #@@root = @@tmp
+        @path
       end
 
       def must_exist
 
-        result = File.exist?(@root_dir + @path)
-        raise FileNotFound, "File `%s` must exist but not found" % [ @root_dir + @path ] if !result
+        result = File.exist?(@@root + @path)
+        raise FileNotFound, "File `%s` must exist but not found" % [ @@root + @path ] if !result
 
       end
 
       def should_exist
 
-        result = File.exist?(@root_dir + @path)
+        result = File.exist?(@@root + @path)
         warn "File `%s` should exist but not found" % [ @path ] if !result
         result
 
@@ -38,7 +56,7 @@ module AnsibleQA
 
         hash = {}
         begin
-          hash = YAML.load_file(@root_dir.to_s + @path.to_s)
+          hash = YAML.load_file(@@root.join(@path.to_s))
         rescue Exception => e
           raise e
         end
@@ -48,7 +66,7 @@ module AnsibleQA
 
       def read_file
 
-        File.read(@root_dir.join(@path).to_s)
+        File.read(@@root.join(@path).to_s)
 
       end
 
@@ -163,8 +181,8 @@ module AnsibleQA
         }
         opts = default.merge(opts)
 
-        original = @tmp_root_dir + @path
-        target = @root_dir + @path
+        original = @@tmp + @path
+        target = @@root + @path
         (is_same, text) = _diff(original, target)
         
         if ! is_same

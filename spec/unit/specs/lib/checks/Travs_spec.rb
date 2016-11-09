@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class Travis
 
       context 'When .travis.yml is identical' do
         let(:instance) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Travis.new
         end
 
@@ -26,8 +26,8 @@ module AnsibleQA
 
       context 'When .travis.yml is not identical' do
         let(:instance) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Travis.new
         end
 
@@ -40,8 +40,8 @@ module AnsibleQA
 
       context 'When .travis.yml does not exist' do
         let(:instance) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-empty'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-empty'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Travis.new
         end
 

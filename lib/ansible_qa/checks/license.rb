@@ -1,5 +1,5 @@
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class LICENSE < AnsibleQA::Checks::Base
 
       def initialize

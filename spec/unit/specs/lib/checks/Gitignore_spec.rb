@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class Gitignore
 
       context 'When gitignore lacks mandatory entries' do
 
         let(:gitignore) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-invalid'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Gitignore.new
         end
 
@@ -26,8 +26,8 @@ module AnsibleQA
       context 'When gitignore is identical' do
 
         let(:gitignore) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest'))
           Gitignore.new
         end
 

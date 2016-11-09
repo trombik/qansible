@@ -1,7 +1,7 @@
 require 'pathname'
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class Gemfile < AnsibleQA::Checks::Base
 
       def initialize

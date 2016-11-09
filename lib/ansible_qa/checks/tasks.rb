@@ -1,5 +1,5 @@
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class Tasks < AnsibleQA::Checks::Base
 
       def initialize
@@ -128,7 +128,7 @@ module AnsibleQA
       end
 
       def _find_all_task_files
-        tasks_dir = @root_dir + 'tasks'
+        tasks_dir = @@root + 'tasks'
         @task_files = tasks_dir.children.select { |f| f.file? && f.basename.to_s =~ /\.yml$/ }
       end
 

@@ -1,7 +1,7 @@
 require 'erb'
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class KitchenYml < AnsibleQA::Checks::Base
 
       def initialize

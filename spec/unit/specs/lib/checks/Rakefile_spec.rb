@@ -1,14 +1,13 @@
 require 'spec_helper'
 
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     describe Rakefile do
-
       context 'When Rakefile is identical' do
 
         let(:instance) do
-          AnsibleQA::Base.root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
-          AnsibleQA::Base.tmp_root_dir(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Checks::Base.root(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
+          AnsibleQA::Checks::Base.tmp(Pathname.new('spec/unit/fixtures/ansible-role-latest/'))
           Rakefile.new
         end
 

@@ -1,5 +1,5 @@
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class Hier < AnsibleQA::Checks::Base
 
       def initialize
@@ -40,7 +40,7 @@ module AnsibleQA
 
         not_found = []
         @required_directories.each do |d|
-          if ! File.directory?(@root_dir + d)
+          if ! File.directory?(@@root + d)
             not_found << d
           end
         end
@@ -56,7 +56,7 @@ module AnsibleQA
 
         not_found = []
         @required_directories.each do |d|
-          keepme = @root_dir + d + '.keepme'
+          keepme = @@root + d + '.keepme'
           if ! File.file?(keepme)
             not_found << keepme
           end
@@ -69,10 +69,10 @@ module AnsibleQA
       end
 
       def must_not_have_test
-        if File.directory?(@root_dir + 'test')
-          warn "Directory `%s` must not exist" % [ @root_dir + 'test' ]
+        if File.directory?(@@root + 'test')
+          warn "Directory `%s` must not exist" % [ @@root + 'test' ]
         end
-        not File.directory?(@root_dir + 'test')
+        not File.directory?(@@root + 'test')
       end
 
     end

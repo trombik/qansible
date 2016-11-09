@@ -1,5 +1,5 @@
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class README < AnsibleQA::Checks::Base
 
       def initialize
@@ -23,7 +23,7 @@ module AnsibleQA
 
       def should_not_have_dash_as_heading
         line_numbers = []
-        File.open(@root_dir + @path, 'r') do |f|
+        File.open(@@root + @path, 'r') do |f|
           f.each_line do |line|
             if line.match(/^--[-]*\s*$/)
               line_numbers << f.lineno
@@ -40,7 +40,7 @@ module AnsibleQA
 
       def should_not_have_equal_as_heading_two
         line_numbers = []
-        File.open(@root_dir + @path, 'r') do |f|
+        File.open(@@root + @path, 'r') do |f|
           f.each_line do |line|
             if line.match(/^==[=]*\s*$/)
               line_numbers << f.lineno
@@ -57,7 +57,7 @@ module AnsibleQA
 
       def must_have_required_sections
         found_sections = []
-        File.open(@root_dir + @path, 'r') do |f|
+        File.open(@@root + @path, 'r') do |f|
           f.each_line do |line|
             if line =~ /^#\s+(.*)$/
               found_sections << Regexp.last_match[1]
@@ -81,7 +81,7 @@ module AnsibleQA
 
       def should_have_required_sections_at_level_one
         warnings = []
-        File.open(@root_dir + @path, 'r') do |f|
+        File.open(@@root + @path, 'r') do |f|
           f.each_line do |line|
             if line.match(/^##+\s+(.*)/)
               name = Regexp.last_match[1]

@@ -37,12 +37,12 @@ class AnsibleInit
 
   def validate_role_name(name)
     if ! name.match(/^ansible-role-/)
-      raise InvalidRoleName, "role name mus start with `ansible-role`"
+      raise InvalidRoleName, "Invalid role name `%s` given. Role name mus start with `ansible-role`" % [ name ]
     end
 
     valid_regex = /^[a-zA-Z0-9\-_]+$/
     if ! name.match(valid_regex)
-      raise InvalidRoleName, "role name must match %s" % [ valid_regex.to_s ]
+      raise InvalidRoleName, "Invalid role name `%s` given. role name must match %s" % [ name, valid_regex.to_s ]
     end
     true
   end

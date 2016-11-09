@@ -1,5 +1,5 @@
-module AnsibleQA
-  module Checks
+class AnsibleQA
+  class Checks
     class MetaMainYaml < AnsibleQA::Checks::Base
 
       def initialize
@@ -58,6 +58,7 @@ module AnsibleQA
           end
           crit "In `%s`, mandatory keys %s does not exist" % [ @path, not_found.join(', ') ]
         end
+        true
       end
 
       def should_not_have_default_description
