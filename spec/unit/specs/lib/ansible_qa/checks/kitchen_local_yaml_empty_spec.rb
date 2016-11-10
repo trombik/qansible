@@ -4,7 +4,7 @@ class AnsibleQA
   class Check
     describe KitchenLocalYml do
 
-      context "When .kitchen.yml is identical" do
+      context "When .kitchen.local.yml does not exist" do
 
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))

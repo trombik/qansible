@@ -13,5 +13,5 @@ ENV["ANSIBLE_QA_SILENT"] = "y"
 
 RSpec.configure do |config|
   config.before(:example) { @fixtures_dir = Pathname.new("spec") + "unit" + "fixtures" }
-  config.pattern = "spec/unit/specs/**/*_spec.rb"
+  config.pattern = "spec/(?:unit|integration)/specs/**/*_spec.rb"
 end

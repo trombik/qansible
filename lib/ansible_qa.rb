@@ -33,7 +33,6 @@ class AnsibleQA
     end
 
     @options = default.merge(opts)
-    @ansible_role_init = Pathname.new("bin/ansible-role-init.rb").realpath
     @role_name = @options[:root].expand_path.basename
     @root = @options[:root]
     @failed = false
@@ -59,7 +58,7 @@ class AnsibleQA
     Dir.mktmpdir do |tmp|
       @tmp = Pathname.new(tmp)
       Dir.chdir(@tmp) do
-        command = "#{ @ansible_role_init } #{ Shellwords.escape(@role_name) }"
+        command = "ansible-role-init.rb #{ Shellwords.escape(@role_name) }"
         Open3.popen3(command) do |stdin, stdout, stderr, process|
           status = process.value.exitstatus
           if status != 0

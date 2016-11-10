@@ -65,8 +65,8 @@ class AnsibleInit
     Dir.mkdir(dest_directory)
     Dir.chdir(dest_directory) do
       FileUtils.cp_r "#{ templates_directory }/.", "."
-      current_dir = Pathname.pwd
-      current_dir.find do |file|
+      FileUtils.mv "gitignore", ".gitignore"
+      Pathname.pwd.find do |file|
         next if ! file.file?
         content = File.read(file)
         content.gsub!("CHANGEME", options[:role_name].gsub("ansible-role-", ""))
@@ -83,8 +83,12 @@ class AnsibleInit
       system "git init ."
       system "git add ."
       system "git commit -m 'initial import'"
-      puts "Successfully created `%s`" % [ @options[:role_name] ]
-      puts "You need to run bundle install."
     end
+    show_advice
+  end
+
+  def show_advice
+    puts "Successfully created `%s`" % [ @options[:role_name] ]
+    puts "You need to run bundle install."
   end
 end

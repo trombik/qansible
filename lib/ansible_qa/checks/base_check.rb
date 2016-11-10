@@ -134,7 +134,7 @@ class AnsibleQA
       end
 
       def colorize(text, color = "default", bgcolor = "default")
-        retrun text if ! is_tty?
+        return text if ! is_tty?
           colors = {
             "default" => "38",
             "black" => "30",
