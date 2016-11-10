@@ -8,11 +8,16 @@ ansible_role_init = Pathname.new("bin").join("ansible-role-init.rb").expand_path
 task :default => :spec
 
 desc "Run unit tests"
-task :spec => [ "clean", "spec:setup", "spec:unit" ]
+task :spec => [ "clean", "spec:setup", "spec:unit", "spec:rubocop" ]
 
 namespace :spec do
   RSpec::Core::RakeTask.new("unit") do |task|
     task.pattern = "spec/unit/specs/**/*_spec.rb"
+  end
+
+  desc "Run rubocop"
+  task :rubocop do
+    sh "rubocop"
   end
 
   desc "setup test environment"
