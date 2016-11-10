@@ -9,7 +9,7 @@ class AnsibleQA
           let(:base) do
             AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
             AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-invalid/")
-            Base.new("invalid.yml")
+            Base.new(:path => "invalid.yml")
           end
 
           it "raises Psych::SyntaxError" do
@@ -23,7 +23,7 @@ class AnsibleQA
         let(:base) do
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
-          Base.new(".ackrc")
+          Base.new(:path => ".ackrc")
         end
 
         describe ".should_be_identical" do
@@ -45,7 +45,7 @@ class AnsibleQA
         let(:base) do
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
-          Base.new("no_such_file")
+          Base.new(:path => "no_such_file")
         end
 
         describe ".read_file" do

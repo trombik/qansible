@@ -5,7 +5,7 @@ class AnsibleQA
     class Gemfile < AnsibleQA::Check::Base
 
       def initialize
-        super("Gemfile")
+        super(:path => "Gemfile")
       end
 
       def check

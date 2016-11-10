@@ -48,11 +48,6 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Max: 51
 
-# Offense count: 4
-# Configuration parameters: CountComments.
-Metrics/ClassLength:
-  Max: 165
-
 # Offense count: 177
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives.
 # URISchemes: http, https
@@ -139,26 +134,6 @@ Style/ExtraSpacing:
 # Configuration parameters: ExpectMatchingDefinition, Regex, IgnoreExecutableScripts.
 Style/FileName:
   Enabled: false
-
-# Offense count: 71
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: format, sprintf, percent
-Style/FormatString:
-  Exclude:
-    - 'bin/ansible-role-init.rb'
-    - 'bin/ansible-role-qa.rb'
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/gemfile.rb'
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/kitchen_local_yml.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/rakefile.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
 
 # Offense count: 21
 # Configuration parameters: MinBodyLength.
@@ -329,26 +304,6 @@ Style/SpaceAfterNot:
 Style/SpaceAroundOperators:
   Exclude:
     - 'lib/ansible_qa/checks/gitignore.rb'
-
-# Offense count: 138
-# Cop supports --auto-correct.
-Style/SpaceInsideBrackets:
-  Exclude:
-    - 'Rakefile'
-    - 'bin/ansible-role-init.rb'
-    - 'bin/ansible-role-qa.rb'
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/gemfile.rb'
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/kitchen_local_yml.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/rakefile.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.

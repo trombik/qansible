@@ -3,7 +3,7 @@ class AnsibleQA
     class Jenkinsfile < AnsibleQA::Check::Base
 
       def initialize
-        super("Jenkinsfile")
+        super(:path => "Jenkinsfile")
       end
 
       def check

@@ -30,12 +30,16 @@ class AnsibleQA
 
       attr_reader :self, :number_of_warnings, :path
 
-      def initialize(path)
+      def initialize(opts = {})
+        raise ArgumentError, "BUG: child class passed `%s`, instead of Hash" % [ opts.class ] if ! opts.is_a?(Hash)
+        valid_options = [
+          :path
+        ]
+        opts.keys.each do |k|
+          raise ArgumentError, "BUG: child class passed invalid option %s" % [ k ] if ! valid_options.include?(k)
+        end
         @number_of_warnings = 0
-        @path = path.is_a?(Pathname) ? path : Pathname.new(path)
-        #@tmp_root_dir = @@root
-        #@@root = @@tmp
-        @path
+        @path = opts[:path].is_a?(Pathname) ? opts[:path] : Pathname.new(opts[:path]) if opts[:path]
       end
 
       def must_exist

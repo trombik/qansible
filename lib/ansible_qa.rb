@@ -72,25 +72,25 @@ class AnsibleQA
       end
 
       warnings = 0
-      AnsibleQA::Checks::Base.root(@root)
-      AnsibleQA::Checks::Base.tmp(@tmp + @role_name)
+      AnsibleQA::Check::Base.root(@root)
+      AnsibleQA::Check::Base.tmp(@tmp + @role_name)
       begin
         checks = [ 
-          AnsibleQA::Checks::README,
-          AnsibleQA::Checks::Rakefile,
-          AnsibleQA::Checks::Ackrc,
-          AnsibleQA::Checks::Gemfile,
-          AnsibleQA::Checks::CHANGELOG,
-          AnsibleQA::Checks::Travis,
-          AnsibleQA::Checks::Tasks,
-          AnsibleQA::Checks::Hier,
-          AnsibleQA::Checks::LICENSE,
-          AnsibleQA::Checks::KitchenLocalYml,
-          AnsibleQA::Checks::README,
-          AnsibleQA::Checks::KitchenYml,
-          AnsibleQA::Checks::Gitignore,
-          AnsibleQA::Checks::Jenkinsfile,
-          AnsibleQA::Checks::MetaMainYaml,
+          AnsibleQA::Check::README,
+          AnsibleQA::Check::Rakefile,
+          AnsibleQA::Check::Ackrc,
+          AnsibleQA::Check::Gemfile,
+          AnsibleQA::Check::CHANGELOG,
+          AnsibleQA::Check::Travis,
+          AnsibleQA::Check::Tasks,
+          AnsibleQA::Check::Hier,
+          AnsibleQA::Check::LICENSE,
+          AnsibleQA::Check::KitchenLocalYml,
+          AnsibleQA::Check::README,
+          AnsibleQA::Check::KitchenYml,
+          AnsibleQA::Check::Gitignore,
+          AnsibleQA::Check::Jenkinsfile,
+          AnsibleQA::Check::MetaMainYaml,
         ]
         checks.each do |c|
           instance = c.new

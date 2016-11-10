@@ -11,3 +11,12 @@ AllCops:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Style/SpaceInsideBrackets:
+  Enabled: false
+
+Style/FormatString:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 200

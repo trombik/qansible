@@ -10,7 +10,7 @@ class AnsibleQA
           "Example Playbook",
           "Author Information",
         ]
-        super("README.md")
+        super(:path => "README.md")
       end
 
       def check

@@ -4,7 +4,7 @@ class AnsibleQA
 
       def initialize
         @yaml = nil
-        super("meta/main.yml")
+        super(:path => "meta/main.yml")
       end
 
       def check

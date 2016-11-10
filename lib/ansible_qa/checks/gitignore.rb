@@ -3,7 +3,7 @@ class AnsibleQA
     class Gitignore < AnsibleQA::Check::Base
 
       def initialize
-        super(".gitignore")
+        super(:path => ".gitignore")
       end
 
       def check

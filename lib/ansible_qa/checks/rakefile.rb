@@ -5,7 +5,7 @@ class AnsibleQA
     class Rakefile < AnsibleQA::Check::Base
 
       def initialize
-        super("Rakefile")
+        super(:path => "Rakefile")
       end
 
       def check

@@ -6,7 +6,7 @@ class AnsibleQA
 
       def initialize
         @yaml = nil
-        super(".kitchen.yml")
+        super(:path => ".kitchen.yml")
       end
 
       def check

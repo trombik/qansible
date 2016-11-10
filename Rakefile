@@ -17,7 +17,7 @@ namespace :spec do
 
   desc "Run rubocop"
   task :rubocop do
-    sh "rubocop --display-cop-names"
+    sh "rubocop --display-cop-names --extra-details --display-style-guide"
   end
 
   desc "setup test environment"

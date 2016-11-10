@@ -5,7 +5,7 @@ class AnsibleQA
       def initialize
         @task_files = []
         @task_yaml_content = {}
-        super("foo")
+        super
         _find_all_task_files
         _load_all_tasks_as_yaml
       end

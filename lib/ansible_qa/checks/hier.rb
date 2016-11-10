@@ -16,7 +16,7 @@ class AnsibleQA
           tests
           vars
         ].map { |d| Pathname.new(d) }
-        super("")
+        super
       end
 
       def check

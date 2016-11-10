@@ -3,42 +3,99 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Base do
-      let(:base) do
-        AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-        AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
-        Base.new("foo")
+
+      context "When valid options given" do
+
+        let(:base) do
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Base.new(:path => "foo")
+        end
+
+        describe "#new" do
+          it "returns an object" do
+            expect(base.class).to eq(AnsibleQA::Check::Base)
+          end
+
+          it "has zero warning" do
+            expect(base.number_of_warnings).to eq(0)
+          end
+
+          it "returns path to the file" do
+            expect(base.path).to eq(Pathname.new("foo"))
+          end
+        end
+
+        describe ".colorize" do
+          it "returns colorized text in red" do
+            expect(base.colorize("foo", "red", "black")).to eq "\033[40;31mfoo\033[0m"
+          end
+        end
+
+        describe ".warn" do
+          it "increments number_of_warnings" do
+            base.warn("foo")
+            base.warn("foo")
+            expect(base.number_of_warnings).to eq(2)
+          end
+        end
       end
 
-      describe "#new" do
-        it "returns an object" do
-          expect(base.class).to eq(AnsibleQA::Check::Base)
+      context "When no option given" do
+
+        let(:base) do
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Base.new
         end
 
-        it "has zero warning" do
-          expect(base.number_of_warnings).to eq(0)
+        describe ".new" do
+
+          it "does not raise ArgumentError" do
+            expect { base }.not_to raise_error(ArgumentError)
+          end
+        end
+      end
+      context "When non-Hash option given" do
+
+        let(:base) do
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Base.new("foo")
         end
 
-        it "returns path to the file" do
-          expect(base.path).to eq(Pathname.new("foo"))
+        describe ".new" do
+
+          it "raises ArgumentError" do
+            expect { base }.to raise_error(ArgumentError)
+          end
         end
       end
 
-      describe ".colorize" do
-        let(:base) { Base.new("foo") }
-        it "returns colorized text in red" do
-          expect(base.colorize("foo", "red", "black")).to eq "\033[40;31mfoo\033[0m"
-        end
-      end
+      context "When invalid options given" do
 
-      describe ".warn" do
-        it "increments number_of_warnings" do
-          base.warn("foo")
-          base.warn("foo")
-          expect(base.number_of_warnings).to eq(2)
+        let(:base) do
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Base.new(:invalid => "foo")
+        end
+
+        describe ".new" do
+
+          it "raises ArgumentError" do
+            expect { base }.to raise_error(ArgumentError)
+          end
         end
       end
 
       context "when file does not exist" do
+
+        let(:base) do
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Base.new(:path => "no_such_file")
+        end
+
         describe ".should_exist" do
           it "warns `should exist`" do
             expect(base).to receive(:warn).with(/File `.*` should exist but not found/)
@@ -57,7 +114,7 @@ class AnsibleQA
         let(:base) do
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Base.new(".ackrc")
+          Base.new(:path => ".ackrc")
         end
 
         describe ".should_be_identical" do
@@ -79,7 +136,7 @@ class AnsibleQA
         let(:base) do
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Base.new(".ackrc")
+          Base.new(:path => ".ackrc")
         end
 
         describe ".must_exist" do
@@ -105,8 +162,13 @@ class AnsibleQA
       end
 
       context "when non-existent YAML file is given" do
-
         describe ".must_be_yaml" do
+
+          let(:base) do
+            AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
+            AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-root/")
+            Base.new(:path => "tasks/install-FreeBSD.yml")
+          end
 
           it "raise FileNotFound" do
             expect { base.must_be_yaml }.to raise_error(Errno::ENOENT)
@@ -119,7 +181,7 @@ class AnsibleQA
           let(:base) do
             AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
             AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest/")
-            Base.new("tasks/install-FreeBSD.yml")
+            Base.new(:path => "tasks/install-FreeBSD.yml")
           end
 
           it "returns an Array" do

@@ -3,7 +3,7 @@ class AnsibleQA
     class CHANGELOG < AnsibleQA::Check::Base
 
       def initialize
-        super("CHANGELOG.md")
+        super(:path => "CHANGELOG.md")
       end
 
       def check

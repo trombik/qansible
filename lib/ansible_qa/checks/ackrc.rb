@@ -3,7 +3,7 @@ class AnsibleQA
     class Ackrc < AnsibleQA::Check::Base
 
       def initialize
-        super(".ackrc")
+        super(:path => ".ackrc")
       end
 
       def check
