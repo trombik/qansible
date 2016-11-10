@@ -7,16 +7,11 @@ ENV["PATH"] = ENV["PATH"] + ":" + Pathname.pwd.join("exe").to_s
 task :default => :spec
 
 desc "Run tests"
-task :spec => [ "clean", "spec:setup", "spec:unit", "spec:integration", "spec:rubocop" ]
+task :spec => [ "clean", "spec:setup", "spec:test", "spec:rubocop" ]
 
 namespace :spec do
-  RSpec::Core::RakeTask.new("unit") do |task|
-    task.pattern = "spec/unit/specs/**/*_spec.rb"
-  end
-
-  desc "Run intergration test"
-  RSpec::Core::RakeTask.new("integration") do |task|
-    task.pattern = "spec/integration/specs/**/*_spec.rb"
+  RSpec::Core::RakeTask.new("test") do |task|
+    task.pattern = "spec/*/specs/**/*_spec.rb"
   end
 
   desc "Run rubocop"
@@ -26,7 +21,6 @@ namespace :spec do
 
   desc "setup test environment"
   task :setup do
-
     sh "mkdir -p tmp"
     Dir.chdir(fixtures_dir) do
       sh "ansible-role-init.rb ansible-role-latest"
@@ -35,10 +29,8 @@ namespace :spec do
     Dir.chdir("tmp") do
       sh "ansible-role-init.rb ansible-role-default"
     end
-
   end
 end
-
 
 task :clean do
   sh "rm -rf #{ fixtures_dir + 'ansible-role-latest' }"

@@ -80,19 +80,6 @@ Style/ClassVars:
 Style/Documentation:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/EmptyLines:
-  Exclude:
-    - 'Rakefile'
-
-# Offense count: 100
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-# SupportedStyles: empty_lines, no_empty_lines
-Style/EmptyLinesAroundBlockBody:
-  Enabled: false
-
 # Offense count: 44
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
@@ -165,12 +152,6 @@ Style/IfUnlessModifier:
 Style/IndentationConsistency:
   Exclude:
     - 'lib/ansible_qa/checks/base_check.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-Style/LeadingCommentSpace:
-  Exclude:
-    - 'exe/ansible-role-qa.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.

@@ -37,6 +37,5 @@ class AnsibleInit
         expect(instance.email).to eq("foo@example.com")
       end
     end
-
   end
 end

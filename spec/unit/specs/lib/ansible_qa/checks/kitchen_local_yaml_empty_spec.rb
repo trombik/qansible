@@ -3,9 +3,7 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe KitchenLocalYml do
-
       context "When .kitchen.local.yml does not exist" do
-
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))

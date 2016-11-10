@@ -1,10 +1,10 @@
 require "spec_helper"
 require "open3"
 
+saved = ENV["ANSIBLE_QA_SILENT"]
 ENV["ANSIBLE_QA_SILENT"] = nil
 
 describe "ansible-role-qa" do
-
   let(:command) do
     cmd = "ansible-role-qa.rb -d tmp/ansible-role-default"
     stdout, stderr, exit_status = Open3.capture3(cmd)
@@ -36,5 +36,6 @@ describe "ansible-role-qa" do
   it "warnings equals to zero" do
     expect(command[:stdout]).to match(/Number of warnings: 1/)
   end
-
 end
+
+ENV["ANSIBLE_QA_SILENT"] = saved

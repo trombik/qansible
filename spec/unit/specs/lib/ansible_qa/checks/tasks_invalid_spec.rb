@@ -3,7 +3,6 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Tasks do
-
       context "When task files are not valid" do
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))
@@ -65,9 +64,7 @@ class AnsibleQA
             expect { instance.check }.not_to raise_error
           end
         end
-
       end
-
     end
   end
 end

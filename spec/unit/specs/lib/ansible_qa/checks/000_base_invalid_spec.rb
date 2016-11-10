@@ -3,7 +3,6 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Base do
-
       context "When invalid yaml given" do
         describe ".must_be_yaml" do
           let(:base) do
@@ -19,7 +18,6 @@ class AnsibleQA
       end
 
       context "When file is not identical" do
-
         let(:base) do
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
@@ -41,7 +39,6 @@ class AnsibleQA
       end
 
       context "When file does not exist" do
-
         let(:base) do
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")

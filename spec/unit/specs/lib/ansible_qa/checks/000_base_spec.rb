@@ -3,9 +3,7 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Base do
-
       context "When valid options given" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
@@ -41,7 +39,6 @@ class AnsibleQA
         end
 
         describe "#verbose" do
-
           it "defaults to false" do
             expect(AnsibleQA::Check::Base.verbose).to eq(false)
           end
@@ -57,7 +54,6 @@ class AnsibleQA
       end
 
       context "When no option given" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
@@ -65,14 +61,12 @@ class AnsibleQA
         end
 
         describe ".new" do
-
           it "does not raise ArgumentError" do
             expect { base }.not_to raise_error(ArgumentError)
           end
         end
       end
       context "When non-Hash option given" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
@@ -80,7 +74,6 @@ class AnsibleQA
         end
 
         describe ".new" do
-
           it "raises ArgumentError" do
             expect { base }.to raise_error(ArgumentError)
           end
@@ -88,7 +81,6 @@ class AnsibleQA
       end
 
       context "When invalid options given" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
@@ -96,7 +88,6 @@ class AnsibleQA
         end
 
         describe ".new" do
-
           it "raises ArgumentError" do
             expect { base }.to raise_error(ArgumentError)
           end
@@ -104,7 +95,6 @@ class AnsibleQA
       end
 
       context "when file does not exist" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
@@ -125,7 +115,6 @@ class AnsibleQA
       end
 
       context "when file is identical" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -143,11 +132,9 @@ class AnsibleQA
             expect { base.must_be_identical }.not_to raise_error
           end
         end
-
       end
 
       context "when file exists" do
-
         let(:base) do
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -173,12 +160,10 @@ class AnsibleQA
             expect(base.read_file.class).to eq(String)
           end
         end
-
       end
 
       context "when non-existent YAML file is given" do
         describe ".must_be_yaml" do
-
           let(:base) do
             AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
             AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-root/")
@@ -204,7 +189,6 @@ class AnsibleQA
           end
         end
       end
-
     end
   end
 end

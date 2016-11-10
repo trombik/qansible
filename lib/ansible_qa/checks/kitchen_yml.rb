@@ -1,5 +1,3 @@
-require "erb"
-
 class AnsibleQA
   class Check
     class KitchenYml < AnsibleQA::Check::Base

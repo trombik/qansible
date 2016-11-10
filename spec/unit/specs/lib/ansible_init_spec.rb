@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe AnsibleInit do
-
   let(:root) { Pathname.new(__FILE__).dirname.parent.parent.parent.parent }
 
   # it "has a version number" do
@@ -9,7 +8,6 @@ describe AnsibleInit do
   # end
 
   describe ".validate_role_name" do
-
     let(:instance) { AnsibleInit.new }
 
     it "rejects empty role name" do
@@ -31,18 +29,15 @@ describe AnsibleInit do
   end
 
   describe ".new" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns an instance" do
       expect { instance }.not_to raise_error
       expect(instance.class).to eq(AnsibleInit)
     end
-
   end
 
   describe ".options" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "responds to .options" do
@@ -52,11 +47,9 @@ describe AnsibleInit do
     it "returns overrided options" do
       expect(instance.options[:role_name]).to eq("ansible-role-foo")
     end
-
   end
 
   describe ".platform_name" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns platform_name" do
@@ -65,7 +58,6 @@ describe AnsibleInit do
   end
 
   describe ".this_year" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns %Y as in strftime" do
@@ -74,7 +66,6 @@ describe AnsibleInit do
   end
 
   describe ".author" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns AnsibleInit::Author" do
@@ -83,7 +74,6 @@ describe AnsibleInit do
   end
 
   describe ".dest_directory" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns Pathname" do
@@ -92,13 +82,10 @@ describe AnsibleInit do
   end
 
   describe ".templates_directory" do
-
     let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns templates directory" do
       expect(instance.templates_directory.to_s).to eq(root.join("lib").join("ansible_init").join("templates").to_s)
     end
-
   end
-
 end

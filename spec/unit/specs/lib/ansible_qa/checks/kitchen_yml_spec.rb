@@ -3,9 +3,7 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe KitchenYml do
-
       context "When .kitchen.yml is identical" do
-
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
@@ -115,9 +113,7 @@ class AnsibleQA
             expect { instance.must_have_array_of_suite }.not_to raise_error
           end
         end
-
       end
-
     end
   end
 end

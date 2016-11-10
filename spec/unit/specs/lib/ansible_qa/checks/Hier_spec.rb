@@ -3,9 +3,7 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Hier do
-
       context "When required directories exist" do
-
         let(:hier) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))

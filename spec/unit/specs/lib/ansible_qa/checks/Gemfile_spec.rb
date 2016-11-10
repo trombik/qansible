@@ -17,7 +17,6 @@ class AnsibleQA
         it "runs check and does not raise error" do
           expect { gemfile.check }.not_to raise_error
         end
-
       end
     end
 

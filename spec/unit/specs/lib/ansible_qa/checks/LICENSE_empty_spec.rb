@@ -4,7 +4,6 @@ class AnsibleQA
   class Check
     class LICENSE
       context "When LICENSE does not exist" do
-
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
@@ -16,7 +15,6 @@ class AnsibleQA
             expect { instance.check }.to raise_error(FileNotFound)
           end
         end
-
       end
     end
   end

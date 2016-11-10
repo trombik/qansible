@@ -3,7 +3,6 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe README do
-
       context "When README.md is invalid" do
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))

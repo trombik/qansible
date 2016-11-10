@@ -17,7 +17,6 @@ class AnsibleQA
         it "runs check and does not raise_error" do
           expect { ackrc.check }.not_to raise_error
         end
-
       end
     end
 
@@ -37,7 +36,6 @@ class AnsibleQA
           expect(ackrc).to receive(:warn).with(/File, .* is not identical/)
           ackrc.check
         end
-
       end
     end
   end

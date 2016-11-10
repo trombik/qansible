@@ -2,9 +2,6 @@ source "https://rubygems.org"
 
 # Specify your gem"s dependencies in ansible_qa.gemspec
 gemspec
-gem "rubocop"
-gem "rake"
-gem "rspec"
 
 group :development do
   gem "ruby_dep", "~> 1.3.1"
@@ -16,4 +13,8 @@ end
 group :test do
   gem "simplecov", :require => false
   gem "coveralls", :require => false
+  gem "rubocop", "~> 0.45.0"
+  gem "rake", "~> 10.0"
+  gem "rspec", "~> 3.0"
+  gem "bundler", "~> 1.12"
 end

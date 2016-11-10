@@ -17,7 +17,6 @@ def main
     :self_test => false
   }
   OptionParser.new do |opts|
-
     opts.banner = "Usage: %s [options]" % [ Pathname.new(__FILE__).basename ]
 
     opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
@@ -31,7 +30,6 @@ def main
     opts.on("--self-test", "Perform the QA test against a plain role created by ansible-role-init (NOT implemented)") do |dir|
       @options[:self_test] = true
     end
-
   end.parse!
 
   runner = AnsibleQA.new(

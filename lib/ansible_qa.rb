@@ -111,7 +111,6 @@ class AnsibleQA
         puts "Number of warnings: %d" % [ warnings ]
         puts "Successfully finished."
       end
-
     end
     # rubocop:enable Metrics/BlockLength
   end

@@ -5,7 +5,6 @@ class AnsibleQA
     class Jenkinsfile
 
       context "When Jenkinsfile is identical" do
-
         let(:jenkinsfile) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -16,11 +15,9 @@ class AnsibleQA
           expect(jenkinsfile).not_to receive(:warn)
           jenkinsfile.check
         end
-
       end
 
       context "When Jenkinsfile is not identical" do
-
         let(:jenkinsfile) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -31,11 +28,9 @@ class AnsibleQA
           expect(jenkinsfile).to receive(:warn)
           jenkinsfile.check
         end
-
       end
 
       context "When Jenkinsfile does not exist" do
-
         let(:jenkinsfile) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -45,7 +40,6 @@ class AnsibleQA
         it "runs checks and exit" do
           expect { jenkinsfile.check }.to raise_error(FileNotFound)
         end
-
       end
 
     end

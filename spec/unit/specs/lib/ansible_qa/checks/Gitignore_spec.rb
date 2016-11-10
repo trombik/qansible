@@ -5,7 +5,6 @@ class AnsibleQA
     class Gitignore
 
       context "When gitignore lacks mandatory entries" do
-
         let(:gitignore) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -20,11 +19,9 @@ class AnsibleQA
           expect(gitignore).to receive(:warn).with(/the following items should be ignored:/)
           gitignore.check
         end
-
       end
 
       context "When gitignore is identical" do
-
         let(:gitignore) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -35,7 +32,6 @@ class AnsibleQA
           expect(gitignore).not_to receive(:warn)
           gitignore.check
         end
-
       end
 
     end

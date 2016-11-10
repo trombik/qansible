@@ -4,7 +4,6 @@ class AnsibleQA
   class Check
     describe Hier do
       context "When `test` directory exists" do
-
         let(:hier) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))

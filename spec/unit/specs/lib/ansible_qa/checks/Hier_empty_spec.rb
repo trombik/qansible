@@ -3,9 +3,7 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Hier do
-
       context "When required directories do not exist" do
-
         let(:hier) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
@@ -50,7 +48,6 @@ class AnsibleQA
             expect { hier.check }.to raise_error(SystemExit)
           end
         end
-
       end
     end
   end

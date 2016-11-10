@@ -3,9 +3,7 @@ require "spec_helper"
 class AnsibleQA
   class Check
     describe Rakefile do
-
       context "When Rakefile is invalid" do
-
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))

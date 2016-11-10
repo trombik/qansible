@@ -7,6 +7,7 @@ AllCops:
     - "tmp/**/*"
     - "ansible-role-qa"
     - "lib/ansible_init/templates/**/*"
+    - "ansible_qa.gemspec"
   TargetRubyVersion: 2.1
 
 Style/StringLiterals:
