@@ -13,6 +13,7 @@ class AnsibleQA
 
       @@root = nil
       @@tmp = nil
+      @@verbose = false
 
       def self.root(arg = nil)
         if arg
@@ -26,6 +27,11 @@ class AnsibleQA
           @@tmp = arg.is_a?(Pathname) ? arg : Pathname.new(arg)
         end
         @@tmp
+      end
+
+      def self.verbose(arg = nil)
+        @@verbose = arg if ! arg.nil?
+        @@verbose
       end
 
       attr_reader :self, :number_of_warnings, :path
@@ -44,6 +50,7 @@ class AnsibleQA
 
       def must_exist
 
+        debug "%s Checking file `%s`, which must exist" % [ self.class.name, @path ]
         result = File.exist?(@@root + @path)
         raise FileNotFound, "File `%s` must exist but not found" % [ @@root + @path ] if !result
 
@@ -51,6 +58,7 @@ class AnsibleQA
 
       def should_exist
 
+        debug "%s Checking file `%s`, which should exist" % [ self.class.name, @path ]
         result = File.exist?(@@root + @path)
         warn "File `%s` should exist but not found" % [ @path ] if !result
         result
@@ -59,6 +67,7 @@ class AnsibleQA
 
       def must_be_yaml
 
+        debug "%s Checking file `%s`, which should be a valid YAML" % [ self.class.name, @path ]
         hash = {}
         begin
           hash = YAML.load_file(@@root.join(@path.to_s))
@@ -71,6 +80,7 @@ class AnsibleQA
 
       def read_file
 
+        debug "%s Loading file `%s` for read" % [ self.class.name, @path ]
         File.read(@@root.join(@path).to_s)
 
       end
@@ -85,7 +95,7 @@ class AnsibleQA
 
         msg = "[debug] %s" % msg
         msg = colorize(msg, "gray", "black")
-        STDOUT.puts(msg) if @options[:verbose]
+        STDOUT.puts(msg) if @@verbose && ! ENV["ANSIBLE_QA_SILENT"]
 
       end
 
@@ -171,10 +181,12 @@ class AnsibleQA
       end
 
       def should_be_identical
+        debug "%s Checking file `%s`, which should be identical" % [ self.class.name, @path ]
         check_is_identical(:action => :warn)
       end
 
       def must_be_identical
+        debug "%s Checking file `%s`, which must be identical" % [ self.class.name, @path ]
         check_is_identical(:action => :crit)
       end
 

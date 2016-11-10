@@ -24,7 +24,7 @@ class AnsibleQA
   def initialize(opts = {})
     default = {
       :root => Pathname.new(Dir.pwd),
-      :verbise => false,
+      :verbose => false,
     }
     if opts.has_key?(:root)
       if ! opts[:root].is_a?(Pathname)
@@ -55,6 +55,7 @@ class AnsibleQA
 
   def run
 
+    # rubocop:disable Metrics/BlockLength
     Dir.mktmpdir do |tmp|
       @tmp = Pathname.new(tmp)
       Dir.chdir(@tmp) do
@@ -74,6 +75,7 @@ class AnsibleQA
       warnings = 0
       AnsibleQA::Check::Base.root(@root)
       AnsibleQA::Check::Base.tmp(@tmp + @role_name)
+      AnsibleQA::Check::Base.verbose(@options[:verbose])
       begin
         checks = [ 
           AnsibleQA::Check::README,
@@ -99,6 +101,7 @@ class AnsibleQA
         end
       rescue StandardError => e
         puts "The check ended with exception `%s`" % [ e ]
+        puts e.backtrace if @options[:verbose]
         @failed = true
       ensure
       end
@@ -111,5 +114,6 @@ class AnsibleQA
       end
 
     end
+    # rubocop:enable Metrics/BlockLength
   end
 end

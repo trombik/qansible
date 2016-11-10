@@ -39,6 +39,21 @@ class AnsibleQA
             expect(base.number_of_warnings).to eq(2)
           end
         end
+
+        describe "#verbose" do
+
+          it "defaults to false" do
+            expect(AnsibleQA::Check::Base.verbose).to eq(false)
+          end
+
+          it "turns @@verbose to true" do
+            expect(AnsibleQA::Check::Base.verbose(true)).to eq(true)
+          end
+
+          it "turns @@verbose to false" do
+            expect(AnsibleQA::Check::Base.verbose(false)).to eq(false)
+          end
+        end
       end
 
       context "When no option given" do
