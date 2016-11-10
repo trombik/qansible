@@ -2,6 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/trombik/ansible-qa/badges/gpa.svg)](https://codeclimate.com/github/trombik/ansible-qa)
 [![Build Status](https://travis-ci.org/trombik/ansible-qa.svg?branch=master)](https://travis-ci.org/trombik/ansible-qa)
+[![Coverage Status](https://coveralls.io/repos/github/trombik/ansible-qa/badge.svg?branch=master)](https://coveralls.io/github/trombik/ansible-qa?branch=master)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ansible_qa`. To experiment with that code, run `bin/console` for an interactive prompt.
 
