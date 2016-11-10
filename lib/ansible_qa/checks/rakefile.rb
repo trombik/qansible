@@ -1,3 +1,5 @@
+require "open3"
+
 class AnsibleQA
   class Check
     class Rakefile < AnsibleQA::Check::Base

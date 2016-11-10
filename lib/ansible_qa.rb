@@ -1,3 +1,4 @@
+require "open3"
 require "pathname"
 require "ansible_qa/version"
 require "ansible_qa/checks/base_check"
