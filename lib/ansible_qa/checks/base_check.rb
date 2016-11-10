@@ -118,7 +118,7 @@ class AnsibleQA
 
         msg = "[crit] %s" % [ text ]
         msg = colorize(msg, "red", "black")
-        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
+        Kernel.warn(msg) unless ENV["ANSIBLE_QA_SILENT"]
         exit 1
 
       end
