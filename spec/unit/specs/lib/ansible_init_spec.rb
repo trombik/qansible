@@ -4,21 +4,29 @@ describe AnsibleInit do
 
   let(:root) { Pathname.new(__FILE__).dirname.parent.parent.parent.parent }
 
-#  it "has a version number" do
-#    expect(AnsibleInit::VERSION).not_to be nil
-#  end
+  # it "has a version number" do
+  #   expect(AnsibleInit::VERSION).not_to be nil
+  # end
 
   describe ".validate_role_name" do
 
     let(:instance) { AnsibleInit.new }
 
-    it "rejects invalid role names" do
+    it "rejects empty role name" do
+      expect { instance.validate_role_name("") }.to raise_error(InvalidRoleName)
+    end
+
+    it "rejects invalid role name (no leading ansible-role-" do
       expect { instance.validate_role_name("role") }.to raise_error(InvalidRoleName)
+    end
+
+    it "rejects invalid role name (invalid characters)" do
       expect { instance.validate_role_name("ansible-role-*()?><") }.to raise_error(InvalidRoleName)
     end
 
     it "accepts `ansible-role-foo_bar`" do
       expect { instance.validate_role_name("ansible-role-foo-bar") }.not_to raise_error
+      expect(instance.validate_role_name("ansible-role-foo-bar")).to eq(true)
     end
   end
 

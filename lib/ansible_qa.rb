@@ -97,7 +97,7 @@ class AnsibleQA
           instance.check
           warnings += instance.number_of_warnings
         end
-      rescue Exception => e
+      rescue StandardError => e
         puts "The check ended with exception `%s`" % [ e ]
         @failed = true
       ensure

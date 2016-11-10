@@ -17,4 +17,5 @@
 
 guard "rake", :task => "spec" do
   watch(%r{^lib/(.+)\.rb$})
+  watch(%r{^spec/unit/specs/(.+)_spec.rb})
 end

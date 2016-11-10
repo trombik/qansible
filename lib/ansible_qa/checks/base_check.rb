@@ -58,7 +58,7 @@ class AnsibleQA
         hash = {}
         begin
           hash = YAML.load_file(@@root.join(@path.to_s))
-        rescue Exception => e
+        rescue StandardError => e
           raise e
         end
         hash
