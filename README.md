@@ -1,5 +1,8 @@
 # AnsibleQa
 
+[![Code Climate](https://codeclimate.com/github/trombik/ansible-qa/badges/gpa.svg)](https://codeclimate.com/github/trombik/ansible-qa)
+[![Build Status](https://travis-ci.org/trombik/ansible-qa.svg?branch=master)](https://travis-ci.org/trombik/ansible-qa)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ansible_qa`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
@@ -33,4 +36,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ansible_qa. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-

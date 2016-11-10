@@ -21,4 +21,3 @@ class AnsibleQA
     end
   end
 end
-

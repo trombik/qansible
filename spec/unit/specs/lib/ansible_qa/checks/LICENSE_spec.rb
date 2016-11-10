@@ -5,7 +5,7 @@ class AnsibleQA
     describe LICENSE do
 
       context "When LICENSE exists" do
-        
+
         let(:instance) do
           AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))

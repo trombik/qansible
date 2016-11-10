@@ -12,3 +12,7 @@ group :development do
   gem "guard"
   gem "guard-rake"
 end
+
+group :test do
+  gem "simplecov", :require => false
+end

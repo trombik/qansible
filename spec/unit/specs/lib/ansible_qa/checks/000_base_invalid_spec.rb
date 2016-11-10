@@ -8,7 +8,7 @@ class AnsibleQA
         describe ".must_be_yaml" do
           let(:base) do
             AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
-            AnsibleQA::Check::Base.tmp ("spec/unit/fixtures/ansible-role-invalid/")
+            AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-invalid/")
             Base.new("invalid.yml")
           end
 
@@ -22,7 +22,7 @@ class AnsibleQA
 
         let(:base) do
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
-          AnsibleQA::Check::Base.tmp ("spec/unit/fixtures/ansible-role-latest/")
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
           Base.new(".ackrc")
         end
 
@@ -44,7 +44,7 @@ class AnsibleQA
 
         let(:base) do
           AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
-          AnsibleQA::Check::Base.tmp ("spec/unit/fixtures/ansible-role-latest/")
+          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
           Base.new("no_such_file")
         end
 

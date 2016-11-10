@@ -81,7 +81,7 @@ class AnsibleQA
               :user => "trombik",
               :platform => "freebsd",
               :platform_version => "10.3",
-              :arch => "amd64",
+              :arch => "amd64"
             }
             expect(instance._parse_box("trombik/ansible-freebsd-10.3-amd64")).to eq(parsed)
           end
@@ -91,7 +91,7 @@ class AnsibleQA
               :user => "trombik",
               :platform => "freebsd",
               :platform_version => "10.3",
-              :arch => "amd64",
+              :arch => "amd64"
             }
             expect(instance._parse_box("trombik/freebsd-10.3-amd64")).to eq(parsed)
           end
@@ -115,7 +115,6 @@ class AnsibleQA
             expect { instance.must_have_array_of_suite }.not_to raise_error
           end
         end
-
 
       end
 

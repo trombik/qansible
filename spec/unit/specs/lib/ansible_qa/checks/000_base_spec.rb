@@ -1,14 +1,13 @@
 require "spec_helper"
 
-
 class AnsibleQA
   class Check
     describe Base do
-        let(:base) do
-          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
-          Base.new("foo")
-        end
+      let(:base) do
+        AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+        AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+        Base.new("foo")
+      end
 
       describe "#new" do
         it "returns an object" do
