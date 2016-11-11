@@ -4,16 +4,38 @@
 [![Build Status](https://travis-ci.org/trombik/qansible.svg?branch=master)](https://travis-ci.org/trombik/qansible)
 [![Coverage Status](https://coveralls.io/repos/github/trombik/qansible/badge.svg?branch=master)](https://coveralls.io/github/trombik/qansible?branch=master)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/qansible_qa`. To experiment with that code, run `bin/console` for an interactive prompt.
+`qansible` provides helper scripts to create and maintain `ansible` roles.
 
-TODO: Delete this and the text above, and describe your gem
+`ansible-role-init` creates a scaffold. `ansible-role-qa` performs static
+analysis.
+
+## Dependencies
+
+* git
 
 ## Building the gem
 
+```sh
+git clone https://github.com/trombik/qansible.git
+cd qansible
+bundle install --without "development test"
+bundle exec rake build
+```
+
 ## Installation
+
+Run `gem` WITHOUT `bundler`.
 
 ```sh
 gem install --user-install pkg/qansible-$VERSION.gem
+```
+
+Make sure `~/.gem/ruby/$RUBYVERSION/bin` is in your `PATH` environment
+variable. Run `gem env` to see `PATH`.
+
+```sh
+ansible-role-qa --version
+ansible-role-init --version
 ```
 
 ## Uninstalling the gem
@@ -24,14 +46,22 @@ gem uninstall qansible
 
 ## Usage
 
-TODO: Write usage instructions here
+### ansible-role-init [ROLENAME]
+
+Creates an `ansible` role in the current directory and perform `git init`.
+
+`ROLENAME` must start with `ansible-role`.
+
+### ansible-role-qa
+
+Perform static analysis in the current directory.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Fork and clone the repository. Then:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/qansible_qa. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+```sh
+cd qansible
+bundle install
+bundle exec rake
+```
