@@ -1,12 +1,12 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     context "When ackrc is identical" do
       describe Ackrc do
         let(:ackrc) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Ackrc.new
         end
 
@@ -23,8 +23,8 @@ class QAnsibleQA
     context "When ackrc is not identical" do
       describe Ackrc do
         let(:ackrc) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
           Ackrc.new
         end
 

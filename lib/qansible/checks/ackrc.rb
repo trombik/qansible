@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class Ackrc < QAnsible::Check::Base
+    class Ackrc < Qansible::Check::Base
 
       def initialize
         super(:path => ".ackrc")

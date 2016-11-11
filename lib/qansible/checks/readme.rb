@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class README < QAnsible::Check::Base
+    class README < Qansible::Check::Base
 
       def initialize
         @required_sections = [

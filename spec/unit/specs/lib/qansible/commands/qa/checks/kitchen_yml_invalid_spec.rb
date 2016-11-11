@@ -1,12 +1,12 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     describe KitchenYml do
-      context "When .kitchen.yml is identical" do
+      context "When .kitchen.yml is invalid" do
         let(:instance) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           KitchenYml.new
         end
 
@@ -23,7 +23,7 @@ class QAnsibleQA
         end
 
         describe ".must_have_transport_name_rsync" do
-          it "does not raise_error" do
+          it "raise_error" do
             expect { instance.must_have_transport_name_rsync }.not_to raise_error
           end
         end
@@ -35,15 +35,15 @@ class QAnsibleQA
         end
 
         describe ".should_have_idempotency_test_enabled" do
-          it "does not warn" do
-            expect(instance).not_to receive(:warn)
+          it "warns" do
+            expect(instance).to receive(:warn).at_least(:once)
             instance.should_have_idempotency_test_enabled
           end
         end
 
         describe ".should_have_ansible_vault_password_file" do
-          it "does not warn" do
-            expect(instance).not_to receive(:warn)
+          it "warns" do
+            expect(instance).to receive(:warn).at_least(:once)
             instance.should_have_ansible_vault_password_file
           end
         end
@@ -55,7 +55,7 @@ class QAnsibleQA
         end
 
         describe ".should_have_platforms_without_transport" do
-          it "does not warn" do
+          it "warns" do
             expect(instance).not_to receive(:warn)
           end
         end
@@ -67,8 +67,8 @@ class QAnsibleQA
         end
 
         describe ".should_have_platforms_with_driver_box_update_false" do
-          it "does not warn" do
-            expect(instance).not_to receive(:warn)
+          it "warns" do
+            expect(instance).to receive(:warn)
             instance.should_have_platforms_with_driver_box_update_false
           end
         end
@@ -97,7 +97,7 @@ class QAnsibleQA
 
         describe ".should_not_have_platforms_with_name_start_with_ansible" do
           it "does not warn" do
-            expect(instance).not_to receive(:warn)
+            expect(instance).to receive(:warn)
             instance.should_not_have_platforms_with_name_start_with_ansible
           end
         end
@@ -109,7 +109,7 @@ class QAnsibleQA
         end
 
         describe ".must_have_suites_with_correct_path_to_playbook" do
-          it "does not raise_error" do
+          it "raise_error" do
             expect { instance.must_have_array_of_suite }.not_to raise_error
           end
         end

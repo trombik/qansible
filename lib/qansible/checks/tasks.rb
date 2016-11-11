@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class Tasks < QAnsible::Check::Base
+    class Tasks < Qansible::Check::Base
 
       def initialize
         @task_files = []

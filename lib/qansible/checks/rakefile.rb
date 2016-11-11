@@ -1,8 +1,8 @@
 require "open3"
 
-class QAnsible
+class Qansible
   class Check
-    class Rakefile < QAnsible::Check::Base
+    class Rakefile < Qansible::Check::Base
 
       def initialize
         super(:path => "Rakefile")
@@ -16,7 +16,7 @@ class QAnsible
 
       def must_accept_test_as_target
         command = "rake -T"
-        Dir.chdir(QAnsible::Check::Base.root) do
+        Dir.chdir(Qansible::Check::Base.root) do
           Open3.popen3(command) do |stdin, stdout, stderr, process|
             status = process.value.exitstatus
             case status

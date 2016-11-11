@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class KitchenYml < QAnsible::Check::Base
+    class KitchenYml < Qansible::Check::Base
 
       def initialize
         @yaml = nil

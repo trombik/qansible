@@ -1,12 +1,12 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     describe README do
       context "When README.md is identical" do
         let(:instance) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           README.new
         end
 

@@ -7,7 +7,7 @@ end
 class CommandFailed < StandardError
 end
 
-class QAnsible
+class Qansible
   class Check
     class Base
 

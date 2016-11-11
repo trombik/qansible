@@ -1,8 +1,8 @@
 require "pathname"
 
-class QAnsible
+class Qansible
   class Check
-    class Gemfile < QAnsible::Check::Base
+    class Gemfile < Qansible::Check::Base
 
       def initialize
         super(:path => "Gemfile")

@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class Gitignore < QAnsible::Check::Base
+    class Gitignore < Qansible::Check::Base
 
       def initialize
         super(:path => ".gitignore")

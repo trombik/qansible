@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class Hier < QAnsible::Check::Base
+    class Hier < Qansible::Check::Base
 
       def initialize
         @required_directories = %w[

@@ -12,21 +12,21 @@ class Qansible
 
       def all_check_classes
         [
-          QAnsible::Check::README,
-          QAnsible::Check::Rakefile,
-          QAnsible::Check::Ackrc,
-          QAnsible::Check::Gemfile,
-          QAnsible::Check::CHANGELOG,
-          QAnsible::Check::Travis,
-          QAnsible::Check::Tasks,
-          QAnsible::Check::Hier,
-          QAnsible::Check::LICENSE,
-          QAnsible::Check::KitchenLocalYml,
-          QAnsible::Check::README,
-          QAnsible::Check::KitchenYml,
-          QAnsible::Check::Gitignore,
-          QAnsible::Check::Jenkinsfile,
-          QAnsible::Check::MetaMainYaml
+          Qansible::Check::README,
+          Qansible::Check::Rakefile,
+          Qansible::Check::Ackrc,
+          Qansible::Check::Gemfile,
+          Qansible::Check::CHANGELOG,
+          Qansible::Check::Travis,
+          Qansible::Check::Tasks,
+          Qansible::Check::Hier,
+          Qansible::Check::LICENSE,
+          Qansible::Check::KitchenLocalYml,
+          Qansible::Check::README,
+          Qansible::Check::KitchenYml,
+          Qansible::Check::Gitignore,
+          Qansible::Check::Jenkinsfile,
+          Qansible::Check::MetaMainYaml
         ]
       end
 
@@ -52,9 +52,9 @@ class Qansible
           warnings = 0
           create_reference_tree(tmpdir)
 
-          QAnsible::Check::Base.root(@options.directory)
-          QAnsible::Check::Base.tmp(tmpdir + @options.role_name)
-          QAnsible::Check::Base.verbose(@options.verbose)
+          Qansible::Check::Base.root(@options.directory)
+          Qansible::Check::Base.tmp(tmpdir + @options.role_name)
+          Qansible::Check::Base.verbose(@options.verbose)
           begin
             all_check_classes.each do |c|
               instance = c.new

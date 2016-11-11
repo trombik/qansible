@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class LICENSE < QAnsible::Check::Base
+    class LICENSE < Qansible::Check::Base
 
       def initialize
         super(:path => "LICENSE")

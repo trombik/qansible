@@ -1,13 +1,13 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     class Gitignore
 
       context "When gitignore lacks mandatory entries" do
         let(:gitignore) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Gitignore.new
         end
 
@@ -23,8 +23,8 @@ class QAnsibleQA
 
       context "When gitignore is identical" do
         let(:gitignore) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Gitignore.new
         end
 

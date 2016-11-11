@@ -19,7 +19,7 @@ class Qansible
 
       describe ".all_check_classes" do
         it "returns array of QAnsibleQA::Check" do
-          expect(i.all_check_classes).to include(QAnsible::Check::README)
+          expect(i.all_check_classes).to include(Qansible::Check::README)
         end
       end
 

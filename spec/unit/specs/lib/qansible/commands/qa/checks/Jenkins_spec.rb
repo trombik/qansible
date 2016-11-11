@@ -1,13 +1,13 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     class Jenkinsfile
 
       context "When Jenkinsfile is identical" do
         let(:jenkinsfile) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Jenkinsfile.new
         end
 
@@ -19,8 +19,8 @@ class QAnsibleQA
 
       context "When Jenkinsfile is not identical" do
         let(:jenkinsfile) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Jenkinsfile.new
         end
 
@@ -32,8 +32,8 @@ class QAnsibleQA
 
       context "When Jenkinsfile does not exist" do
         let(:jenkinsfile) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Jenkinsfile.new
         end
 

@@ -1,6 +1,6 @@
-class QAnsible
+class Qansible
   class Check
-    class Jenkinsfile < QAnsible::Check::Base
+    class Jenkinsfile < Qansible::Check::Base
 
       def initialize
         super(:path => "Jenkinsfile")

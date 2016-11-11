@@ -1,18 +1,18 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     describe Base do
       context "When valid options given" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
           Base.new(:path => "foo")
         end
 
         describe "#new" do
           it "returns an object" do
-            expect(base.class).to eq(QAnsibleQA::Check::Base)
+            expect(base.class).to eq(Qansible::Check::Base)
           end
 
           it "has zero warning" do
@@ -40,23 +40,23 @@ class QAnsibleQA
 
         describe "#verbose" do
           it "defaults to false" do
-            expect(QAnsibleQA::Check::Base.verbose).to eq(false)
+            expect(Qansible::Check::Base.verbose).to eq(false)
           end
 
           it "turns @@verbose to true" do
-            expect(QAnsibleQA::Check::Base.verbose(true)).to eq(true)
+            expect(Qansible::Check::Base.verbose(true)).to eq(true)
           end
 
           it "turns @@verbose to false" do
-            expect(QAnsibleQA::Check::Base.verbose(false)).to eq(false)
+            expect(Qansible::Check::Base.verbose(false)).to eq(false)
           end
         end
       end
 
       context "When no option given" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
           Base.new
         end
 
@@ -68,8 +68,8 @@ class QAnsibleQA
       end
       context "When non-Hash option given" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
           Base.new("foo")
         end
 
@@ -82,8 +82,8 @@ class QAnsibleQA
 
       context "When invalid options given" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
           Base.new(:invalid => "foo")
         end
 
@@ -96,8 +96,8 @@ class QAnsibleQA
 
       context "when file does not exist" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
-          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
+          Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
           Base.new(:path => "no_such_file")
         end
 
@@ -116,8 +116,8 @@ class QAnsibleQA
 
       context "when file is identical" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Base.new(:path => ".ackrc")
         end
 
@@ -136,8 +136,8 @@ class QAnsibleQA
 
       context "when file exists" do
         let(:base) do
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Base.new(:path => ".ackrc")
         end
 
@@ -165,8 +165,8 @@ class QAnsibleQA
       context "when non-existent YAML file is given" do
         describe ".must_be_yaml" do
           let(:base) do
-            QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
-            QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-root/")
+            Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
+            Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-root/")
             Base.new(:path => "tasks/install-FreeBSD.yml")
           end
 
@@ -179,8 +179,8 @@ class QAnsibleQA
       context "when a valid yaml file is given" do
         describe ".must_be_yaml" do
           let(:base) do
-            QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
-            QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-latest/")
+            Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
+            Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest/")
             Base.new(:path => "tasks/install-FreeBSD.yml")
           end
 

@@ -1,13 +1,13 @@
 require "spec_helper"
 
-class QAnsibleQA
+class Qansible
   class Check
     class MetaMainYaml
 
       context "When .travis.yml does not exist" do
         let(:instance) do
-          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))
-          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))
+          Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           MetaMainYaml.new
         end
 
