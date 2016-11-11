@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require "qansible"
+require 'pry'
+
+def main
+  command = ARGV.shift
+  option = nil
+  runner = nil
+  case command
+  when "init"
+    option = Qansible::Command::Init::Parser.parse ARGV
+    runner = Qansible::Command::Init.new(option)
+  when "qa"
+    option = Qansible::Command::QA::Parser.parse ARGV
+    runner = Qansible::Command::QA.new(option)
+  else
+    puts "unknown command `%s`" % [ command ]
+    exit 1
+  end
+
+  runner.run
+end
+
+main

@@ -8,6 +8,7 @@ require "rspec/core/rake_task"
 require "pathname"
 require "qansible_qa"
 require "qansible_init"
+require "qansible"
 
 ENV["ANSIBLE_QA_SILENT"] = "y"
 
