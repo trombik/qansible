@@ -35,4 +35,5 @@ end
 task :clean do
   sh "rm -rf #{ fixtures_dir + 'ansible-role-latest' }"
   sh "rm -rf tmp/*"
+  sh "rm -rf pkg/*"
 end
