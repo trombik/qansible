@@ -1,8 +1,8 @@
-# ansible\_qa
+# qansible
 
-[![Code Climate](https://codeclimate.com/github/trombik/ansible-qa/badges/gpa.svg)](https://codeclimate.com/github/trombik/ansible-qa)
-[![Build Status](https://travis-ci.org/trombik/ansible-qa.svg?branch=master)](https://travis-ci.org/trombik/ansible-qa)
-[![Coverage Status](https://coveralls.io/repos/github/trombik/ansible-qa/badge.svg?branch=master)](https://coveralls.io/github/trombik/ansible-qa?branch=master)
+[![Code Climate](https://codeclimate.com/github/trombik/qansible/badges/gpa.svg)](https://codeclimate.com/github/trombik/qansible)
+[![Build Status](https://travis-ci.org/trombik/qansible.svg?branch=master)](https://travis-ci.org/trombik/qansible)
+[![Coverage Status](https://coveralls.io/repos/github/trombik/qansible/badge.svg?branch=master)](https://coveralls.io/github/trombik/qansible?branch=master)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/qansible_qa`. To experiment with that code, run `bin/console` for an interactive prompt.
 
@@ -13,13 +13,13 @@ TODO: Delete this and the text above, and describe your gem
 ## Installation
 
 ```sh
-gem install --user-install pkg/qansible_qa-$VERSION.gem
+gem install --user-install pkg/qansible-$VERSION.gem
 ```
 
 ## Uninstalling the gem
 
 ```sh
-gem uninstall qansible_qa
+gem uninstall qansible
 ```
 
 ## Usage
