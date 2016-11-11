@@ -11,7 +11,8 @@ analysis.
 
 ## Dependencies
 
-* git
+* `git`
+* `bundler`
 
 ## Building the gem
 
@@ -31,12 +32,14 @@ gem install --user-install pkg/qansible-$VERSION.gem
 ```
 
 Make sure `~/.gem/ruby/$RUBYVERSION/bin` is in your `PATH` environment
-variable. Run `gem env` to see `PATH`.
+variable. Run `gem env` to see `PATH`. After adding the path to `PATH`, run:
 
 ```sh
 ansible-role-qa --version
 ansible-role-init --version
 ```
+
+The both commands should show version number.
 
 ## Uninstalling the gem
 
@@ -62,6 +65,11 @@ Fork and clone the repository. Then:
 
 ```sh
 cd qansible
-bundle install
-bundle exec rake
+bundle install --path vendor/bundle --with "test development"
+```
+
+Open another terminal. Run `guard`.
+
+```sh
+bundle exec guard
 ```
