@@ -11,3 +11,10 @@ addons:
   apt:
     packages:
       - diffutils
+
+install:
+  - bundle install --retry=3
+
+script:
+  - bundle exec rake
+  - bundle exec rake build
