@@ -1,9 +1,9 @@
 require "spec_helper"
 require "etc"
 
-class AnsibleInit
+class QAnsibleInit
   describe Author do
-    let(:instance) { AnsibleInit::Author.new }
+    let(:instance) { QAnsibleInit::Author.new }
     let(:whoami) { Etc.getpwuid(Process.uid).name }
     let(:gecos) { Etc.getpwuid(Process.uid).gecos }
 

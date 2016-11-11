@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# Specify your gem"s dependencies in ansible_qa.gemspec
+# Specify your gem"s dependencies in qansible_qa.gemspec
 gemspec
 
 group :development do

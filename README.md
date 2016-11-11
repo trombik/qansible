@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/trombik/ansible-qa.svg?branch=master)](https://travis-ci.org/trombik/ansible-qa)
 [![Coverage Status](https://coveralls.io/repos/github/trombik/ansible-qa/badge.svg?branch=master)](https://coveralls.io/github/trombik/ansible-qa?branch=master)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ansible_qa`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/qansible_qa`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -13,13 +13,13 @@ TODO: Delete this and the text above, and describe your gem
 ## Installation
 
 ```sh
-gem install --user-install pkg/ansible_qa-$VERSION.gem
+gem install --user-install pkg/qansible_qa-$VERSION.gem
 ```
 
 ## Uninstalling the gem
 
 ```sh
-gem uninstall ansible_qa
+gem uninstall qansible_qa
 ```
 
 ## Usage
@@ -34,4 +34,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ansible_qa. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/qansible_qa. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

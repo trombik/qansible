@@ -6,8 +6,8 @@ Coveralls.wear!
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "rspec/core/rake_task"
 require "pathname"
-require "ansible_qa"
-require "ansible_init"
+require "qansible_qa"
+require "qansible_init"
 
 ENV["ANSIBLE_QA_SILENT"] = "y"
 

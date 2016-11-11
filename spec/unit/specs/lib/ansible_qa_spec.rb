@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe AnsibleQA do
+describe QAnsibleQA do
   describe ".new" do
     it "returns an object" do
-      expect { AnsibleQA.new }.not_to raise_error
-      expect(AnsibleQA.new.is_a?(Object)).to eq(true)
+      expect { QAnsibleQA.new }.not_to raise_error
+      expect(QAnsibleQA.new.is_a?(Object)).to eq(true)
     end
   end
 end

@@ -1,8 +1,8 @@
 require "pathname"
 
-class AnsibleQA
+class QAnsibleQA
   class Check
-    class Gemfile < AnsibleQA::Check::Base
+    class Gemfile < QAnsibleQA::Check::Base
 
       def initialize
         super(:path => "Gemfile")

@@ -1,6 +1,6 @@
-class AnsibleQA
+class QAnsibleQA
   class Check
-    class KitchenLocalYml < AnsibleQA::Check::Base
+    class KitchenLocalYml < QAnsibleQA::Check::Base
 
       def initialize
         super(:path => ".kitchen.local.yml")

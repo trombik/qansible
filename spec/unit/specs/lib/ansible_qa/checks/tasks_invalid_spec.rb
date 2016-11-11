@@ -1,12 +1,12 @@
 require "spec_helper"
 
-class AnsibleQA
+class QAnsibleQA
   class Check
     describe Tasks do
       context "When task files are not valid" do
         let(:instance) do
-          AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))
-          AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))
+          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           Tasks.new
         end
 

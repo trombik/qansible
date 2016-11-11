@@ -6,7 +6,7 @@ require "open3"
 require "tmpdir"
 require "yaml"
 require "erb"
-require "ansible_qa"
+require "qansible_qa"
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
@@ -28,7 +28,7 @@ def main
     end
 
     opts.on("--version", "Show version") do |version|
-      puts AnsibleQA::VERSION
+      puts QAnsibleQA::VERSION
       exit 0
     end
     opts.on("--self-test", "Perform the QA test against a plain role created by ansible-role-init (NOT implemented)") do |dir|
@@ -36,7 +36,7 @@ def main
     end
   end.parse!
 
-  runner = AnsibleQA.new(
+  runner = QAnsibleQA.new(
     :root => @options[:dir],
     :verbose => @options[:verbose],
   )

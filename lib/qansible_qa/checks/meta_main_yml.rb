@@ -1,6 +1,6 @@
-class AnsibleQA
+class QAnsibleQA
   class Check
-    class MetaMainYaml < AnsibleQA::Check::Base
+    class MetaMainYaml < QAnsibleQA::Check::Base
 
       def initialize
         @yaml = nil

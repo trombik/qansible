@@ -9,12 +9,12 @@
 # Offense count: 1
 Lint/EmptyEnsure:
   Exclude:
-    - 'lib/ansible_qa.rb'
+    - 'lib/qansible_qa.rb'
 
 # Offense count: 1
 Lint/FormatParameterMismatch:
   Exclude:
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -28,16 +28,16 @@ Lint/UnneededSplatExpansion:
 Lint/UnusedBlockArgument:
   Exclude:
     - 'exe/ansible-role-qa'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/rakefile.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/rakefile.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods.
 Lint/UnusedMethodArgument:
   Exclude:
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 13
 Metrics/AbcSize:
@@ -58,10 +58,10 @@ Metrics/MethodLength:
 # Cop supports --auto-correct.
 Performance/RedundantMatch:
   Exclude:
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
+    - 'lib/qansible_init.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/readme.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -69,12 +69,12 @@ Performance/RedundantMatch:
 # SupportedStyles: prefer_alias, prefer_alias_method
 Style/Alias:
   Exclude:
-    - 'lib/ansible_init/author.rb'
+    - 'lib/qansible_init/author.rb'
 
 # Offense count: 6
 Style/ClassVars:
   Exclude:
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 18
 Style/Documentation:
@@ -92,19 +92,19 @@ Style/EmptyLinesAroundClassBody:
 Style/EmptyLinesAroundMethodBody:
   Exclude:
     - 'exe/ansible-role-qa'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/kitchen_local_yml.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/kitchen_local_yml.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
 Style/ExtraSpacing:
   Exclude:
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/readme.rb'
 
 # Offense count: 17
 # Configuration parameters: ExpectMatchingDefinition, Regex, IgnoreExecutableScripts.
@@ -115,14 +115,14 @@ Style/FileName:
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:
   Exclude:
-    - 'ansible_qa.gemspec'
-    - 'lib/ansible_qa/checks/gemfile.rb'
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/jenkinsfile.rb'
-    - 'lib/ansible_qa/checks/kitchen_local_yml.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
+    - 'qansible_qa.gemspec'
+    - 'lib/qansible_qa/checks/gemfile.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/jenkinsfile.rb'
+    - 'lib/qansible_qa/checks/kitchen_local_yml.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
 
 # Offense count: 76
 # Cop supports --auto-correct.
@@ -136,14 +136,14 @@ Style/HashSyntax:
 # Configuration parameters: MaxLineLength.
 Style/IfUnlessModifier:
   Exclude:
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
+    - 'lib/qansible_init.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/readme.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.
@@ -151,29 +151,29 @@ Style/IfUnlessModifier:
 # SupportedStyles: normal, rails
 Style/IndentationConsistency:
   Exclude:
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/MutableConstant:
   Exclude:
-    - 'lib/ansible_init/version.rb'
-    - 'lib/ansible_qa/version.rb'
+    - 'lib/qansible_init/version.rb'
+    - 'lib/qansible_qa/version.rb'
 
 # Offense count: 51
 # Cop supports --auto-correct.
 Style/NegatedIf:
   Exclude:
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/gemfile.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/jenkinsfile.rb'
-    - 'lib/ansible_qa/checks/kitchen_local_yml.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
+    - 'lib/qansible_init.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/gemfile.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/jenkinsfile.rb'
+    - 'lib/qansible_qa/checks/kitchen_local_yml.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/tasks.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -181,15 +181,15 @@ Style/NegatedIf:
 # SupportedStyles: skip_modifier_ifs, always
 Style/Next:
   Exclude:
-    - 'lib/ansible_qa/checks/readme.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
+    - 'lib/qansible_qa/checks/readme.rb'
+    - 'lib/qansible_qa/checks/tasks.rb'
 
 # Offense count: 9
 # Cop supports --auto-correct.
 Style/Not:
   Exclude:
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
 
 # Offense count: 12
 # Cop supports --auto-correct.
@@ -199,22 +199,22 @@ Style/NumericPredicate:
   Exclude:
     - 'spec/**/*'
     - 'exe/ansible-role-qa'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/readme.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - 'ansible_qa.gemspec'
+    - 'qansible_qa.gemspec'
     - 'exe/ansible-role-qa'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/tasks.rb'
 
 # Offense count: 1
 # Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist.
@@ -224,7 +224,7 @@ Style/PercentLiteralDelimiters:
 Style/PredicateName:
   Exclude:
     - 'spec/**/*'
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 21
 # Cop supports --auto-correct.
@@ -232,18 +232,18 @@ Style/PredicateName:
 # SupportedStyles: short, verbose
 Style/PreferredHashMethods:
   Exclude:
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/tasks.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowMultipleReturnValues.
 Style/RedundantReturn:
   Exclude:
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -251,34 +251,34 @@ Style/RedundantReturn:
 # SupportedStyles: slashes, percent_r, mixed
 Style/RegexpLiteral:
   Exclude:
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
 
 # Offense count: 42
 # Cop supports --auto-correct.
 Style/SpaceAfterNot:
   Exclude:
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/jenkinsfile.rb'
-    - 'lib/ansible_qa/checks/kitchen_local_yml.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/tasks.rb'
+    - 'lib/qansible_init.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/jenkinsfile.rb'
+    - 'lib/qansible_qa/checks/kitchen_local_yml.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/tasks.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment.
 Style/SpaceAroundOperators:
   Exclude:
-    - 'lib/ansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SpaceInsideParens:
   Exclude:
-    - 'lib/ansible_init.rb'
+    - 'lib/qansible_init.rb'
 
 # Offense count: 25
 # Cop supports --auto-correct.
@@ -288,9 +288,9 @@ Style/SpaceInsideStringInterpolation:
   Exclude:
     - 'Rakefile'
     - 'exe/ansible-role-qa'
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_init.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -306,38 +306,38 @@ Style/TrailingCommaInArguments:
 # SupportedStyles: comma, consistent_comma, no_comma
 Style/TrailingCommaInLiteral:
   Exclude:
-    - 'lib/ansible_init.rb'
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
+    - 'lib/qansible_init.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/readme.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/TrailingWhitespace:
   Exclude:
-    - 'lib/ansible_qa.rb'
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/UnneededInterpolation:
   Exclude:
-    - 'lib/ansible_qa/checks/base_check.rb'
+    - 'lib/qansible_qa/checks/base_check.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/UnneededPercentQ:
   Exclude:
-    - 'ansible_qa.gemspec'
+    - 'qansible_qa.gemspec'
 
 # Offense count: 17
 # Cop supports --auto-correct.
 Style/ZeroLengthPredicate:
   Exclude:
-    - 'lib/ansible_qa/checks/gitignore.rb'
-    - 'lib/ansible_qa/checks/hier.rb'
-    - 'lib/ansible_qa/checks/kitchen_yml.rb'
-    - 'lib/ansible_qa/checks/meta_main_yml.rb'
-    - 'lib/ansible_qa/checks/readme.rb'
+    - 'lib/qansible_qa/checks/gitignore.rb'
+    - 'lib/qansible_qa/checks/hier.rb'
+    - 'lib/qansible_qa/checks/kitchen_yml.rb'
+    - 'lib/qansible_qa/checks/meta_main_yml.rb'
+    - 'lib/qansible_qa/checks/readme.rb'

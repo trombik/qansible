@@ -1,12 +1,12 @@
 require "spec_helper"
 
-class AnsibleQA
+class QAnsibleQA
   class Check
     describe KitchenLocalYml do
       context "When .kitchen.local.yml is identical" do
         let(:instance) do
-          AnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
-          AnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          QAnsibleQA::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
+          QAnsibleQA::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
           KitchenLocalYml.new
         end
 

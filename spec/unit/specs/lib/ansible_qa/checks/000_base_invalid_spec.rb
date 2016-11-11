@@ -1,13 +1,13 @@
 require "spec_helper"
 
-class AnsibleQA
+class QAnsibleQA
   class Check
     describe Base do
       context "When invalid yaml given" do
         describe ".must_be_yaml" do
           let(:base) do
-            AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
-            AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-invalid/")
+            QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
+            QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-invalid/")
             Base.new(:path => "invalid.yml")
           end
 
@@ -19,8 +19,8 @@ class AnsibleQA
 
       context "When file is not identical" do
         let(:base) do
-          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
-          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
+          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
+          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
           Base.new(:path => ".ackrc")
         end
 
@@ -40,8 +40,8 @@ class AnsibleQA
 
       context "When file does not exist" do
         let(:base) do
-          AnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
-          AnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
+          QAnsibleQA::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
+          QAnsibleQA::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
           Base.new(:path => "no_such_file")
         end
 

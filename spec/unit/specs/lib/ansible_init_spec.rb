@@ -1,14 +1,14 @@
 require "spec_helper"
 
-describe AnsibleInit do
+describe QAnsibleInit do
   let(:root) { Pathname.new(__FILE__).dirname.parent.parent.parent.parent }
 
   # it "has a version number" do
-  #   expect(AnsibleInit::VERSION).not_to be nil
+  #   expect(QAnsibleInit::VERSION).not_to be nil
   # end
 
   describe ".validate_role_name" do
-    let(:instance) { AnsibleInit.new }
+    let(:instance) { QAnsibleInit.new }
 
     it "rejects empty role name" do
       expect { instance.validate_role_name("") }.to raise_error(InvalidRoleName)
@@ -29,16 +29,16 @@ describe AnsibleInit do
   end
 
   describe ".new" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns an instance" do
       expect { instance }.not_to raise_error
-      expect(instance.class).to eq(AnsibleInit)
+      expect(instance.class).to eq(QAnsibleInit)
     end
   end
 
   describe ".options" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "responds to .options" do
       expect(instance.respond_to?("options")).to eq(true)
@@ -50,7 +50,7 @@ describe AnsibleInit do
   end
 
   describe ".platform_name" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns platform_name" do
       expect(instance.platform_name).to eq("freebsd-10.3-amd64")
@@ -58,7 +58,7 @@ describe AnsibleInit do
   end
 
   describe ".this_year" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns %Y as in strftime" do
       expect(instance.this_year).to eq(Time.new.strftime("%Y"))
@@ -66,15 +66,15 @@ describe AnsibleInit do
   end
 
   describe ".author" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
-    it "returns AnsibleInit::Author" do
-      expect(instance.author.is_a?(AnsibleInit::Author)).to eq(true)
+    it "returns QAnsibleInit::Author" do
+      expect(instance.author.is_a?(QAnsibleInit::Author)).to eq(true)
     end
   end
 
   describe ".dest_directory" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns Pathname" do
       expect(instance.dest_directory.is_a?(Pathname)).to eq(true)
@@ -82,10 +82,10 @@ describe AnsibleInit do
   end
 
   describe ".templates_directory" do
-    let(:instance) { AnsibleInit.new(:role_name => "ansible-role-foo") }
+    let(:instance) { QAnsibleInit.new(:role_name => "ansible-role-foo") }
 
     it "returns templates directory" do
-      expect(instance.templates_directory.to_s).to eq(root.join("lib").join("ansible_init").join("templates").to_s)
+      expect(instance.templates_directory.to_s).to eq(root.join("lib").join("qansible_init").join("templates").to_s)
     end
   end
 end

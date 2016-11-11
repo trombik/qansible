@@ -1,6 +1,6 @@
 require "etc"
 
-class AnsibleInit
+class QAnsibleInit
   class Author
 
     attr_reader :login, :fullname

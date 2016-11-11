@@ -6,8 +6,8 @@ AllCops:
     - "spec/unit/fixtures/**/*"
     - "tmp/**/*"
     - "ansible-role-qa"
-    - "lib/ansible_init/templates/**/*"
-    - "ansible_qa.gemspec"
+    - "lib/qansible_init/templates/**/*"
+    - "qansible.gemspec"
   TargetRubyVersion: 2.1
 
 Style/StringLiterals:

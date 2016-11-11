@@ -1,6 +1,6 @@
-class AnsibleQA
+class QAnsibleQA
   class Check
-    class CHANGELOG < AnsibleQA::Check::Base
+    class CHANGELOG < QAnsibleQA::Check::Base
 
       def initialize
         super(:path => "CHANGELOG.md")

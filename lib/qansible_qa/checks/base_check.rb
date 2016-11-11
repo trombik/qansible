@@ -7,7 +7,7 @@ end
 class CommandFailed < StandardError
 end
 
-class AnsibleQA
+class QAnsibleQA
   class Check
     class Base
 

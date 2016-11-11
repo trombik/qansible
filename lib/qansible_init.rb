@@ -1,4 +1,4 @@
-require "ansible_init/author"
+require "qansible_init/author"
 require "fileutils"
 
 require "pathname"
@@ -9,7 +9,7 @@ end
 class RoleExist < StandardError
 end
 
-class AnsibleInit
+class QAnsibleInit
 
   attr_reader :options, :author
 
@@ -20,7 +20,7 @@ class AnsibleInit
     }
     @options = default.merge(opts)
     validate_role_name(@options[:role_name])
-    @author = AnsibleInit::Author.new
+    @author = QAnsibleInit::Author.new
   end
 
   def platform_name
@@ -55,7 +55,7 @@ class AnsibleInit
   end
 
   def templates_directory
-    Pathname.new(__FILE__).dirname.join("ansible_init").join("templates")
+    Pathname.new(__FILE__).dirname.join("qansible_init").join("templates")
   end
 
   def run

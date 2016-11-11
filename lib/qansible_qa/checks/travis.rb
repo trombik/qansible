@@ -1,6 +1,6 @@
-class AnsibleQA
+class QAnsibleQA
   class Check
-    class Travis < AnsibleQA::Check::Base
+    class Travis < QAnsibleQA::Check::Base
 
       def initialize
         super(:path => ".travis.yml")

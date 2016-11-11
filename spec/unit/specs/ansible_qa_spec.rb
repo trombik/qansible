@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe AnsibleQA do
+describe QAnsibleQA do
   it "has a version number" do
-    expect(AnsibleQA::VERSION).not_to be nil
+    expect(QAnsibleQA::VERSION).not_to be nil
   end
 end

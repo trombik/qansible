@@ -1,6 +1,6 @@
-class AnsibleQA
+class QAnsibleQA
   class Check
-    class Hier < AnsibleQA::Check::Base
+    class Hier < QAnsibleQA::Check::Base
 
       def initialize
         @required_directories = %w[
