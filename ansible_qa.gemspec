@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Inspect ansible role and complain}
   spec.description   = %q{}
-  spec.homepage      = "http://localhost"
+  spec.homepage      = "https://github.com/trombik/%s" % [ spec.name ]
+  spec.licenses      = [ 'ISC' ]
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

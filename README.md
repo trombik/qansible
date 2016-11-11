@@ -1,4 +1,4 @@
-# AnsibleQa
+# ansible\_qa
 
 [![Code Climate](https://codeclimate.com/github/trombik/ansible-qa/badges/gpa.svg)](https://codeclimate.com/github/trombik/ansible-qa)
 [![Build Status](https://travis-ci.org/trombik/ansible-qa.svg?branch=master)](https://travis-ci.org/trombik/ansible-qa)
@@ -8,21 +8,19 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
+## Building the gem
+
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'ansible_qa'
+```sh
+gem install --user-install pkg/ansible_qa-$VERSION.gem
 ```
 
-And then execute:
+## Uninstalling the gem
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ansible_qa
+```sh
+gem uninstall ansible_qa
+```
 
 ## Usage
 

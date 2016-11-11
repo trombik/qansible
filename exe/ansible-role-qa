@@ -27,6 +27,10 @@ def main
       @options[:dir] = Pathname.new(dir)
     end
 
+    opts.on("--version", "Show version") do |version|
+      puts AnsibleQA::VERSION
+      exit 0
+    end
     opts.on("--self-test", "Perform the QA test against a plain role created by ansible-role-init (NOT implemented)") do |dir|
       @options[:self_test] = true
     end

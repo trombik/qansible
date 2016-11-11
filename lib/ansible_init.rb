@@ -1,5 +1,5 @@
-require "ansible_init/version"
 require "ansible_init/author"
+require "fileutils"
 
 require "pathname"
 

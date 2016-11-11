@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require "ansible_init"
+require "ansible_qa/version"
+require "optparse"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: %s [options]" % [ Pathname.new(__FILE__).basename ]
+
+  opts.on("--version", "Show version") do
+    puts AnsibleQA::VERSION
+    exit 0
+  end
+end.parse!
+
+begin
+  AnsibleInit.new(
+    :role_name => ARGV[0]
+  ).run
+rescue StandardError => e
+  STDERR.puts "%s: %s" % [ e.class, e.message ]
+  exit 1
+end

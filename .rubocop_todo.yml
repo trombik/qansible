@@ -20,14 +20,14 @@ Lint/FormatParameterMismatch:
 # Cop supports --auto-correct.
 Lint/UnneededSplatExpansion:
   Exclude:
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
 
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoreEmptyBlocks, AllowUnusedKeywordArguments.
 Lint/UnusedBlockArgument:
   Exclude:
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
     - 'lib/ansible_qa.rb'
     - 'lib/ansible_qa/checks/base_check.rb'
     - 'lib/ansible_qa/checks/rakefile.rb'
@@ -91,7 +91,7 @@ Style/EmptyLinesAroundClassBody:
 # Cop supports --auto-correct.
 Style/EmptyLinesAroundMethodBody:
   Exclude:
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
     - 'lib/ansible_qa.rb'
     - 'lib/ansible_qa/checks/base_check.rb'
     - 'lib/ansible_qa/checks/gitignore.rb'
@@ -198,7 +198,7 @@ Style/Not:
 Style/NumericPredicate:
   Exclude:
     - 'spec/**/*'
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
     - 'lib/ansible_qa.rb'
     - 'lib/ansible_qa/checks/hier.rb'
     - 'lib/ansible_qa/checks/kitchen_yml.rb'
@@ -211,7 +211,7 @@ Style/NumericPredicate:
 Style/PercentLiteralDelimiters:
   Exclude:
     - 'ansible_qa.gemspec'
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
     - 'lib/ansible_qa/checks/hier.rb'
     - 'lib/ansible_qa/checks/meta_main_yml.rb'
     - 'lib/ansible_qa/checks/tasks.rb'
@@ -287,7 +287,7 @@ Style/SpaceInsideParens:
 Style/SpaceInsideStringInterpolation:
   Exclude:
     - 'Rakefile'
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
     - 'lib/ansible_init.rb'
     - 'lib/ansible_qa.rb'
     - 'lib/ansible_qa/checks/base_check.rb'
@@ -298,7 +298,7 @@ Style/SpaceInsideStringInterpolation:
 # SupportedStyles: comma, consistent_comma, no_comma
 Style/TrailingCommaInArguments:
   Exclude:
-    - 'exe/ansible-role-qa.rb'
+    - 'exe/ansible-role-qa'
 
 # Offense count: 7
 # Cop supports --auto-correct.

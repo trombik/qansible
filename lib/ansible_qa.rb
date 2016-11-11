@@ -58,7 +58,7 @@ class AnsibleQA
     Dir.mktmpdir do |tmp|
       @tmp = Pathname.new(tmp)
       Dir.chdir(@tmp) do
-        command = "ansible-role-init.rb #{ Shellwords.escape(@role_name) }"
+        command = "ansible-role-init #{ Shellwords.escape(@role_name) }"
         Open3.popen3(command) do |stdin, stdout, stderr, process|
           status = process.value.exitstatus
           if status != 0

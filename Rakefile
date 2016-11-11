@@ -23,11 +23,11 @@ namespace :spec do
   task :setup do
     sh "mkdir -p tmp"
     Dir.chdir(fixtures_dir) do
-      sh "ansible-role-init.rb ansible-role-latest"
+      sh "ansible-role-init ansible-role-latest"
     end
 
     Dir.chdir("tmp") do
-      sh "ansible-role-init.rb ansible-role-default"
+      sh "ansible-role-init ansible-role-default"
     end
   end
 end

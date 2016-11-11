@@ -6,7 +6,7 @@ ENV["ANSIBLE_QA_SILENT"] = nil
 
 describe "ansible-role-qa" do
   let(:command) do
-    cmd = "ansible-role-qa.rb -d tmp/ansible-role-default"
+    cmd = "ansible-role-qa -d tmp/ansible-role-default"
     stdout, stderr, exit_status = Open3.capture3(cmd)
     { :status => exit_status, :stdout => stdout, :stderr => stderr }
   end
