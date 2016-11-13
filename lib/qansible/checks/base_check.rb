@@ -95,7 +95,7 @@ module Qansible
 
         msg = "[debug] %s" % msg
         msg = colorize(msg, "gray", "black")
-        STDOUT.puts(msg) if @@verbose && ! ENV["ANSIBLE_QA_SILENT"]
+        STDOUT.puts(msg) if @@verbose && ! ENV["QANSIBLE_SILENT"]
 
       end
 
@@ -103,7 +103,7 @@ module Qansible
 
         msg = "[info] %s" % msg
         msg = colorize(msg, "cyan", "black")
-        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
+        STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
 
       end
 
@@ -111,7 +111,7 @@ module Qansible
 
         msg = "[notice] %s" % msg
         msg = colorize(msg, "green", "black")
-        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
+        STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
 
       end
 
@@ -119,7 +119,7 @@ module Qansible
 
         msg = "[warn] %s" % msg
         msg = colorize(msg, "red", "black")
-        STDOUT.puts(msg) unless ENV["ANSIBLE_QA_SILENT"]
+        STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
         @number_of_warnings += 1
 
       end
@@ -128,7 +128,7 @@ module Qansible
 
         msg = "[crit] %s" % [ text ]
         msg = colorize(msg, "red", "black")
-        Kernel.warn(msg) unless ENV["ANSIBLE_QA_SILENT"]
+        Kernel.warn(msg) unless ENV["QANSIBLE_SILENT"]
         exit 1
 
       end

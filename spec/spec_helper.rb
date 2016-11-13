@@ -9,7 +9,7 @@ require "pathname"
 require "qansible"
 require "shellwords"
 
-ENV["ANSIBLE_QA_SILENT"] = "y"
+ENV["QANSIBLE_SILENT"] = "y"
 
 RSpec.configure do |config|
   config.before(:example) { @fixtures_dir = Pathname.new("spec") + "unit" + "fixtures" }
