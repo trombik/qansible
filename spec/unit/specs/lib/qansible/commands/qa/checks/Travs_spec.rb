@@ -2,7 +2,9 @@ require "spec_helper"
 
 module Qansible
   class Check
-    class Travis
+    describe Travis do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
 
       context "When .travis.yml is identical" do
         let(:instance) do
@@ -51,7 +53,6 @@ module Qansible
           end
         end
       end
-
     end
   end
 end

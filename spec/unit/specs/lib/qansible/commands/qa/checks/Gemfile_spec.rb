@@ -2,8 +2,11 @@ require "spec_helper"
 
 module Qansible
   class Check
-    context "When Gemfile is identical" do
-      describe Gemfile do
+    describe Gemfile do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
+
+      context "When Gemfile is identical" do
         let(:gemfile) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -18,10 +21,8 @@ module Qansible
           expect { gemfile.check }.not_to raise_error
         end
       end
-    end
 
-    context "When Gemfile is not identical" do
-      describe Gemfile do
+      context "When Gemfile is not identical" do
         let(:gemfile) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))

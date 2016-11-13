@@ -1,16 +1,19 @@
 require "spec_helper"
 require "open3"
 
-saved = ENV["ANSIBLE_QA_SILENT"]
-ENV["ANSIBLE_QA_SILENT"] = nil
+saved = ENV["QANSIBLE_SILENT"]
+ENV["QANSIBLE_SILENT"] = nil
 
 describe "qansible init" do
-  before do
-    `rm -rf tmp/ansible-role-default`
+  before(:all) do
+    system "mkdir -p tmp"
   end
 
   after(:all) do
-    FileUtils.rmdir("tmp")
+    system "rm -rf tmp"
+  end
+  after(:each) do
+    system "rm -rf tmp/ansible-role-default"
   end
 
   let(:command) { "exe/qansible init --directory=tmp/ ansible-role-default" }
@@ -28,11 +31,12 @@ end
 
 describe "ansible-role-qa" do
   before(:all) do
+    system "mkdir tmp"
     system "qansible init --directory=tmp/ ansible-role-default"
   end
 
   after(:all) do
-    system "rm -rf tmp/ansible-role-default"
+    system "rm -rf tmp"
   end
 
   let(:command) do
@@ -68,4 +72,4 @@ describe "ansible-role-qa" do
   end
 end
 
-ENV["ANSIBLE_QA_SILENT"] = saved
+ENV["QANSIBLE_SILENT"] = saved

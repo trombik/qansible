@@ -2,7 +2,9 @@ require "spec_helper"
 
 module Qansible
   class Check
-    class Gitignore
+    describe Gitignore do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
 
       context "When gitignore lacks mandatory entries" do
         let(:gitignore) do
@@ -33,7 +35,6 @@ module Qansible
           gitignore.check
         end
       end
-
     end
   end
 end

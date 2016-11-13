@@ -71,6 +71,16 @@ module Qansible
           end
         end
       end
+
+      context "When no option given" do
+        let(:options) { Qansible::Command::Init::Parser.parse([]) }
+
+        describe "#new" do
+          it "does not raise error" do
+            expect { i }.not_to raise_error
+          end
+        end
+      end
     end
   end
 end

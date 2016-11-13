@@ -2,8 +2,10 @@ require "spec_helper"
 
 module Qansible
   class Check
-    context "When ackrc is identical" do
-      describe Ackrc do
+    describe Ackrc do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
+      context "When ackrc is identical" do
         let(:ackrc) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
@@ -18,10 +20,8 @@ module Qansible
           expect { ackrc.check }.not_to raise_error
         end
       end
-    end
 
-    context "When ackrc is not identical" do
-      describe Ackrc do
+      context "When ackrc is not identical" do
         let(:ackrc) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))

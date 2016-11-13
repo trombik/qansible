@@ -3,6 +3,9 @@ require "spec_helper"
 module Qansible
   class Check
     describe Base do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
+
       context "When valid options given" do
         let(:base) do
           Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")

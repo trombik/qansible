@@ -3,6 +3,8 @@ require "spec_helper"
 module Qansible
   class Check
     describe CHANGELOG do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
       context "When CHANGELOG.md exists" do
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
