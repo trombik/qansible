@@ -35,6 +35,27 @@ module Qansible
             expect { i.warn("foo") }.to output("").to_stdout_from_any_process
           end
         end
+
+        describe "#info" do
+          it "logs nothing" do
+            allow(i).to receive(:silent?).and_return(true)
+            expect { i.info("foo") }.to output("").to_stdout_from_any_process
+          end
+        end
+
+        describe "#debug" do
+          it "logs nothing" do
+            allow(i).to receive(:silent?).and_return(true)
+            expect { i.debug("foo") }.to output("").to_stdout_from_any_process
+          end
+        end
+
+        describe "#error" do
+          it "logs nothing" do
+            allow(i).to receive(:silent?).and_return(true)
+            expect { i.error("foo") }.to output("").to_stdout_from_any_process
+          end
+        end
       end
 
       context "When not TTY" do
