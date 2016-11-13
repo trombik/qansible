@@ -4,7 +4,7 @@ module Qansible
   class Command
     describe Init do
       let(:c) { Qansible::Command::Init }
-      let(:options) { Qansible::Parser::Init.parse( [ "--directory=foo", "ansible-role-default" ]) }
+      let(:options) { Qansible::Parser::Init.parse( [ "--directory=tmp", "ansible-role-default" ]) }
       let(:i) { Qansible::Command::Init.new(options) }
 
       context "When valid options given" do
@@ -68,6 +68,28 @@ module Qansible
         describe ".templates_directory" do
           it "returns templates directory" do
             expect(i.templates_directory.to_s).to eq(Pathname.new("lib/qansible/commands/init/templates").expand_path.to_s)
+          end
+        end
+
+        context "When QANSIBLE_SILENT is not set" do
+          before { system "rm -rf tmp; mkdir -p tmp" }
+          after { system "rm -rf tmp" }
+          describe "#run" do
+            it "outputs logs to STDOUT" do
+              allow(i).to receive(:silent?).and_return(false)
+              expect { i.run }.to output(/INFO/).to_stdout_from_any_process
+            end
+          end
+        end
+
+        context "When QANSIBLE_SILENT is set" do
+          before { system "rm -rf tmp; mkdir -p tmp" }
+          after { system "rm -rf tmp" }
+          describe "#run" do
+            it "outputs nothing to STDOUT" do
+              allow(i).to receive(:silent?).and_return(true)
+              expect { i.run }.to output("").to_stdout_from_any_process
+            end
           end
         end
       end

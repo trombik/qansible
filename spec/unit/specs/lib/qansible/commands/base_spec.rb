@@ -4,7 +4,7 @@ module Qansible
   class Command
     describe Base do
       let(:c) { Qansible::Command::Base }
-      let(:i) { c.new }
+      let(:i) { c.new(nil) }
 
       describe "::new" do
         it "does not raise error" do

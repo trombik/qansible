@@ -1,3 +1,5 @@
+require "shellwords"
+
 class RoleExist < StandardError
 end
 
@@ -9,6 +11,7 @@ module Qansible
     class Init < Qansible::Command::Base
 
       def initialize(options)
+        super
         @options = options
         @author = Qansible::Author.new 
       end
@@ -74,16 +77,20 @@ module Qansible
             file.write(content)
           end
 
-          system "git init ."
+          git_options = nil
+          if silent?
+            git_options = "--quiet"
+          end
+          system "git init #{git_options} ."
           system "git add ."
-          system "git commit -m 'initial import'"
+          system "git commit -m 'initial import' #{git_options}"
         end
         show_advice
       end
 
       def show_advice
-        puts "Successfully created `%s`" % [ @options.role_name ]
-        puts "You need to run bundle install."
+        info "Successfully created `%s`" % [ @options.role_name ]
+        info "You need to run bundle install."
       end
     end
   end
