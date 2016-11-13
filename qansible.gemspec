@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "qansible_qa/version"
+require "qansible"
 
 Gem::Specification.new do |spec|
   spec.name          = "qansible"
-  spec.version       = QAnsibleQA::VERSION
+  spec.version       = Qansible::VERSION
   spec.authors       = ["Tomoyuki Sakurai"]
   spec.email         = ["tomoyukis@reallyenglish.com"]
 

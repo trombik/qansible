@@ -4,9 +4,39 @@ require "open3"
 saved = ENV["ANSIBLE_QA_SILENT"]
 ENV["ANSIBLE_QA_SILENT"] = nil
 
+describe "qansible init" do
+  before do
+    `rm -rf tmp/ansible-role-default`
+  end
+
+  after(:all) do
+    FileUtils.rmdir("tmp")
+  end
+
+  let(:command) { "exe/qansible init --directory=tmp/ ansible-role-default" }
+
+  it "runs and stderr does not contain anything" do
+    _o, e, _s = Open3.capture3(command)
+    expect(e).to match(/^$/)
+  end
+
+  it "runs and exit status is zero" do
+    _o, _e, s = Open3.capture3(command)
+    expect(s.success?).to eq(true)
+  end
+end
+
 describe "ansible-role-qa" do
+  before(:all) do
+    system "qansible init --directory=tmp/ ansible-role-default"
+  end
+
+  after(:all) do
+    system "rm -rf tmp/ansible-role-default"
+  end
+
   let(:command) do
-    cmd = "ansible-role-qa -d tmp/ansible-role-default"
+    cmd = "qansible qa --directory=tmp/ansible-role-default"
     stdout, stderr, exit_status = Open3.capture3(cmd)
     { :status => exit_status, :stdout => stdout, :stderr => stderr }
   end

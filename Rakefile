@@ -22,13 +22,7 @@ namespace :spec do
   desc "setup test environment"
   task :setup do
     sh "mkdir -p tmp"
-    Dir.chdir(fixtures_dir) do
-      sh "ansible-role-init ansible-role-latest"
-    end
-
-    Dir.chdir("tmp") do
-      sh "ansible-role-init ansible-role-default"
-    end
+    sh "qansible init --directory=#{ fixtures_dir } ansible-role-latest"
   end
 end
 
