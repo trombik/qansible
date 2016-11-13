@@ -3,7 +3,7 @@ require "shellwords"
 
 module Qansible
   class Command
-    class QA
+    class QA < Qansible::Command::Base
       def initialize(options)
         @options = options
       end
