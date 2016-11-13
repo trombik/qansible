@@ -1,6 +1,6 @@
 require "ostruct"
 
-class Qansible
+module Qansible
   class Command
     class Init
       class Options < OpenStruct

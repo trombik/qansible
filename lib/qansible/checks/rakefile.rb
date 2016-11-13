@@ -1,6 +1,6 @@
 require "open3"
 
-class Qansible
+module Qansible
   class Check
     class Rakefile < Qansible::Check::Base
 

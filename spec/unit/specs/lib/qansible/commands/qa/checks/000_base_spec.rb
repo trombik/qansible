@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     describe Base do
       context "When valid options given" do

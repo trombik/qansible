@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     class LICENSE
       context "When LICENSE does not exist" do

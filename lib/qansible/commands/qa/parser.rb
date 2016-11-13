@@ -1,6 +1,6 @@
 require "pathname"
 
-class Qansible
+module Qansible
   class Command
     class QA
       class Parser

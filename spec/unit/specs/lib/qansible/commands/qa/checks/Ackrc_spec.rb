@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     context "When ackrc is identical" do
       describe Ackrc do

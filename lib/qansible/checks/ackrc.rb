@@ -1,4 +1,4 @@
-class Qansible
+module Qansible
   class Check
     class Ackrc < Qansible::Check::Base
 

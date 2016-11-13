@@ -3,7 +3,7 @@ require "qansible/commands/qa/parser"
 require "qansible/checks"
 require "shellwords"
 
-class Qansible
+module Qansible
   class Command
     class QA
       def initialize(options)

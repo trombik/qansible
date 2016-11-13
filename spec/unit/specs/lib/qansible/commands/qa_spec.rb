@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Command
     describe QA do
       let(:c) { Qansible::Command::QA }

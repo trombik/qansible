@@ -1,4 +1,4 @@
-class Qansible
+module Qansible
   class Check
     class LICENSE < Qansible::Check::Base
 

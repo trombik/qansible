@@ -8,7 +8,7 @@ end
 class InvalidRoleName < StandardError
 end
 
-class Qansible
+module Qansible
   class Command
     class Init
 

@@ -1,4 +1,4 @@
-class Qansible
+module Qansible
   class Check
     class Tasks < Qansible::Check::Base
 

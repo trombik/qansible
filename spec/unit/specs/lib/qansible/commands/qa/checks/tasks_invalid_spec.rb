@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     describe Tasks do
       context "When task files are not valid" do

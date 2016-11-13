@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     describe Hier do
       context "When required directories exist" do

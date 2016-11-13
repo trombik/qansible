@@ -1,6 +1,6 @@
 require "pathname"
 
-class Qansible
+module Qansible
   class Check
     class Gemfile < Qansible::Check::Base
 

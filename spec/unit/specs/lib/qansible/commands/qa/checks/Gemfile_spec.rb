@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     context "When Gemfile is identical" do
       describe Gemfile do

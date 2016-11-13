@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     describe CHANGELOG do
       context "When CHANGELOG.md does not exist" do

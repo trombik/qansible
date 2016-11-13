@@ -1,7 +1,7 @@
 require "spec_helper"
 require "etc"
 
-class Qansible
+module Qansible
   class Command
     class Init
       describe Author do

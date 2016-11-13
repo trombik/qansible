@@ -1,6 +1,6 @@
 require "etc"
 
-class Qansible
+module Qansible
   class Command
     class Init
       class Author

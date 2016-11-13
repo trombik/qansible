@@ -1,6 +1,6 @@
 require "spec_helper"
 
-class Qansible
+module Qansible
   class Check
     describe KitchenYml do
       context "When .kitchen.yml is identical" do

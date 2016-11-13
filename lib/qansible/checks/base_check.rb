@@ -7,7 +7,7 @@ end
 class CommandFailed < StandardError
 end
 
-class Qansible
+module Qansible
   class Check
     class Base
 
