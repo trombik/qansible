@@ -3,6 +3,14 @@ require "spec_helper"
 module Qansible
   class Check
     describe Base do
+      before(:all) do
+        create_latest_tree
+      end
+
+      after(:all) do
+        remove_latest_tree
+      end
+
       context "When invalid yaml given" do
         describe ".must_be_yaml" do
           let(:base) do

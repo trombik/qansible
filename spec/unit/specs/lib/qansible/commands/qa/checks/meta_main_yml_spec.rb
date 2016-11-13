@@ -2,7 +2,9 @@ require "spec_helper"
 
 module Qansible
   class Check
-    class MetaMainYaml
+    describe MetaMainYaml do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
 
       context "When meta/main.yml is identical" do
         let(:instance) do
@@ -97,7 +99,6 @@ module Qansible
           end
         end
       end
-
     end
   end
 end

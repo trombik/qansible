@@ -3,6 +3,9 @@ require "spec_helper"
 module Qansible
   class Check
     describe KitchenYml do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
+
       context "When .kitchen.yml is identical" do
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))

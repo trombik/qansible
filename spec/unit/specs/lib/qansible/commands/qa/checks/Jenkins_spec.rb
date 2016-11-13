@@ -2,7 +2,9 @@ require "spec_helper"
 
 module Qansible
   class Check
-    class Jenkinsfile
+    describe Jenkinsfile do
+      before(:all) { create_latest_tree }
+      after(:all) { remove_latest_tree }
 
       context "When Jenkinsfile is identical" do
         let(:jenkinsfile) do
@@ -41,7 +43,6 @@ module Qansible
           expect { jenkinsfile.check }.to raise_error(FileNotFound)
         end
       end
-
     end
   end
 end

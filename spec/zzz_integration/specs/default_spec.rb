@@ -6,11 +6,11 @@ ENV["ANSIBLE_QA_SILENT"] = nil
 
 describe "qansible init" do
   before do
-    `rm -rf tmp/ansible-role-default`
+    system "rm -rf tmp/ansible-role-default"
   end
 
   after(:all) do
-    FileUtils.rmdir("tmp")
+    system "rm -rf tmp/ansible-role-default"
   end
 
   let(:command) { "exe/qansible init --directory=tmp/ ansible-role-default" }

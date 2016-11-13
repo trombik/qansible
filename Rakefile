@@ -7,7 +7,7 @@ ENV["PATH"] = ENV["PATH"] + ":" + Pathname.pwd.join("exe").to_s
 task :default => :spec
 
 desc "Run tests"
-task :spec => [ "clean", "spec:setup", "spec:test", "spec:rubocop" ]
+task :spec => [ "clean", "spec:test", "spec:rubocop" ]
 
 namespace :spec do
   RSpec::Core::RakeTask.new("test") do |task|
@@ -17,12 +17,6 @@ namespace :spec do
   desc "Run rubocop"
   task :rubocop do
     sh "rubocop --display-cop-names --extra-details --display-style-guide"
-  end
-
-  desc "setup test environment"
-  task :setup do
-    sh "mkdir -p tmp"
-    sh "qansible init --directory=#{ fixtures_dir } ansible-role-latest"
   end
 end
 
