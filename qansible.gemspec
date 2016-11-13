@@ -5,7 +5,7 @@ require "qansible_qa/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "qansible"
-  spec.version       = QAnsibleQA::VERSION
+  spec.version       = Qansible::VERSION
   spec.authors       = ["Tomoyuki Sakurai"]
   spec.email         = ["tomoyukis@reallyenglish.com"]
 
