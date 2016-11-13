@@ -4,13 +4,13 @@ module Qansible
   class Command
     describe Init do
       let(:c) { Qansible::Command::Init }
-      let(:options) { Qansible::Command::Init::Parser.parse( [ "--directory=foo", "ansible-role-default" ]) }
+      let(:options) { Qansible::Parser::Init.parse( [ "--directory=foo", "ansible-role-default" ]) }
       let(:i) { Qansible::Command::Init.new(options) }
 
       context "When valid options given" do
-        describe "Qansible::Command::Init::Parser" do
+        describe "Qansible::Parser::Init" do
           it "does not raise error" do
-            expect { options }
+            expect { options }.not_to raise_error
           end
         end
 
@@ -55,7 +55,7 @@ module Qansible
 
         describe ".author" do
           it "returns Qansible::Command::Init::Author" do
-            expect(i.author.is_a?(Qansible::Command::Init::Author)).to eq(true)
+            expect(i.author.is_a?(Qansible::Author)).to eq(true)
           end
         end
 
@@ -73,7 +73,7 @@ module Qansible
       end
 
       context "When no option given" do
-        let(:options) { Qansible::Command::Init::Parser.parse([]) }
+        let(:options) { Qansible::Parser::Init.parse([]) }
 
         describe "#new" do
           it "does not raise error" do

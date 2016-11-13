@@ -8,10 +8,10 @@ def main
   runner = nil
   case command
   when "init"
-    option = Qansible::Command::Init::Parser.parse ARGV
+    option = Qansible::Parser::Init.parse ARGV
     runner = Qansible::Command::Init.new(option)
   when "qa"
-    option = Qansible::Command::QA::Parser.parse ARGV
+    option = Qansible::Parser::QA.parse ARGV
     runner = Qansible::Command::QA.new(option)
   else
     puts "unknown command `%s`" % [ command ]

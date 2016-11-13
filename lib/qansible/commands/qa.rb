@@ -1,5 +1,3 @@
-require "qansible/commands/qa/options"
-require "qansible/commands/qa/parser"
 require "qansible/checks"
 require "shellwords"
 

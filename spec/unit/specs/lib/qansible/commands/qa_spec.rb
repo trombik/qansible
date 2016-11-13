@@ -6,7 +6,7 @@ module Qansible
       let(:c) { Qansible::Command::QA }
       let(:i) { Qansible::Command::QA.new(options) }
       let(:options) do
-        o = Qansible::Command::QA::Options.new
+        o = Qansible::Option::QA.new
         o.directory = Pathname.new("spec/unit/fixture/ansible-role-latest")
         o
       end

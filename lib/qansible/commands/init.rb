@@ -1,7 +1,3 @@
-require "qansible/commands/init/options"
-require "qansible/commands/init/parser"
-require "qansible/commands/init/author"
-
 class RoleExist < StandardError
 end
 
@@ -10,11 +6,11 @@ end
 
 module Qansible
   class Command
-    class Init
+    class Init < Qansible::Command::Base
 
       def initialize(options)
         @options = options
-        @author = Qansible::Command::Init::Author.new 
+        @author = Qansible::Author.new 
       end
 
       def this_year
