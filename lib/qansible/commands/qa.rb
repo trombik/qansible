@@ -6,6 +6,7 @@ module Qansible
     class QA < Qansible::Command::Base
       def initialize(options)
         @options = options
+        super
       end
 
       def all_check_classes
@@ -60,18 +61,18 @@ module Qansible
               warnings += instance.number_of_warnings
             end
           rescue StandardError => e
-            puts "The check ended with exception `%s`" % [ e ]
-            puts e.message
-            puts e.backtrace if @options[:verbose]
+            error "The check ended with exception `%s`" % [ e ]
+            error e.message
+            error e.backtrace if @options[:verbose]
             @failed = true
           end
 
           if @failed
-            puts "Number of warnings: %d" % [ warnings ]
+            error "Number of warnings: %d" % [ warnings ]
             exit 1
           else
-            puts "Number of warnings: %d" % [ warnings ]
-            puts "Successfully finished."
+            info "Number of warnings: %d" % [ warnings ]
+            info "Successfully finished."
           end
         end
       end

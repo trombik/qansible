@@ -32,6 +32,29 @@ module Qansible
           expect { i.create_reference_tree(Pathname.new("/tmp/foo")) }.not_to raise_error
         end
       end
+
+      context "When AWANSIBLE_SILENT is set" do
+        before { system "rm -rf tmp; mkdir -p tmp" }
+        after { system "rm -rf tmp" }
+        describe "#run" do
+          it "logs nothing to STDOUT" do
+            allow(i).to receive(:silent?).and_return(true)
+            expect { i.run }.to output("").to_stdout_from_any_process
+          end
+        end
+      end
+
+      context "When AWANSIBLE_SILENT is not set" do
+        before { system "rm -rf tmp; mkdir -p tmp" }
+        after { system "rm -rf tmp" }
+        describe "#run" do
+          it "logs to STDOUT" do
+            allow(i).to receive(:silent?).and_return(false)
+            expect { i.run }.to output(/INFO/).to_stdout_from_any_process
+          end
+        end
+      end
+
     end
   end
 end
