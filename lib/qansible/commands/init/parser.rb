@@ -5,6 +5,9 @@ class Qansible
       class Parser
         def self.parse(options)
           args = Qansible::Command::Init::Options.new
+          args.directory = Pathname.pwd
+          args.verbose = false
+          args.box_name = "trombik/ansible-freebsd-10.3-amd64"
           opt_parser = OptionParser.new do |opts|
             opts.banner = "Usage: init [options] ROLENAME"
 
@@ -23,7 +26,6 @@ class Qansible
           end
           args.role_name = opt_parser.permute(options).first
           args.role_name = "ansible-role-default" unless args.role_name
-          args.box_name = "trombik/ansible-freebsd-10.3-amd64"
 
           unless args.role_name
             puts opt_parser.to_s

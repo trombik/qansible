@@ -1,6 +1,0 @@
----
-
-- name: Install CHANGEME
-  pkgng:
-    name: CHANGEME
-    state: present

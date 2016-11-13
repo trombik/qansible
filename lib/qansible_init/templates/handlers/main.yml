@@ -1,6 +1,0 @@
----
-
-- name: Restart CHANGEME
-  service:
-    name: CHANGEME
-    state: restarted

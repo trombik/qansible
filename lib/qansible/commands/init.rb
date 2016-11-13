@@ -14,7 +14,7 @@ class Qansible
 
       def initialize(options)
         @options = options
-        @author = Qansible::Init::Author.new 
+        @author = Qansible::Command::Init::Author.new 
       end
 
       def this_year
@@ -69,7 +69,7 @@ class Qansible
             content = File.read(file)
             content.gsub!("CHANGEME", @options.role_name.gsub("ansible-role-", ""))
             content.gsub!("YYYY", this_year)
-            content.gsub!("DESTNAME", dest_directory.to_s)
+            content.gsub!("DESTNAME", @options.role_name)
             content.gsub!("MYNAME", @author.fullname )
             content.gsub!("EMAIL", @author.email)
             content.gsub!("PLATFORMNAME", platform_name)
