@@ -1,6 +1,5 @@
-require "qansible/commands/init/options"
-require "qansible/commands/init/parser"
-require "qansible/commands/init/author"
+require "shellwords"
+require "fileutils"
 
 class RoleExist < StandardError
 end
@@ -10,11 +9,13 @@ end
 
 module Qansible
   class Command
-    class Init
+    class Init < Qansible::Command::Base
 
       def initialize(options)
+        super
         @options = options
-        @author = Qansible::Command::Init::Author.new 
+        @author = Qansible::Author.new 
+        ENV["QANSIBLE_SILENT"] = "y" if @options.silent
       end
 
       def this_year
@@ -78,16 +79,20 @@ module Qansible
             file.write(content)
           end
 
-          system "git init ."
+          git_options = nil
+          if silent?
+            git_options = "--quiet"
+          end
+          system "git init #{git_options} ."
           system "git add ."
-          system "git commit -m 'initial import'"
+          system "git commit -m 'initial import' #{git_options}"
         end
         show_advice
       end
 
       def show_advice
-        puts "Successfully created `%s`" % [ @options.role_name ]
-        puts "You need to run bundle install."
+        info "Successfully created `%s`" % [ @options.role_name ]
+        info "You need to run bundle install."
       end
     end
   end

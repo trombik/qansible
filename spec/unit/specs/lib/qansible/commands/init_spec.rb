@@ -4,13 +4,13 @@ module Qansible
   class Command
     describe Init do
       let(:c) { Qansible::Command::Init }
-      let(:options) { Qansible::Command::Init::Parser.parse( [ "--directory=foo", "ansible-role-default" ]) }
+      let(:options) { Qansible::Parser::Init.parse( [ "--directory=tmp", "ansible-role-default" ]) }
       let(:i) { Qansible::Command::Init.new(options) }
 
       context "When valid options given" do
-        describe "Qansible::Command::Init::Parser" do
+        describe "Qansible::Parser::Init" do
           it "does not raise error" do
-            expect { options }
+            expect { options }.not_to raise_error
           end
         end
 
@@ -55,7 +55,7 @@ module Qansible
 
         describe ".author" do
           it "returns Qansible::Command::Init::Author" do
-            expect(i.author.is_a?(Qansible::Command::Init::Author)).to eq(true)
+            expect(i.author.is_a?(Qansible::Author)).to eq(true)
           end
         end
 
@@ -70,10 +70,34 @@ module Qansible
             expect(i.templates_directory.to_s).to eq(Pathname.new("lib/qansible/commands/init/templates").expand_path.to_s)
           end
         end
+
+        context "When --quiet is not gievn" do
+          before { system "rm -rf tmp; mkdir -p tmp" }
+          after { system "rm -rf tmp" }
+          describe "#run" do
+            it "outputs logs to STDOUT" do
+              allow(i).to receive(:silent?).and_return(false)
+              expect { i.run }.to output(/INFO/).to_stdout_from_any_process
+            end
+          end
+        end
+
+        context "When --quiet given" do
+          let(:options) { Qansible::Parser::Init.parse( [ "--directory=tmp", "ansible-role-default", "--quiet" ]) }
+
+          before { system "rm -rf tmp; mkdir -p tmp" }
+          after { system "rm -rf tmp" }
+          describe "#run" do
+            it "outputs nothing to STDOUT" do
+              allow(i).to receive(:silent?).and_return(true)
+              expect { i.run }.to output("").to_stdout_from_any_process
+            end
+          end
+        end
       end
 
       context "When no option given" do
-        let(:options) { Qansible::Command::Init::Parser.parse([]) }
+        let(:options) { Qansible::Parser::Init.parse([]) }
 
         describe "#new" do
           it "does not raise error" do

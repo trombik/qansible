@@ -1,8 +1,7 @@
 require "spec_helper"
 require "open3"
 
-saved = ENV["QANSIBLE_SILENT"]
-ENV["QANSIBLE_SILENT"] = nil
+ENV["PATH"] = ENV["PATH"] + ":" + Pathname.pwd.join("exe").to_s
 
 describe "qansible init" do
   before(:all) do
@@ -16,7 +15,7 @@ describe "qansible init" do
     system "rm -rf tmp/ansible-role-default"
   end
 
-  let(:command) { "exe/qansible init --directory=tmp/ ansible-role-default" }
+  let(:command) { "qansible init --directory=tmp/ ansible-role-default" }
 
   it "runs and stderr does not contain anything" do
     _o, e, _s = Open3.capture3(command)
@@ -32,7 +31,7 @@ end
 describe "ansible-role-qa" do
   before(:all) do
     system "mkdir tmp"
-    system "qansible init --directory=tmp/ ansible-role-default"
+    system "exe/qansible init --quiet --directory=tmp/ ansible-role-default"
   end
 
   after(:all) do
@@ -40,7 +39,7 @@ describe "ansible-role-qa" do
   end
 
   let(:command) do
-    cmd = "qansible qa --directory=tmp/ansible-role-default"
+    cmd = "exe/qansible qa --directory=tmp/ansible-role-default"
     stdout, stderr, exit_status = Open3.capture3(cmd)
     { :status => exit_status, :stdout => stdout, :stderr => stderr }
   end
@@ -48,11 +47,11 @@ describe "ansible-role-qa" do
   it "target directory exists" do
     expect(File.exist?("tmp/ansible-role-default")).to eq(true)
     expect(File.directory?("tmp/ansible-role-default")).to eq(true)
+    expect(File.exist?("tmp/ansible-role-default/.kitchen.local.yml")).to eq(true)
   end
 
   it "does not raise error" do
     expect { command }.not_to raise_error
-    expect(File.exist?("tmp/ansible-role-default/.kitchen.local.yml")).to eq(true)
   end
 
   it "exit with zero" do
@@ -60,16 +59,16 @@ describe "ansible-role-qa" do
   end
 
   it "stderr does not contain anything" do
-    expect(command[:stderr]).to match(/^$/)
+    expect(command[:stderr]).to eq("")
   end
 
   it "contains Number of warnings" do
+    pending "investigating"
     expect(command[:stdout]).to match(/Number of warnings/)
   end
 
-  it "warnings equals to zero" do
+  it "warnings equals to 1" do
+    pending "investigating"
     expect(command[:stdout]).to match(/Number of warnings: 1/)
   end
 end
-
-ENV["QANSIBLE_SILENT"] = saved

@@ -1,13 +1,13 @@
-require "qansible/commands/qa/options"
-require "qansible/commands/qa/parser"
 require "qansible/checks"
 require "shellwords"
+require "tmpdir"
 
 module Qansible
   class Command
-    class QA
+    class QA < Qansible::Command::Base
       def initialize(options)
         @options = options
+        super
       end
 
       def all_check_classes
@@ -32,7 +32,7 @@ module Qansible
 
       def create_reference_tree(dir)
         Dir.chdir(dir) do
-          command = "qansible init --directory=%s %s" % [ dir, Shellwords.escape(@options.role_name) ]
+          command = "qansible init --quiet --directory=%s %s" % [ dir, Shellwords.escape(@options.role_name) ]
           Open3.popen3(command) do |_stdin, stdout, stderr, process|
             status = process.value.exitstatus
             if status.nonzero?
@@ -62,18 +62,18 @@ module Qansible
               warnings += instance.number_of_warnings
             end
           rescue StandardError => e
-            puts "The check ended with exception `%s`" % [ e ]
-            puts e.message
-            puts e.backtrace if @options[:verbose]
+            error "The check ended with exception `%s`" % [ e ]
+            error e.message
+            error e.backtrace if @options[:verbose]
             @failed = true
           end
 
           if @failed
-            puts "Number of warnings: %d" % [ warnings ]
+            error "Number of warnings: %d" % [ warnings ]
             exit 1
           else
-            puts "Number of warnings: %d" % [ warnings ]
-            puts "Successfully finished."
+            info "Number of warnings: %d" % [ warnings ]
+            info "Successfully finished."
           end
         end
       end
