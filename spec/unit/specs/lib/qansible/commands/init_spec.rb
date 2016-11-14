@@ -71,7 +71,7 @@ module Qansible
           end
         end
 
-        context "When QANSIBLE_SILENT is not set" do
+        context "When --quiet is not gievn" do
           before { system "rm -rf tmp; mkdir -p tmp" }
           after { system "rm -rf tmp" }
           describe "#run" do
@@ -82,7 +82,9 @@ module Qansible
           end
         end
 
-        context "When QANSIBLE_SILENT is set" do
+        context "When --quiet given" do
+          let(:options) { Qansible::Parser::Init.parse( [ "--directory=tmp", "ansible-role-default", "--quiet" ]) }
+
           before { system "rm -rf tmp; mkdir -p tmp" }
           after { system "rm -rf tmp" }
           describe "#run" do

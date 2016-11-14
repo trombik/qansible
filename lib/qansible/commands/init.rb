@@ -15,6 +15,9 @@ module Qansible
         super
         @options = options
         @author = Qansible::Author.new 
+        if @options.silent
+          ENV["QANSIBLE_SILENT"] = "y"
+        end
       end
 
       def this_year
