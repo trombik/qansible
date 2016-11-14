@@ -1,3 +1,4 @@
+require "optparse"
 require "pathname"
 module Qansible
   class Parser
