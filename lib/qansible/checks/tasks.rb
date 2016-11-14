@@ -23,8 +23,9 @@ module Qansible
           next unless yaml
           yaml.each do |task|
             if task.has_key?("template") && ! task["template"].has_key?("validate")
-              warn "In %s, the following template task does not have validate. Consider validating the file" % [ file ]
-              warn "%s" % [ task.to_yaml ]
+              warnings = "In %s, the following template task does not have validate. Consider validating the file\n" % [ file ]
+              warnings += "%s\n" % [ task.to_yaml ]
+              warn warnings
             end
           end
         end
@@ -49,8 +50,9 @@ module Qansible
               if (task.keys & exceptions).any?
                 # adding name to these modules has little point
               else
-                warn "In %s, the following task does not have `name`. Consider adding `name`" % [ file ]
-                warn "%s" % [ task.to_yaml ]
+                warnings = "In %s, the following task does not have `name`. Consider adding `name`\n" % [ file ]
+                warnings += "%s\n" % [ task.to_yaml ]
+                warn warnings
               end
             end
           end
@@ -86,11 +88,12 @@ module Qansible
               if verbs.any? { |v| v == verb }
                 # the name starts with one of the verbs
               else
-                warn "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:" % [ file, task["name"], verb ]
+                warnings = "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:\n" % [ file, task["name"], verb ]
                 verbs.sort.each do |v|
-                  warn "%s" % [ v ]
+                  warnings += "%s\n" % [ v ]
                 end
-                warn "The verb should be present tense and participle."
+                warnings += "The verb should be present tense and participle."
+                warn warnings
               end
             end
           end

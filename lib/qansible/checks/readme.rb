@@ -66,14 +66,15 @@ module Qansible
         end
         not_found_sections = @required_sections - found_sections
         if not_found_sections.length > 0
-          warn "Required sections are:"
+          warnings = "Required sections are:\n"
           @required_sections.sort.each do |s|
-            warn "%s" % [ s ]
+            warnings += "%s\n" % [ s ]
           end
-          warn "Missing sections are:"
+          warnings += "Missing sections are:\n"
           not_found_sections.sort.each do |s|
-            warn "%s" % [ s ]
+            warnings += "%s\n" % [ s ]
           end
+          warn warnings
           crit "In %s, not all required sections were found." % [ @path ]
         end
         not_found_sections.length > 0

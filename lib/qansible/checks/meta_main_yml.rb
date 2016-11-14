@@ -49,13 +49,14 @@ module Qansible
           end
         end
         if not_found.length != 0
-          warn "In `%s`, these keys must exist" % [ @path ]
+          warnings = "In `%s`, these keys must exist\n" % [ @path ]
           mandatory_keys.each do |k|
-            warn "%s" % [ k ]
+            warnings += "%s\n" % [ k ]
           end
           not_found.sort.each do |k|
-            warn "Missing key: %s" % [ k ]
+            warnings += "Missing key: %s\n" % [ k ]
           end
+          warn warnings
           crit "In `%s`, mandatory keys %s does not exist" % [ @path, not_found.join(", ") ]
         end
         true
@@ -79,7 +80,7 @@ module Qansible
       def must_not_have_min_ansible_version_less_than_2_0
         load_yaml if not @yaml
         if @yaml["galaxy_info"]["min_ansible_version"].to_f < 2.0
-          warn "In `%s`, min_ansible_version is %s" % [ @path, @yaml["galaxy_info"]["min_ansible_version"] ]
+          warn "In `%s`, min_ansible_version is %s\n" % [ @path, @yaml["galaxy_info"]["min_ansible_version"] ]
           crit "In `%s`, min_ansible_version should be 2.0 or newer" % [ @path ]
         end
       end
@@ -104,8 +105,9 @@ module Qansible
       def should_have_at_least_one_tag
         load_yaml if not @yaml
         if @yaml["galaxy_info"]["galaxy_tags"].length < 1
-          warn "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`" % [ @path ]
-          warn "Popular tags can be found at https://galaxy.ansible.com/list"
+          warnings = "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`\n" % [ @path ]
+          warnings += "Popular tags can be found at https://galaxy.ansible.com/list"
+          warn warnings
         end
       end
 

@@ -85,7 +85,7 @@ module Qansible
 
         describe ".should_have_at_least_one_tag" do
           it "warns" do
-            expect(instance).to receive(:warn).twice
+            expect(instance).to receive(:warn).once
             instance.should_have_at_least_one_tag
           end
         end
