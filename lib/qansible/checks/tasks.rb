@@ -20,6 +20,7 @@ module Qansible
       def should_have_templates_with_validate
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
+          next unless yaml
           yaml.each do |task|
             if task.has_key?("template") && ! task["template"].has_key?("validate")
               warn "In %s, the following template task does not have validate. Consider validating the file" % [ file ]
@@ -42,6 +43,7 @@ module Qansible
         ]
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
+          next unless yaml
           yaml.each do |task|
             if ! task.has_key?("name")
               if (task.keys & exceptions).any?
@@ -58,6 +60,7 @@ module Qansible
       def should_have_tasks_with_capitalized_name
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
+          next unless yaml
           yaml.each do |task|
             if task.has_key?("name") && task["name"].match(/^[a-z]/)
               warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [ file, task["name"] ]
@@ -68,48 +71,15 @@ module Qansible
 
       def should_have_tasks_with_verbs
         verbs = %w[
-          add
-          apply
-          bring
-          check
-          configure
-          copy
-          create
-          delete
-          destroy
-          do
-          download
-          enable
-          ensure
-          fail
-          fetch
-          find
-          include
-          install
-          load
-          make
-          mount
-          re-configure
-          reconfigure
-          register
-          remove
-          replace
-          restart
-          run
-          see
-          set
-          shutdown
-          start
-          stop
-          test
-          umount
-          uninstall
-          unload
-          update
+          add apply bring check configure copy create delete destroy do
+          download enable ensure fail fetch find include install load make
+          mount re-configure reconfigure register remove replace restart run
+          see set shutdown start stop test umount uninstall unload update
           validate
         ]
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
+          next unless yaml
           yaml.each do |task|
             if task.has_key?("name")
               verb = task["name"].split(" ").first.downcase
