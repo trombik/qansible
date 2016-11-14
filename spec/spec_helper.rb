@@ -4,7 +4,6 @@ SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
   add_filter "spec"
 end
-Coveralls.wear!
 
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "rspec/core/rake_task"
