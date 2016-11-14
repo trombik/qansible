@@ -10,7 +10,6 @@ addons:
   apt:
     packages:
     - python-pip
-    - wget
     - curl
 
 install:
@@ -36,15 +35,14 @@ script:
   #
   - "if [ ! -f .private_repo ]; then ansible-playbook tests/travisci/tests.yml -i tests/travisci/inventory --syntax-check; fi"
 
-  # download the QA scripts
-  - mkdir bin
-  - wget -O bin/ansible-role-qa https://gist.githubusercontent.com/trombik/047364853d2f8070da9d4f360b4b9da9/raw
-  - wget -O bin/ansible-role-init https://gist.githubusercontent.com/trombik/d01e280f02c78618429e334d8e4995c0/raw
-  - chmod +x bin/*
-
   # use recent ruby, instead of default ruby 1.9
   - rvm install ruby-2.1.10
   - rvm use 2.1.10
+
+  # download the QA scripts
+  - git clone https://github.com/trombik/qansible.git
+  - ( cd qansible && bundle install --path vendor/bundle --with "test" && bundle exec rake build && gem install pkg/*.gem )
+  - rm -rf qansible
 
   # git complains if user and email are not set
   - git config --global user.name "Your Name"
@@ -54,8 +52,8 @@ script:
   - touch .kitchen.local.yml
 
   # run the QA test
-  - export PATH="${PATH}:${PWD}/bin"
-  - ansible-role-qa
+  - export PATH="${PATH}:`rvm gemdir`/bin"
+  - qansible qa
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
