@@ -1,5 +1,6 @@
 require "qansible/checks"
 require "shellwords"
+require "tmpdir"
 
 module Qansible
   class Command
