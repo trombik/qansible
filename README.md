@@ -35,11 +35,10 @@ Make sure `~/.gem/ruby/$RUBYVERSION/bin` is in your `PATH` environment
 variable. Run `gem env` to see `PATH`. After adding the path to `PATH`, run:
 
 ```sh
-ansible-role-qa --version
-ansible-role-init --version
+qansible --version
 ```
 
-The both commands should show version number.
+The command should show version number.
 
 ## Uninstalling the gem
 
@@ -49,13 +48,13 @@ gem uninstall qansible
 
 ## Usage
 
-### ansible-role-init [ROLENAME]
+### qansible init [ROLENAME]
 
 Creates an `ansible` role in the current directory and perform `git init`.
 
 `ROLENAME` must start with `ansible-role`.
 
-### ansible-role-qa
+### ansible qa
 
 Perform static analysis in the current directory.
 
