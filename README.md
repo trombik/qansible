@@ -6,7 +6,7 @@
 
 `qansible` provides helper scripts to create and maintain `ansible` roles.
 
-`ansible-role-init` creates a scaffold. `ansible-role-qa` performs static
+`qansible init` creates a scaffold. `ansible qa` performs static
 analysis.
 
 ## Dependencies
@@ -52,7 +52,7 @@ gem uninstall qansible
 
 Creates an `ansible` role in the current directory and perform `git init`.
 
-`ROLENAME` must start with `ansible-role`.
+`ROLENAME` must start with `ansible-role-`.
 
 ### ansible qa
 
