@@ -1,4 +1,5 @@
 require "shellwords"
+require "fileutils"
 
 class RoleExist < StandardError
 end
