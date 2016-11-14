@@ -43,18 +43,22 @@ module Qansible
       def should_have_idempotency_test_enabled
         @yaml = must_be_yaml if !@yaml
         if ! @yaml["provisioner"].has_key?("idempotency_test") || ! @yaml["provisioner"]["idempotency_test"]
-          warn "In %s, `idempotency_test` is not set to `true` in `provisioner`. It is strongly recommended to set `idempotency_test` to true" % [ @path ]
-          warn "To make a unit test idempotent, see:"
-          warn "https://github.com/reallyenglish/ansible-role-example/wiki/How_Do_I#how-do-i-run-some-tasks-before-kitchen-coverage"
+          warnings = "In %s, `idempotency_test` is not set to `true` in `provisioner`. It is strongly recommended to set `idempotency_test` to true\n" % [ @path ]
+          warnings += "To make a unit test idempotent, see:\n"
+          warnings += "https://github.com/reallyenglish/ansible-role-example/wiki/How_Do_I#how-do-i-run-some-tasks-before-kitchen-coverage\n"
+          warn warnings
         end
       end
 
       def should_have_ansible_vault_password_file
         @yaml = must_be_yaml if !@yaml
         if ! @yaml["provisioner"].has_key?("ansible_vault_password_file") || ! @yaml["provisioner"]["ansible_vault_password_file"]
-          warn "In %s, `ansible_vault_password_file` is not set. Even if ansible-vault is not currently used, you would need it later. It does not hurt to add it now. Consider to add:" % [ @path ]
-          warn "ansible_vault_password_file: <%%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %%>`" % [ @path ]
-          warn "in %s." % [ @path ]
+          warnings = "In %s, `ansible_vault_password_file` is not set.\n"
+          warnings += "Even if ansible-vault is not currently used, you would need it later.\n"
+          warnings += "It does not hurt to add it now. Consider to add:\n" % [ @path ]
+          warnings += "ansible_vault_password_file: <%%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %%>`\n" % [ @path ]
+          warnings += "in %s.\n" % [ @path ]
+          warn warnings
         end
       end
 
