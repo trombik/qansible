@@ -15,14 +15,14 @@ module Qansible
           elsif tty?
             case severity
             when "WARN", "ERROR", "FATAL", "UNKNOWN"
-              colorize("%s %s" % [ severity, msg ], "red", "black")
+              colorize("%s %s\n" % [ severity, msg ], "red", "black")
             when "INFO"
-              colorize("%s %s" % [ severity, msg ], "light blue", "black")
+              colorize("%s %s\n" % [ severity, msg ], "light blue", "black")
             when "DEBUG"
-              colorize("%s %s" % [ severity, msg ], "gray", "black")
+              colorize("%s %s\n" % [ severity, msg ], "gray", "black")
             end
           else
-            "%s %s" % [ severity, msg ]
+            "%s %s\n" % [ severity, msg ]
           end
         end
       end
