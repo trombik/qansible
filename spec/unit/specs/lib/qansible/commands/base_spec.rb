@@ -63,7 +63,7 @@ module Qansible
           it "logs message without color" do
             allow(i).to receive(:tty?).and_return(false)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.warn("foo") }.to output("WARN foo").to_stdout_from_any_process
+            expect { i.warn("foo") }.to output("WARN foo\n").to_stdout_from_any_process
           end
         end
       end
@@ -72,7 +72,7 @@ module Qansible
           it "logs message in red" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.error("foo") }.to output("\033[40;31mERROR foo\033[0m").to_stdout_from_any_process
+            expect { i.error("foo") }.to output("\033[40;31mERROR foo\n\033[0m").to_stdout_from_any_process
           end
         end
 
@@ -80,7 +80,7 @@ module Qansible
           it "logs message in red" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.warn("foo") }.to output("\033[40;31mWARN foo\033[0m").to_stdout_from_any_process
+            expect { i.warn("foo") }.to output("\033[40;31mWARN foo\n\033[0m").to_stdout_from_any_process
           end
         end
 
@@ -88,7 +88,7 @@ module Qansible
           it "logs message in light blue" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.info("foo") }.to output("\033[40;1;34mINFO foo\033[0m").to_stdout_from_any_process
+            expect { i.info("foo") }.to output("\033[40;1;34mINFO foo\n\033[0m").to_stdout_from_any_process
           end
         end
 
@@ -96,7 +96,7 @@ module Qansible
           it "logs message in gray" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.debug("foo") }.to output("\033[40;37mDEBUG foo\033[0m").to_stdout_from_any_process
+            expect { i.debug("foo") }.to output("\033[40;37mDEBUG foo\n\033[0m").to_stdout_from_any_process
           end
         end
       end
