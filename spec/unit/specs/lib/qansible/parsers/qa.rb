@@ -7,7 +7,7 @@ module Qansible
 
       describe "#parse" do
         context "When valid options given" do
-          let(:valid) { %w(--verbose --directory=/etc) }
+          let(:valid) { %w(--verbose --directory=/ansible-role-foo) }
 
           it "does not raise error" do
             expect { p.parse(valid) }.not_to raise_error
@@ -19,8 +19,24 @@ module Qansible
 
           it "returns correct values" do
             opts = p.parse(valid)
-            expect(opts.directory).to eq(Pathname.new("/etc"))
+            expect(opts.directory).to eq(Pathname.new("/ansible-role-foo"))
             expect(opts.verbose).to eq(true)
+          end
+        end
+
+        context "When no options given" do
+          let(:no_potions) { [] }
+
+          it "returns current directory" do
+            allow(p).to receive(:current_dir).and_return(Pathname.new("/path/to/ansible-role-foo"))
+            opts = p.parse(no_potions)
+            expect(opts.directory).to eq(Pathname.new("/path/to/ansible-role-foo"))
+          end
+
+          it "returns role_name = ansible-role-foo" do
+            allow(p).to receive(:current_dir).and_return(Pathname.new("/path/to/ansible-role-foo"))
+            opts = p.parse(no_potions)
+            expect(opts.role_name).to eq("ansible-role-foo")
           end
         end
 
