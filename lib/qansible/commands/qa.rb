@@ -32,7 +32,7 @@ module Qansible
 
       def create_reference_tree(dir)
         Dir.chdir(dir) do
-          command = "qansible init --directory=%s %s" % [ dir, Shellwords.escape(@options.role_name) ]
+          command = "qansible init --quiet --directory=%s %s" % [ dir, Shellwords.escape(@options.role_name) ]
           Open3.popen3(command) do |_stdin, stdout, stderr, process|
             status = process.value.exitstatus
             if status.nonzero?

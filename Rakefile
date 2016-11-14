@@ -3,7 +3,6 @@ require "rspec/core/rake_task"
 require "pathname"
 
 fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
-ENV["PATH"] = ENV["PATH"] + ":" + Pathname.pwd.join("exe").to_s
 task :default => :spec
 
 desc "Run tests"

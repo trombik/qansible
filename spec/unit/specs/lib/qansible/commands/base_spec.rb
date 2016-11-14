@@ -28,7 +28,7 @@ module Qansible
         end
       end
 
-      context "When QANSIBLE_SILENT is set" do
+      context "When silent? is true" do
         describe "#warn" do
           it "logs nothing" do
             allow(i).to receive(:silent?).and_return(true)
