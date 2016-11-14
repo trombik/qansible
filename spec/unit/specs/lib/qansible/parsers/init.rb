@@ -13,6 +13,10 @@ module Qansible
             expect(opts.verbose).to eq(false)
           end
 
+          it "returns silent with default value, false" do
+            expect(opts.silent).to eq(false)
+          end
+
           it "returns directory with default value, `.`" do
             expect(opts.directory).to eq(Pathname.pwd)
           end

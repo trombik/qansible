@@ -8,8 +8,13 @@ module Qansible
         args.directory = Pathname.pwd
         args.verbose = false
         args.box_name = "trombik/ansible-freebsd-10.3-amd64"
+        args.silent = false
         opt_parser = OptionParser.new do |opts|
           opts.banner = "Usage: init [options] ROLENAME"
+
+          opts.on("-q", "--quiet", "Be silent") do
+            args.silent = true
+          end
 
           opts.on("-v", "--verbose", "Be verbose") do
             args.verbose = true
