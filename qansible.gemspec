@@ -1,8 +1,4 @@
 # coding: utf-8
-require "simplecov"
-require "coveralls"
-SimpleCov.start
-
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "qansible"
