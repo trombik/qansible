@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
+require "pathname"
 require "qansible"
 
 def main
   command = ARGV.shift
+  program = Pathname.new(__FILE__).basename
   option = nil
   runner = nil
   case command
@@ -13,6 +15,16 @@ def main
   when "qa"
     option = Qansible::Parser::QA.parse ARGV
     runner = Qansible::Command::QA.new(option)
+  when "--help"
+    puts "Usage: %s COMMAND [OPTIONS]" % [ program ]
+    exit
+  when "--version"
+    puts Qansible::VERSION
+    exit
+  when "commands"
+    puts "qa"
+    puts "init"
+    exit
   else
     puts "unknown command `%s`" % [ command ]
     exit 1
