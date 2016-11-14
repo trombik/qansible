@@ -17,7 +17,7 @@ module Qansible
             when "WARN", "ERROR", "FATAL", "UNKNOWN"
               colorize("%s %s\n" % [ severity, msg ], "red", "black")
             when "INFO"
-              colorize("%s %s\n" % [ severity, msg ], "light blue", "black")
+              colorize("%s %s\n" % [ severity, msg ], "cyan", "black")
             when "DEBUG"
               colorize("%s %s\n" % [ severity, msg ], "gray", "black")
             end
