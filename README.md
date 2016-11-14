@@ -19,7 +19,7 @@ analysis.
 ```sh
 git clone https://github.com/trombik/qansible.git
 cd qansible
-bundle install --without "development test"
+bundle install --without "development test" --path vendor/bundle
 bundle exec rake build
 ```
 
