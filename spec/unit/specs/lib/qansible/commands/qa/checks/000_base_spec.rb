@@ -64,8 +64,8 @@ module Qansible
         end
 
         describe ".new" do
-          it "does not raise ArgumentError" do
-            expect { base }.not_to raise_error(ArgumentError)
+          it "does not raise error" do
+            expect { base }.not_to raise_error
           end
         end
       end
