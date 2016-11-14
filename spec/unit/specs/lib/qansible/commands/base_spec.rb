@@ -88,7 +88,7 @@ module Qansible
           it "logs message in light blue" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.info("foo") }.to output("\033[40;1;34mINFO foo\n\033[0m").to_stdout_from_any_process
+            expect { i.info("foo") }.to output("\033[40;36mINFO foo\n\033[0m").to_stdout_from_any_process
           end
         end
 
