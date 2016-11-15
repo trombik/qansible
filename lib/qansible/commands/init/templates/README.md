@@ -43,4 +43,4 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 MYNAME <EMAIL>
 
-This README was created by [ansible-role-init](https://gist.github.com/trombik/d01e280f02c78618429e334d8e4995c0)
+This README was created by [qansible](https://github.com/trombik/qansible)

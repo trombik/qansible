@@ -48,7 +48,7 @@ script:
   - git config --global user.name "Your Name"
   - git config --global user.email "you@example.com"
 
-  # surpress a warning from `ansible-role-qa`
+  # surpress a warning from `qansible qa
   - touch .kitchen.local.yml
 
   # run the QA test

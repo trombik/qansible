@@ -27,18 +27,11 @@ Lint/RescueException:
   Exclude:
     - 'lib/qansible/commands/init/templates/Rakefile'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/UnneededSplatExpansion:
-  Exclude:
-    - 'exe/ansible-role-qa'
-
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: IgnoreEmptyBlocks, AllowUnusedKeywordArguments.
 Lint/UnusedBlockArgument:
   Exclude:
-    - 'exe/ansible-role-qa'
     - 'lib/qansible/checks/base_check.rb'
     - 'lib/qansible/checks/rakefile.rb'
     - 'lib/qansible_qa.rb'
@@ -304,7 +297,6 @@ Style/ParallelAssignment:
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - 'exe/ansible-role-qa'
     - 'lib/qansible/checks/hier.rb'
     - 'lib/qansible/checks/meta_main_yml.rb'
     - 'lib/qansible/checks/tasks.rb'
@@ -437,14 +429,6 @@ Style/SymbolProc:
   Exclude:
     - 'lib/qansible/commands/init/templates/Rakefile'
     - 'lib/qansible/commands/init/templates/tests/integration/example/Rakefile'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
-# SupportedStyles: comma, consistent_comma, no_comma
-Style/TrailingCommaInArguments:
-  Exclude:
-    - 'exe/ansible-role-qa'
 
 # Offense count: 11
 # Cop supports --auto-correct.

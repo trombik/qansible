@@ -25,7 +25,7 @@ module Qansible
 
       describe ".create_reference_tree" do
         it "creates reference tree under /tmp/foo" do
-          command = "ansible-role-init %s" % [ Shellwords.escape(options.role_name) ]
+          command = "qansible init %s" % [ Shellwords.escape(options.role_name) ]
           response = Open3.popen3("echo")
           allow(Open3).to receive(:popen3).with(command).and_yield(*response)
           allow(Dir).to receive(:chdir)

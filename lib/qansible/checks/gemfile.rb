@@ -12,7 +12,7 @@ module Qansible
         must_exist
         if !should_be_identical
           info "%s should be identical unless you need additional gems" % [ @path ]
-          info "Update %s with the latest Gemfile created by ansible-role-init"
+          info "Update %s with the latest Gemfile created by `qansible init`" % [ @path ]
         end
       end
 

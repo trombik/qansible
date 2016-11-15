@@ -5,7 +5,6 @@ AllCops:
     - "vendor/**/*"
     - "spec/unit/fixtures/**/*"
     - "tmp/**/*"
-    - "ansible-role-qa"
     - "lib/qansible_init/templates/**/*"
     - "qansible.gemspec"
   TargetRubyVersion: 2.1

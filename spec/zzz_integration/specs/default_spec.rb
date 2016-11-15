@@ -28,7 +28,7 @@ describe "qansible init" do
   end
 end
 
-describe "ansible-role-qa" do
+describe "qansible qa" do
   before(:all) do
     system "mkdir tmp"
     system "exe/qansible init --quiet --directory=tmp/ ansible-role-default"
