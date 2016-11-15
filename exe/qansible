@@ -17,6 +17,12 @@ def main
     runner = Qansible::Command::QA.new(option)
   when "--help"
     puts "Usage: %s COMMAND [OPTIONS]" % [ program ]
+    puts "%s COMMAND [OPTIONS]" % [ program ]
+    puts "%s COMMAND --help" % [ program ]
+    puts ""
+    puts "Available commands:"
+    puts "  qa"
+    puts "  init"
     exit
   when "--version"
     puts Qansible::VERSION
