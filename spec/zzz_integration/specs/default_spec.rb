@@ -28,7 +28,6 @@ describe "qansible init" do
   end
 
   context "When ansible init finishes" do
-
     it "creates a git repo" do
       system "#{command} >/dev/null 2>&1"
       Dir.chdir("tmp/ansible-role-default") do
