@@ -77,6 +77,7 @@ module Qansible
             content.gsub!("BOXNAME", @options.box_name)
             file = File.open(file, "w")
             file.write(content)
+            file.close
           end
 
           git_options = nil

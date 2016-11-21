@@ -26,6 +26,24 @@ describe "qansible init" do
     _o, _e, s = Open3.capture3(command)
     expect(s.success?).to eq(true)
   end
+
+  context "When ansible init finishes" do
+    it "creates a git repo" do
+      system "#{command} >/dev/null 2>&1"
+      Dir.chdir("tmp/ansible-role-default") do
+        _o, _e, s = Open3.capture3("git status")
+        expect(s.success?).to be true
+      end
+    end
+
+    it "commits everything" do
+      system "#{command} >/dev/null 2>&1"
+      Dir.chdir("tmp/ansible-role-default") do
+        o, _e, _s = Open3.capture3("git status")
+        expect(o).to match(/nothing to commit, working directory clean/)
+      end
+    end
+  end
 end
 
 describe "qansible qa" do
