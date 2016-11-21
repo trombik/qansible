@@ -16,5 +16,10 @@ install:
   - bundle install --retry=3
 
 script:
+
+  # git complains if user and email are not set
+  - git config --global user.name "Your Name"
+  - git config --global user.email "you@example.com"
+
   - bundle exec rake
   - bundle exec rake install
