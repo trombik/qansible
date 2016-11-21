@@ -8,6 +8,7 @@ AllCops:
     - "lib/qansible_init/templates/**/*"
     - "qansible.gemspec"
   TargetRubyVersion: 2.1
+  DisplayCopNames: true
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
