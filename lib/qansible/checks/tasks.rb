@@ -77,7 +77,7 @@ module Qansible
           download enable ensure fail fetch find include install load make
           mount re-configure reconfigure register remove replace restart run
           see set shutdown start stop test umount uninstall unload update
-          validate
+          validate accept wait mount fail assert validate
         ]
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
