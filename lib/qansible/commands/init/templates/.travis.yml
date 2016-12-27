@@ -27,7 +27,7 @@ script:
   - if curl --silent --output /dev/null --dump-header - "https://github.com/${TRAVIS_REPO_SLUG}" | grep "Status:[[:space:]]*404"; then touch .private_repo; fi
 
   # Download depended roles
-  - if [ -f requirements.yml ]; then ansible-galaxy install -f requirements.yml -p extra_roles; fi
+  - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p extra_roles; fi
 
   # Basic role syntax check
   #
