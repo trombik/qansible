@@ -6,7 +6,6 @@ module Qansible
         @required_directories = %w[
           defaults
           extra_modules
-          extra_roles
           filter_plugins
           handlers
           library
