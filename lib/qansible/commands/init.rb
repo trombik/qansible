@@ -64,6 +64,7 @@ module Qansible
         Dir.mkdir(dest_directory)
         Dir.chdir(dest_directory) do
           FileUtils.cp_r "#{ templates_directory }/.", "."
+          FileUtils.cp_r "#{ templates_directory }/.github", "."
           FileUtils.mv "gitignore", ".gitignore"
           Pathname.pwd.find do |file|
             next if ! file.file?
