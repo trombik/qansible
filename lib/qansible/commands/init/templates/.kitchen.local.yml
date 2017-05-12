@@ -16,7 +16,9 @@ def local_ip
   end
 end
 # @return [Integer] default listening port
-def local_port ; 8080 ; end
+def local_port
+  ENV['KITCHEN_PROXY_PORT'] ? ENV['KITCHEN_PROXY_PORT'] : 8080
+end
 # @return [String] the proxy URL
 def http_proxy_url ; "http://#{local_ip}:#{local_port}" ; end
 # @return [TrueClass,FalseClass] whether or not the port is listening
