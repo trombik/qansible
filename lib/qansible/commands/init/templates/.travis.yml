@@ -45,6 +45,11 @@ script:
 
   # download the QA scripts
   - git clone https://github.com/trombik/qansible.git
+
+  # checkout the latest release
+  - ( cd qansible && git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) )
+
+  # install it
   - ( cd qansible && bundle install --path vendor/bundle --with "test" && bundle exec rake build && gem install pkg/*.gem )
   - rm -rf qansible
 
