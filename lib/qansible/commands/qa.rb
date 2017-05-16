@@ -26,7 +26,9 @@ module Qansible
           Qansible::Check::KitchenYml,
           Qansible::Check::Gitignore,
           Qansible::Check::Jenkinsfile,
-          Qansible::Check::MetaMainYaml
+          Qansible::Check::MetaMainYaml,
+          Qansible::Check::RubocopTodo,
+          Qansible::Check::Rubocop
         ]
       end
 
