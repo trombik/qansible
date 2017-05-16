@@ -66,6 +66,7 @@ module Qansible
           FileUtils.cp_r "#{ templates_directory }/.", "."
           FileUtils.cp_r "#{ templates_directory }/.github", "."
           FileUtils.mv "gitignore", ".gitignore"
+          FileUtils.mv "rubocop.yml", ".rubocop.yml"
           Pathname.pwd.find do |file|
             next if ! file.file?
             content = File.read(file)

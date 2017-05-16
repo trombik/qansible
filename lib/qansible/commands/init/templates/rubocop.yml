@@ -1,0 +1,39 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    # there is no reason to test external files
+    - "roles.galaxy/**/*"
+    - "vendor/**/*"
+    - "tests/integration/**/roles/*"
+  DisplayCopNames: true
+  ExtraDetails: true
+  DisplayStyleGuide: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "**/Vagrantfile"
+  ExcludedMethods:
+    - describe
+    - context
+
+Metrics/LineLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "**/Vagrantfile"
+    - "Gemfile"
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+    - git
+    - ftp
+  IgnoreCopDirectives: true
