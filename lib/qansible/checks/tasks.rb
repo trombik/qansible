@@ -79,7 +79,7 @@ module Qansible
           see set shutdown start stop test umount uninstall unload update
           validate accept wait mount fail assert validate insert detect inject
           patch flush clean dump restore wait look search revert uninstall
-          accept reject put get upload download exclude list
+          accept reject put get upload download exclude list fix
         ]
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
