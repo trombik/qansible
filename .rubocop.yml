@@ -21,3 +21,7 @@ Style/FormatString:
 
 Metrics/ClassLength:
   Max: 200
+
+Lint/UnneededDisable:
+  Exclude:
+    - "lib/qansible/commands/init/templates/tests/integration/example/spec/spec_helper.rb"
