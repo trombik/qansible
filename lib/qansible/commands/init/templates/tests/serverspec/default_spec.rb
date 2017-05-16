@@ -1,28 +1,28 @@
-require 'spec_helper'
-require 'serverspec'
+require "spec_helper"
+require "serverspec"
 
-package = 'CHANGEME'
-service = 'CHANGEME'
-config  = '/etc/CHANGEME/CHANGEME.conf'
-user    = 'CHANGEME'
-group   = 'CHANGEME'
-ports   = [ PORTS ]
-log_dir = '/var/log/CHANGEME'
-db_dir  = '/var/lib/CHANGEME'
+package = "CHANGEME"
+service = "CHANGEME"
+config  = "/etc/CHANGEME/CHANGEME.conf"
+user    = "CHANGEME"
+group   = "CHANGEME"
+ports   = [PORTS]
+log_dir = "/var/log/CHANGEME"
+db_dir  = "/var/lib/CHANGEME"
 
 case os[:family]
-when 'freebsd'
-  config = '/usr/local/etc/CHANGEME.conf'
-  db_dir = '/var/db/CHANGEME'
+when "freebsd"
+  config = "/usr/local/etc/CHANGEME.conf"
+  db_dir = "/var/db/CHANGEME"
 end
 
 describe package(package) do
   it { should be_installed }
-end 
+end
 
 describe file(config) do
   it { should be_file }
-  its(:content) { should match Regexp.escape('CHANGEME') }
+  its(:content) { should match Regexp.escape("CHANGEME") }
 end
 
 describe file(log_dir) do
@@ -40,8 +40,8 @@ describe file(db_dir) do
 end
 
 case os[:family]
-when 'freebsd'
-  describe file('/etc/rc.conf.d/CHANGEME') do
+when "freebsd"
+  describe file("/etc/rc.conf.d/CHANGEME") do
     it { should be_file }
   end
 end
