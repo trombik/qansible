@@ -60,11 +60,16 @@ script:
   # surpress a warning from `qansible qa
   - touch .kitchen.local.yml
 
+  # export PATH
+  - export PATH="${PATH}:`rvm gemdir`/bin"
+
+  # bundle up because rubocop is installed via Gemfile
+  - bundle install --path vendor/bundle
+
   # run rubocop
   - bundle exec rubocop
 
   # run the QA test
-  - export PATH="${PATH}:`rvm gemdir`/bin"
   - qansible qa
 
 notifications:
