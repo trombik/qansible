@@ -35,7 +35,7 @@ Metrics/LineLength:
     # `_spec.rb` often contains one-liner shell command
     - "**/*_spec.rb"
     # same as in Metrics/BlockLength
-    - "**/Vagrantfile"s
+    - "**/Vagrantfile"
     # Gemfile is not application code
     - "Gemfile"
   # ignore heredoc for readability
