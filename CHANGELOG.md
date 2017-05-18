@@ -2,6 +2,10 @@
 
 * [bugfix] version has not been bumped
 
+## Release 2.2.2
+
+* 1d8afea fix failed rubocop run (#46)
+
 ## Release 2.2.1
 
 * 052de4d rubocopfy default templates and run rubocop (#44)
