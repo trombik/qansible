@@ -1,3 +1,7 @@
+## Release 2.2.3
+
+* [bugfix] version has not been bumped
+
 ## Release 2.2.2
 
 * 1d8afea fix failed rubocop run (#46)
