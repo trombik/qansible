@@ -1,3 +1,7 @@
+## Release 2.2.3
+
+* [bugfix] version has not been bumped
+
 ## Release 2.2.1
 
 * 052de4d rubocopfy default templates and run rubocop (#44)
