@@ -1,3 +1,7 @@
+## Release 2.2.5
+
+* [bugfix] version has not been bumped
+
 ## Release 2.2.4
 
 * 52602bf ignore extra_roles diretory (#50)
