@@ -1,5 +1,5 @@
 module Qansible
-  class check
+  class Check
     class ExtraRoles < Qansible::Check::Base
 
       def initialize
@@ -14,7 +14,7 @@ module Qansible
         debug "%s Checking `%s`, which must not exist" % [ self.class.name, @path ]
         result = File.exist?(@@root + @path)
         warn "File or directory `%s` should not exist. Run `rm -rf extra_roles` and remove it from `.kitchen.yml`. See https://github.com/trombik/qansible/issues/51 for why" % [ @path ] if !result
-        not result
+        ! result
       end
     end
   end
