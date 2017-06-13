@@ -34,6 +34,7 @@ module Qansible
       def should_have_tasks_with_name
         exceptions = %w[
           assert
+          block
           debug
           fail
           include
