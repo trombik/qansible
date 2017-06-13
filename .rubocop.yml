@@ -7,6 +7,7 @@ AllCops:
     - "tmp/**/*"
     - "lib/qansible_init/templates/**/*"
     - "qansible.gemspec"
+    - "lib/qansible/commands/init/templates/**/*"
   TargetRubyVersion: 2.1
   DisplayCopNames: true
 
