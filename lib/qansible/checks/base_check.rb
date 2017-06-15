@@ -118,7 +118,7 @@ module Qansible
       def warn(msg)
 
         msg = "[warn] %s" % msg
-        msg = colorize(msg, "red", "black")
+        msg = colorize(msg, "yellow", "black")
         STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
         @number_of_warnings += 1
 
@@ -127,7 +127,7 @@ module Qansible
       def crit(text)
 
         msg = "[crit] %s" % [ text ]
-        msg = colorize(msg, "red", "black")
+        msg = colorize(msg, "light red", "black")
         Kernel.warn(msg) unless ENV["QANSIBLE_SILENT"]
         exit 1
 
