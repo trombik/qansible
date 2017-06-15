@@ -22,7 +22,6 @@ if ENV["JENKINS_HOME"]
   #
   # include the path of bin to vagrant
   #
-  # rubocop:enable Metrics/LineLength
   vagrant_real_path = `pkg info -l vagrant | grep -v '/usr/local/bin/vagrant' | grep -E 'bin\/vagrant$'| sed -e 's/^[[:space:]]*//'`
   # rubocop:enable Metrics/LineLength
   vagrant_bin_dir = File.dirname(vagrant_real_path)
