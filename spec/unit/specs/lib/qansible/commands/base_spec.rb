@@ -72,7 +72,7 @@ module Qansible
           it "logs message in red" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.error("foo") }.to output("\033[40;31mERROR foo\n\033[0m").to_stdout_from_any_process
+            expect { i.error("foo") }.to output("\033[40;1;31mERROR foo\n\033[0m").to_stdout_from_any_process
           end
         end
 
@@ -80,7 +80,7 @@ module Qansible
           it "logs message in red" do
             allow(i).to receive(:tty?).and_return(true)
             allow(i).to receive(:silent?).and_return(false)
-            expect { i.warn("foo") }.to output("\033[40;31mWARN foo\n\033[0m").to_stdout_from_any_process
+            expect { i.warn("foo") }.to output("\033[40;1;31mWARN foo\n\033[0m").to_stdout_from_any_process
           end
         end
 
