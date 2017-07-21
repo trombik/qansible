@@ -40,7 +40,7 @@ describe "qansible init" do
       system "#{command} >/dev/null 2>&1"
       Dir.chdir("tmp/ansible-role-default") do
         o, _e, _s = Open3.capture3("git status")
-        expect(o).to match(/nothing to commit, working directory clean/)
+        expect(o).to match(/nothing to commit, working (?:directory|tree) clean/)
       end
     end
   end

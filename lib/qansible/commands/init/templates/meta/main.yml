@@ -12,9 +12,11 @@ galaxy_info:
 #  - name: OpenBSD
 #    versions:
 #    - 6.0
+#    - 6.1
 #  - name: Ubuntu
 #    versions:
 #    - trusty
+#    - xenial
 #  - name: EL
 #    versions:
 #    - 7
