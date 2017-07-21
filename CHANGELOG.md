@@ -1,3 +1,7 @@
+## Release 2.3.1
+
+* 1e1d446 [bugfix] fix issue #64 and #66 (#67)
+
 ## Release 2.3.0
 
 * 3340144 change red to light red for criticals and yellow for warns (fixes #54) (#57)
