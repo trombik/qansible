@@ -74,13 +74,15 @@ module Qansible
 
       def should_have_tasks_with_verbs
         verbs = %w[
-          add apply bring check configure copy create delete destroy disable do
-          download enable ensure fail fetch find include install load make
-          mount re-configure reconfigure register remove replace restart run
-          see set shutdown start stop test umount uninstall unload update
-          validate accept wait mount fail assert validate insert detect inject
-          patch flush clean dump restore wait look search revert uninstall
-          accept reject put get upload download exclude list fix
+          accept add apply archive ask assert bind boot bring build check clean
+          clone collect commit configure copy correct create deal delete
+          destroy detect disable do download dump dump enable ensure exclude
+          execute extract fail fetch find fix flush get handle include
+          initialize inject insert install keep list load look make mount
+          notify pack patch post put receive reconfigure re-configure register
+          reject release remove replace restart restore revert run search see
+          select send set shutdown start stop test try umount uninstall unload
+          unmount unpack update upload validate verify wait
         ]
         @task_yaml_content.keys.each do |file|
           yaml = @task_yaml_content[file]
