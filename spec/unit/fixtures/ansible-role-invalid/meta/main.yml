@@ -8,3 +8,5 @@ galaxy_info:
   min_ansible_version: 0.1
   platforms: [ ]
   categories: [ foo ]
+dependencies:
+  - { role: username.common, when: 1 == 1 }

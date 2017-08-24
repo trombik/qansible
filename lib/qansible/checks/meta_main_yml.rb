@@ -17,6 +17,7 @@ module Qansible
         must_not_have_min_ansible_version_less_than_2_0
         must_have_at_least_one_platform_supported
         must_have_array_of_galaxy_tags
+        must_not_have_old_format
         should_have_at_least_one_tag
       end
 
@@ -111,6 +112,22 @@ module Qansible
         end
       end
 
+      def must_not_have_old_format
+        load_yaml if not @yaml
+        if @yaml.has_key?("dependencies") && @yaml["dependencies"].is_a?(Array)
+          @yaml["dependencies"].each do |d|
+            next if d.has_key?("role") && d["role"] =~ /,/
+            warnings = format("In %s, dependencies has `role` in the array, and `role` contains `,`\n", @path)
+            warnings += "Use explicit YAML format, such as\n"
+            warnings += "\n"
+            warnings += "dependencies:\n"
+            warnings += "  - role: username.role\n"
+            warnings += "    when: foo == 1\n"
+            warnings += "\n"
+            crit warnings
+          end
+        end
+      end
     end
   end
 end

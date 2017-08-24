@@ -41,6 +41,12 @@ module Qansible
           end
         end
 
+        describe ".must_not_have_old_format" do
+          it "does not raise error" do
+            expect { instance.must_not_have_old_format }.not_to raise_error
+          end
+        end
+
         describe ".must_have_mandatory_keys_in_galaxy_info" do
           it "does not raise error" do
             expect { instance.must_have_mandatory_keys_in_galaxy_info }.not_to raise_error

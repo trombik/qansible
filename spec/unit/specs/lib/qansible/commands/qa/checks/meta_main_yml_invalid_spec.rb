@@ -4,7 +4,7 @@ module Qansible
   class Check
     class MetaMainYaml
 
-      context "When .travis.yml is invalid" do
+      context "When meta/main.yml is invalid" do
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid/"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest/"))
@@ -36,6 +36,12 @@ module Qansible
         describe ".must_have_galaxy_info" do
           it "does not raise error" do
             expect { instance.must_have_galaxy_info }.not_to raise_error
+          end
+        end
+
+        describe ".must_not_have_old_format" do
+          it "raises SystemExit" do
+            expect { instance.must_not_have_old_format }.to raise_error(SystemExit)
           end
         end
 

@@ -24,4 +24,5 @@ galaxy_info:
   galaxy_tags:
     - system
 #dependencies:
-#  - { role: username.common, some_parameter: 3 }
+#  - role: username.common
+#    when: some_parameter == 1
