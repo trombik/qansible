@@ -45,6 +45,12 @@ module Qansible
           end
         end
 
+        describe ".must_be_in_explicit_yaml" do
+          it "raises SystemExit" do
+            expect { instance.must_be_in_explicit_yaml }.to raise_error(SystemExit)
+          end
+        end
+
         describe ".must_have_mandatory_keys_in_galaxy_info" do
           it "raises SystemExit" do
             expect { instance.must_have_mandatory_keys_in_galaxy_info }.to raise_error(SystemExit)

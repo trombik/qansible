@@ -18,6 +18,7 @@ module Qansible
         must_have_at_least_one_platform_supported
         must_have_array_of_galaxy_tags
         must_not_have_old_format
+        must_be_in_explicit_yaml
         should_have_at_least_one_tag
       end
 
@@ -126,6 +127,25 @@ module Qansible
             warnings += "\n"
             crit warnings
           end
+        end
+      end
+
+      def must_be_in_explicit_yaml
+        content = read_file
+        if content =~ /[^\\][{}]/
+          warnings = format("In %s, curly brace, not escaped by backslash, found", @path)
+          warnings += "Use explicit YAML format, such as\n"
+          warnings += "\n"
+          warnings += "dependencies:\n"
+          warnings += "  - role: username.role\n"
+          warnings += "    when: foo == 1\n"
+          warnings += "\n"
+          warnings += "NOT\n"
+          warnings += "\n"
+          warnings += "dependencies:\n"
+          warnings += "  - { role: username.role, when: foo == 1 }"
+          warnings += "\n"
+          crit warnings
         end
       end
     end
