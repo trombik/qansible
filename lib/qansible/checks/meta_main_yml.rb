@@ -117,7 +117,7 @@ module Qansible
         load_yaml if not @yaml
         if @yaml.has_key?("dependencies") && @yaml["dependencies"].is_a?(Array)
           @yaml["dependencies"].each do |d|
-            next if d.has_key?("role") && d["role"] =~ /,/
+            next unless d.has_key?("role") && d["role"] =~ /,/
             warnings = format("In %s, dependencies has `role` in the array, and `role` contains `,`\n", @path)
             warnings += "Use explicit YAML format, such as\n"
             warnings += "\n"

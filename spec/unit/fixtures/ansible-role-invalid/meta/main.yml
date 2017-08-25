@@ -9,4 +9,5 @@ galaxy_info:
   platforms: [ ]
   categories: [ foo ]
 dependencies:
+  - role: username.common,foo
   - { role: username.common, when: 1 == 1 }
