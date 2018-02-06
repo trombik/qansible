@@ -11,6 +11,10 @@ AllCops:
   TargetRubyVersion: 2.1
   DisplayCopNames: true
 
+  # the default CacheRootDirectory is no longer `/tmp`, but a directory under
+  # `$HOME` and some Unix platforms use symlink to that path
+  AllowSymlinksInCacheRootDirectory: true
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
