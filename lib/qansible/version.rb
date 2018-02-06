@@ -1,3 +1,3 @@
 module Qansible
-  VERSION = "2.3.0".freeze
+  VERSION = "2.3.2".freeze
 end
