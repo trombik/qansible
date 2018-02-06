@@ -6,7 +6,6 @@ require "qansible"
 def main
   command = ARGV.shift
   program = Pathname.new(__FILE__).basename
-  option = nil
   runner = nil
   case command
   when "init"

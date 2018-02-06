@@ -76,7 +76,7 @@ module Qansible
         File.read(@@root.join(@path).to_s)
       end
 
-      def is_tty?
+      def tty?
         STDOUT.isatty
       end
 
@@ -113,7 +113,7 @@ module Qansible
       end
 
       def colorize(text, color = "default", bgcolor = "default")
-        return text unless is_tty?
+        return text unless tty?
         colors = {
           "default" => "38",
           "black" => "30",
