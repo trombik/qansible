@@ -1,9 +1,8 @@
 module Qansible
   class Check
     class Gitignore < Qansible::Check::Base
-
       def initialize
-        super(:path => ".gitignore")
+        super(path: ".gitignore")
       end
 
       def check
@@ -15,24 +14,20 @@ module Qansible
           "/.kitchen/",
           ".kitchen.local.yml",
           "*.swp",
-          "vendor/",
+          "vendor/"
         ]
         found = []
-        f  = read_file
+        f = read_file
         f.each_line do |line|
           ignores.each do |i|
-            if line =~ /^#{ Regexp.escape(i) }$/
-              found << i
-            end
+            found << i if line =~ /^#{ Regexp.escape(i) }$/
           end
         end
         not_found = ignores - found
-        if not_found.length > 0
+        unless not_found.empty?
           warn "In `%s`,  the following items should be ignored: `%s` but not all items are ignored: `%s`" % [ @path, ignores.to_s, not_found.to_s ]
         end
-
       end
-
     end
   end
 end

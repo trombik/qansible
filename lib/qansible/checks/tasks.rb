@@ -1,7 +1,6 @@
 module Qansible
   class Check
     class Tasks < Qansible::Check::Base
-
       def initialize
         @task_files = []
         @task_yaml_content = {}
@@ -18,15 +17,14 @@ module Qansible
       end
 
       def should_have_templates_with_validate
-        @task_yaml_content.keys.each do |file|
+        @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
           yaml.each do |task|
-            if task.has_key?("template") && ! task["template"].has_key?("validate")
-              warnings = "In %s, the following template task does not have validate. Consider validating the file\n" % [ file ]
-              warnings += "%s\n" % [ task.to_yaml ]
-              warn warnings
-            end
+            next unless task.key?("template") && !task["template"].key?("validate")
+            warnings = "In %s, the following template task does not have validate. Consider validating the file\n" % [ file ]
+            warnings += "%s\n" % [ task.to_yaml ]
+            warn warnings
           end
         end
       end
@@ -43,11 +41,11 @@ module Qansible
           meta
           set_fact
         ]
-        @task_yaml_content.keys.each do |file|
+        @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
           yaml.each do |task|
-            if ! task.has_key?("name")
+            unless task.key?("name")
               if (task.keys & exceptions).any?
                 # adding name to these modules has little point
               else
@@ -61,11 +59,11 @@ module Qansible
       end
 
       def should_have_tasks_with_capitalized_name
-        @task_yaml_content.keys.each do |file|
+        @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
           yaml.each do |task|
-            if task.has_key?("name") && task["name"].match(/^[a-z]/)
+            if task.key?("name") && task["name"].match(/^[a-z]/)
               warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [ file, task["name"] ]
             end
           end
@@ -84,22 +82,21 @@ module Qansible
           select send set shutdown start stop test try umount uninstall unload
           unmount unpack update upload validate verify wait
         ]
-        @task_yaml_content.keys.each do |file|
+        @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
           yaml.each do |task|
-            if task.has_key?("name")
-              verb = task["name"].split(" ").first.downcase
-              if verbs.any? { |v| v == verb }
-                # the name starts with one of the verbs
-              else
-                warnings = "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:\n" % [ file, task["name"], verb ]
-                verbs.sort.each do |v|
-                  warnings += "%s\n" % [ v ]
-                end
-                warnings += "The verb should be present tense and participle."
-                warn warnings
+            next unless task.key?("name")
+            verb = task["name"].split(" ").first.downcase
+            if verbs.any? { |v| v == verb }
+              # the name starts with one of the verbs
+            else
+              warnings = "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:\n" % [ file, task["name"], verb ]
+              verbs.sort.each do |v|
+                warnings += "%s\n" % [ v ]
               end
+              warnings += "The verb should be present tense and participle."
+              warn warnings
             end
           end
         end

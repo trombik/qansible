@@ -14,7 +14,7 @@ AllCops:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Style/SpaceInsideBrackets:
+Layout/SpaceInsideBrackets:
   Enabled: false
 
 Style/FormatString:
@@ -22,6 +22,10 @@ Style/FormatString:
 
 Metrics/ClassLength:
   Max: 200
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
 
 Lint/UnneededDisable:
   Exclude:

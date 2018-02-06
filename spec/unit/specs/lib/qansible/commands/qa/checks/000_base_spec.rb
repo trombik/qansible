@@ -10,7 +10,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
-          Base.new(:path => "foo")
+          Base.new(path: "foo")
         end
 
         describe "#new" do
@@ -87,7 +87,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
-          Base.new(:invalid => "foo")
+          Base.new(invalid: "foo")
         end
 
         describe ".new" do
@@ -101,7 +101,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest")
           Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest")
-          Base.new(:path => "no_such_file")
+          Base.new(path: "no_such_file")
         end
 
         describe ".should_exist" do
@@ -121,7 +121,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Base.new(:path => ".ackrc")
+          Base.new(path: ".ackrc")
         end
 
         describe ".should_be_identical" do
@@ -141,7 +141,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Base.new(:path => ".ackrc")
+          Base.new(path: ".ackrc")
         end
 
         describe ".must_exist" do
@@ -170,7 +170,7 @@ module Qansible
           let(:base) do
             Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
             Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-root/")
-            Base.new(:path => "tasks/install-FreeBSD.yml")
+            Base.new(path: "tasks/install-FreeBSD.yml")
           end
 
           it "raise FileNotFound" do
@@ -184,7 +184,7 @@ module Qansible
           let(:base) do
             Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
             Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-latest/")
-            Base.new(:path => "tasks/install-FreeBSD.yml")
+            Base.new(path: "tasks/install-FreeBSD.yml")
           end
 
           it "returns an Array" do

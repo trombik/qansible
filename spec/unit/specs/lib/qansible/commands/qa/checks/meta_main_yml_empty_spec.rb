@@ -3,7 +3,6 @@ require "spec_helper"
 module Qansible
   class Check
     class MetaMainYaml
-
       context "When .travis.yml does not exist" do
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty/"))
@@ -17,7 +16,6 @@ module Qansible
           end
         end
       end
-
     end
   end
 end

@@ -3,9 +3,8 @@ require "open3"
 module Qansible
   class Check
     class Rakefile < Qansible::Check::Base
-
       def initialize
-        super(:path => "Rakefile")
+        super(path: "Rakefile")
       end
 
       def check
@@ -17,7 +16,7 @@ module Qansible
       def must_accept_test_as_target
         command = "rake -T"
         Dir.chdir(Qansible::Check::Base.root) do
-          Open3.popen3(command) do |stdin, stdout, stderr, process|
+          Open3.popen3(command) do |_stdin, stdout, stderr, process|
             status = process.value.exitstatus
             case status
             when 0
@@ -32,7 +31,6 @@ module Qansible
           end
         end
       end
-
     end
   end
 end

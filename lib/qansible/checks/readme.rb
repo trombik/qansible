@@ -1,16 +1,15 @@
 module Qansible
   class Check
     class README < Qansible::Check::Base
-
       def initialize
         @required_sections = [
           "Requirements",
           "Role Variables",
           "Dependencies",
           "Example Playbook",
-          "Author Information",
+          "Author Information"
         ]
-        super(:path => "README.md")
+        super(path: "README.md")
       end
 
       def check
@@ -25,47 +24,41 @@ module Qansible
         line_numbers = []
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
-            if line.match(/^--[-]*\s*$/)
-              line_numbers << f.lineno
-            end
+            line_numbers << f.lineno if line =~ /^--[-]*\s*$/
           end
         end
-        if line_numbers.length != 0
+        unless line_numbers.empty?
           line_numbers.each do |l|
             warn "In %s, at line number %d, `--` is used as heading. use `#` instead" % [ @path, l ]
           end
         end
-        line_numbers.length != 0
+        !line_numbers.empty?
       end
 
       def should_not_have_equal_as_heading_two
         line_numbers = []
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
-            if line.match(/^==[=]*\s*$/)
-              line_numbers << f.lineno
-            end
+            line_numbers << f.lineno if line =~ /^==[=]*\s*$/
           end
         end
-        if line_numbers.length != 0
+        unless line_numbers.empty?
           line_numbers.each do |l|
             warn "In %s, at line number %d, `--` is used as heading. use `#` instead" % [ @path, l ]
           end
         end
-        line_numbers.length != 0
+        !line_numbers.empty?
       end
 
       def must_have_required_sections
         found_sections = []
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
-            if line =~ /^#\s+(.*)$/
-              found_sections << Regexp.last_match[1]
-            end
+            found_sections << Regexp.last_match[1] if line =~ /^#\s+(.*)$/
           end
         end
         not_found_sections = @required_sections - found_sections
-        if not_found_sections.length > 0
+        unless not_found_sections.empty?
           warnings = "Required sections are:\n"
           @required_sections.sort.each do |s|
             warnings += "%s\n" % [ s ]
@@ -77,29 +70,27 @@ module Qansible
           warn warnings
           crit "In %s, not all required sections were found." % [ @path ]
         end
-        not_found_sections.length > 0
+        !not_found_sections.empty?
       end
 
       def should_have_required_sections_at_level_one
         warnings = []
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
-            if line.match(/^##+\s+(.*)/)
-              name = Regexp.last_match[1]
-              if @required_sections.include?(name)
-                warnings << { :lineno => f.lineno, :name => name }
-              end
+            next unless line =~ /^##+\s+(.*)/
+            name = Regexp.last_match[1]
+            if @required_sections.include?(name)
+              warnings << { lineno: f.lineno, name: name }
             end
           end
         end
-        if warnings.length != 0
+        unless warnings.empty?
           warnings.each do |w|
-            warn "In %s, at line number %d, required section `%s` is found in second level section. use `# %s` instead." % [ @path, w[:lineno], w[:name], w[:name]  ]
+            warn "In %s, at line number %d, required section `%s` is found in second level section. use `# %s` instead." % [ @path, w[:lineno], w[:name], w[:name] ]
           end
         end
-        warnings.length != 0
+        !warnings.empty?
       end
-
     end
   end
 end

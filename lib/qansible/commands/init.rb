@@ -10,11 +10,10 @@ end
 module Qansible
   class Command
     class Init < Qansible::Command::Base
-
       def initialize(options)
         super
         @options = options
-        @author = Qansible::Author.new 
+        @author = Qansible::Author.new
         ENV["QANSIBLE_SILENT"] = "y" if @options.silent
       end
 
@@ -24,26 +23,20 @@ module Qansible
 
       def platform_name
         platform_name = @options.box_name.split("/").last
-        if platform_name.match(/^ansible-/)
-          platform_name.gsub!(/^ansible-/, "")
-        end
+        platform_name.gsub!(/^ansible-/, "") if platform_name =~ /^ansible-/
         platform_name
       end
 
-      def author
-        @author
-      end
+      attr_reader :author
 
       def validate_role_name(name)
-        if ! name
-          raise InvalidRoleName, "No role name given"
-        end
-        if ! name.match(/^ansible-role-/)
+        raise InvalidRoleName, "No role name given" unless name
+        unless name =~ /^ansible-role-/
           raise InvalidRoleName, "Invalid role name `%s` given. Role name mus start with `ansible-role`" % [ name ]
         end
 
         valid_regex = /^[a-zA-Z0-9\-_]+$/
-        if ! name.match(valid_regex)
+        unless name.match(valid_regex)
           raise InvalidRoleName, "Invalid role name `%s` given. role name must match %s" % [ name, valid_regex.to_s ]
         end
         true
@@ -63,17 +56,17 @@ module Qansible
         end
         Dir.mkdir(dest_directory)
         Dir.chdir(dest_directory) do
-          FileUtils.cp_r "#{ templates_directory }/.", "."
-          FileUtils.cp_r "#{ templates_directory }/.github", "."
+          FileUtils.cp_r "#{templates_directory}/.", "."
+          FileUtils.cp_r "#{templates_directory}/.github", "."
           FileUtils.mv "gitignore", ".gitignore"
           FileUtils.mv "rubocop.yml", ".rubocop.yml"
           Pathname.pwd.find do |file|
-            next if ! file.file?
+            next unless file.file?
             content = File.read(file)
             content.gsub!("CHANGEME", @options.role_name.gsub("ansible-role-", ""))
             content.gsub!("YYYY", this_year)
             content.gsub!("DESTNAME", @options.role_name)
-            content.gsub!("MYNAME", @author.fullname )
+            content.gsub!("MYNAME", @author.fullname)
             content.gsub!("EMAIL", @author.email)
             content.gsub!("PLATFORMNAME", platform_name)
             content.gsub!("BOXNAME", @options.box_name)
@@ -83,9 +76,7 @@ module Qansible
           end
 
           git_options = nil
-          if silent?
-            git_options = "--quiet"
-          end
+          git_options = "--quiet" if silent?
           system "git init #{git_options} ."
           system "git add ."
           system "git commit -m 'initial import' #{git_options}"

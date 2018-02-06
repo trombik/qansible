@@ -45,7 +45,7 @@ module Qansible
 
           it "raise OptionParser::InvalidOption" do
             expect { p.parse(invalid) }.to
-              raise_error(OptionParser::InvalidOption)
+            raise_error(OptionParser::InvalidOption)
           end
         end
       end

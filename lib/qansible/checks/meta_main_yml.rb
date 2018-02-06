@@ -1,10 +1,9 @@
 module Qansible
   class Check
     class MetaMainYaml < Qansible::Check::Base
-
       def initialize
         @yaml = nil
-        super(:path => "meta/main.yml")
+        super(path: "meta/main.yml")
       end
 
       def check
@@ -25,14 +24,14 @@ module Qansible
       end
 
       def must_have_galaxy_info
-        load_yaml if not @yaml
-        if ! @yaml.has_key?("galaxy_info")
+        load_yaml unless @yaml
+        unless @yaml.key?("galaxy_info")
           crit "In `%s`, top level key `galaxy_info` must exist"
         end
       end
 
       def must_have_mandatory_keys_in_galaxy_info
-        load_yaml if not @yaml
+        load_yaml unless @yaml
         mandatory_keys = %w[
           author
           company
@@ -44,11 +43,9 @@ module Qansible
         ]
         not_found = []
         mandatory_keys.each do |k|
-          if ! @yaml["galaxy_info"].has_key?(k)
-            not_found << k
-          end
+          not_found << k unless @yaml["galaxy_info"].key?(k)
         end
-        if not_found.length != 0
+        unless not_found.empty?
           warnings = "In `%s`, these keys must exist\n" % [ @path ]
           mandatory_keys.each do |k|
             warnings += "%s\n" % [ k ]
@@ -63,22 +60,22 @@ module Qansible
       end
 
       def should_not_have_default_description
-        load_yaml if not @yaml
+        load_yaml unless @yaml
         default_description = "Configures something"
-        if @yaml["galaxy_info"]["description"].match(/#{ default_description }/)
+        if @yaml["galaxy_info"]["description"] =~ /#{ default_description }/
           warn "In `%s`, description should describe the role, rather than the default. Add description in %s" % [ @path, @path ]
         end
       end
 
       def must_not_have_categories
-        load_yaml if not @yaml
-        if @yaml["galaxy_info"].has_key?("categories")
+        load_yaml unless @yaml
+        if @yaml["galaxy_info"].key?("categories")
           crit "In `%s`, `galaxy_info` must not have obsolete `categories` as a key. Use `tags` instead" % [ @path ]
         end
       end
 
       def must_not_have_min_ansible_version_less_than_2_0
-        load_yaml if not @yaml
+        load_yaml unless @yaml
         if @yaml["galaxy_info"]["min_ansible_version"].to_f < 2.0
           warn "In `%s`, min_ansible_version is %s\n" % [ @path, @yaml["galaxy_info"]["min_ansible_version"] ]
           crit "In `%s`, min_ansible_version should be 2.0 or newer" % [ @path ]
@@ -86,31 +83,30 @@ module Qansible
       end
 
       def must_have_at_least_one_platform_supported
-        load_yaml if not @yaml
+        load_yaml unless @yaml
         if @yaml["galaxy_info"]["platforms"].nil?
           crit "In `%s`, `platforms` must have at least one supported platform" % [ @path ]
         end
-        if @yaml["galaxy_info"]["platforms"].length < 1
+        if @yaml["galaxy_info"]["platforms"].empty?
           crit "In `%s`, `platforms` must have at least one supported platform" % [ @path ]
         end
       end
 
       def must_have_array_of_galaxy_tags
-        load_yaml if not @yaml
-        if ! @yaml["galaxy_info"]["galaxy_tags"].is_a?(Array)
+        load_yaml unless @yaml
+        unless @yaml["galaxy_info"]["galaxy_tags"].is_a?(Array)
           crit "In `%s`, `galaxy_tags` must be an array" % [ @path ]
         end
       end
 
       def should_have_at_least_one_tag
-        load_yaml if not @yaml
-        if @yaml["galaxy_info"]["galaxy_tags"].length < 1
+        load_yaml unless @yaml
+        if @yaml["galaxy_info"]["galaxy_tags"].empty?
           warnings = "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`\n" % [ @path ]
           warnings += "Popular tags can be found at https://galaxy.ansible.com/list"
           warn warnings
         end
       end
-
     end
   end
 end

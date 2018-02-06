@@ -3,7 +3,6 @@ require "logger"
 module Qansible
   class Command
     class Base
-
       attr_reader :logger
 
       def initialize(_options)
@@ -52,7 +51,7 @@ module Qansible
       end
 
       def colorize(text, color = "default", bgcolor = "default")
-        return text if ! tty?
+        return text unless tty?
         colors = {
           "default" => "38",
           "black" => "30",
@@ -91,9 +90,9 @@ module Qansible
           "light cyan" => "106",
           "white" => "107"
         }
-        raise "colorize: unknown color: %s" % [ color ] if ! colors.key?(color)
+        raise "colorize: unknown color: %s" % [ color ] unless colors.key?(color)
         color_code = colors[color]
-        raise "colorize: unknown bgcolor: %s" % [ bgcolor ] if ! colors.key?(bgcolor)
+        raise "colorize: unknown bgcolor: %s" % [ bgcolor ] unless colors.key?(bgcolor)
         bgcolor_code = bgcolors[bgcolor]
         "\033[#{bgcolor_code};#{color_code}m#{text}\033[0m"
       end
