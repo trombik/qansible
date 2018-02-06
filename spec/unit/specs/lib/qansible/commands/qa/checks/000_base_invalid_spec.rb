@@ -16,7 +16,7 @@ module Qansible
           let(:base) do
             Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
             Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-invalid/")
-            Base.new(:path => "invalid.yml")
+            Base.new(path: "invalid.yml")
           end
 
           it "raises Psych::SyntaxError" do
@@ -29,7 +29,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
           Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
-          Base.new(:path => ".ackrc")
+          Base.new(path: ".ackrc")
         end
 
         describe ".should_be_identical" do
@@ -50,7 +50,7 @@ module Qansible
         let(:base) do
           Qansible::Check::Base.root("spec/unit/fixtures/ansible-role-invalid/")
           Qansible::Check::Base.tmp("spec/unit/fixtures/ansible-role-latest/")
-          Base.new(:path => "no_such_file")
+          Base.new(path: "no_such_file")
         end
 
         describe ".read_file" do

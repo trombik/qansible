@@ -76,20 +76,20 @@ module Qansible
         describe "._parse_box" do
           it "parses trombik/ansible-freebsd-10.3-amd64 and returns hash" do
             parsed = {
-              :user => "trombik",
-              :platform => "freebsd",
-              :platform_version => "10.3",
-              :arch => "amd64"
+              user: "trombik",
+              platform: "freebsd",
+              platform_version: "10.3",
+              arch: "amd64"
             }
             expect(instance._parse_box("trombik/ansible-freebsd-10.3-amd64")).to eq(parsed)
           end
 
           it "parses trombik/freebsd-10.3-amd64 and returns hash" do
             parsed = {
-              :user => "trombik",
-              :platform => "freebsd",
-              :platform_version => "10.3",
-              :arch => "amd64"
+              user: "trombik",
+              platform: "freebsd",
+              platform_version: "10.3",
+              arch: "amd64"
             }
             expect(instance._parse_box("trombik/freebsd-10.3-amd64")).to eq(parsed)
           end

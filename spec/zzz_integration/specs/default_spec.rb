@@ -59,7 +59,7 @@ describe "qansible qa" do
   let(:command) do
     cmd = "exe/qansible qa --directory=tmp/ansible-role-default"
     stdout, stderr, exit_status = Open3.capture3(cmd)
-    { :status => exit_status, :stdout => stdout, :stderr => stderr }
+    { status: exit_status, stdout: stdout, stderr: stderr }
   end
 
   it "target directory exists" do

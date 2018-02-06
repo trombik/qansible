@@ -2,7 +2,6 @@ require "etc"
 
 module Qansible
   class Author
-
     attr_reader :login, :fullname
     def initialize
       @login = Etc.getpwuid(Process.uid).name
@@ -16,6 +15,5 @@ module Qansible
 
     alias login_name login
     alias whoami login
-
   end
 end

@@ -21,10 +21,10 @@ end
 
 def create_latest_tree
   fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
-  system "qansible init --quiet --directory=%s ansible-role-latest" % [ Shellwords.escape(fixtures_dir) ]
+  system "qansible init --quiet --directory=%s ansible-role-latest" % [Shellwords.escape(fixtures_dir)]
 end
 
 def remove_latest_tree
   fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
-  system "rm -rf %s/ansible-role-latest" % [ Shellwords.escape(fixtures_dir) ]
+  system "rm -rf %s/ansible-role-latest" % [Shellwords.escape(fixtures_dir)]
 end

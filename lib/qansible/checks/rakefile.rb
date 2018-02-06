@@ -3,9 +3,8 @@ require "open3"
 module Qansible
   class Check
     class Rakefile < Qansible::Check::Base
-
       def initialize
-        super(:path => "Rakefile")
+        super(path: "Rakefile")
       end
 
       def check
@@ -17,22 +16,19 @@ module Qansible
       def must_accept_test_as_target
         command = "rake -T"
         Dir.chdir(Qansible::Check::Base.root) do
-          Open3.popen3(command) do |stdin, stdout, stderr, process|
+          Open3.popen3(command) do |_stdin, stdout, stderr, process|
             status = process.value.exitstatus
             case status
             when 0
               stdout.each_line do |line|
-                if line.split("#").first !~ /^rake\s+test\b/
-                  crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [ @path ]
-                end
+                crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [@path] if line.split("#").first !~ /^rake\s+test\b/
               end
             else
-              crit "command `%s` failed: status: %d stdout: %s stderr: %s" % [ command, status, stdout.read, stderr.read ]
+              crit "command `%s` failed: status: %d stdout: %s stderr: %s" % [command, status, stdout.read, stderr.read]
             end
           end
         end
       end
-
     end
   end
 end

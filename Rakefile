@@ -3,10 +3,10 @@ require "rspec/core/rake_task"
 require "pathname"
 
 fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
-task :default => :spec
+task default: :spec
 
 desc "Run tests"
-task :spec => [ "clean", "spec:test", "spec:rubocop" ]
+task spec: ["clean", "spec:test", "spec:rubocop"]
 
 namespace :spec do
   RSpec::Core::RakeTask.new("test") do |task|
@@ -20,7 +20,7 @@ namespace :spec do
 end
 
 task :clean do
-  sh "rm -rf #{ fixtures_dir + 'ansible-role-latest' }"
+  sh "rm -rf #{fixtures_dir + 'ansible-role-latest'}"
   sh "rm -rf tmp/*"
   sh "rm -rf pkg/*"
 end

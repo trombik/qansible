@@ -4,7 +4,7 @@ module Qansible
   class Command
     describe Init do
       let(:c) { Qansible::Command::Init }
-      let(:options) { Qansible::Parser::Init.parse( [ "--directory=tmp", "ansible-role-default" ]) }
+      let(:options) { Qansible::Parser::Init.parse(["--directory=tmp", "ansible-role-default"]) }
       let(:i) { Qansible::Command::Init.new(options) }
 
       context "When valid options given" do
@@ -83,7 +83,7 @@ module Qansible
         end
 
         context "When --quiet given" do
-          let(:options) { Qansible::Parser::Init.parse( [ "--directory=tmp", "ansible-role-default", "--quiet" ]) }
+          let(:options) { Qansible::Parser::Init.parse(["--directory=tmp", "ansible-role-default", "--quiet"]) }
 
           before { system "rm -rf tmp; mkdir -p tmp" }
           after { system "rm -rf tmp" }

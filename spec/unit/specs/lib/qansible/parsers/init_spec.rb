@@ -31,7 +31,7 @@ module Qansible
         end
 
         context "When only verbose given" do
-          let(:opts) { p.parse([ "--verbose" ]) }
+          let(:opts) { p.parse(["--verbose"]) }
 
           it "returns verbose with true" do
             expect(opts.verbose).to eq(true)
@@ -51,7 +51,7 @@ module Qansible
         end
 
         context "When valid options given" do
-          let(:valid) { %w(--verbose --directory=foo ansible-role-default) }
+          let(:valid) { %w[--verbose --directory=foo ansible-role-default] }
           let(:opts) { p.parse(valid) }
 
           it "does not raise error" do
@@ -76,7 +76,7 @@ module Qansible
         end
 
         context "When --verbose given" do
-          let(:verbose) { %w(--verbose ansible-role-default) }
+          let(:verbose) { %w[--verbose ansible-role-default] }
 
           it "returns verbose on" do
             opts = p.parse(verbose)
@@ -91,14 +91,14 @@ module Qansible
 
         context "When --directory given" do
           it "returns option with directory" do
-            opts = p.parse([ "--directory=path/to/dir", "ansible-role-default" ])
+            opts = p.parse(["--directory=path/to/dir", "ansible-role-default"])
             expect(opts.directory).to eq(Pathname.new("path/to/dir").expand_path)
           end
         end
 
         context "When role name is the first argument" do
           it "returns correct option" do
-            opts = p.parse([ "ansible-role-default", "--directory=path/to/dir"])
+            opts = p.parse(["ansible-role-default", "--directory=path/to/dir"])
             expect(opts.role_name).to eq("ansible-role-default")
           end
         end
