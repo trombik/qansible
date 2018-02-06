@@ -6,16 +6,16 @@ gemspec
 gem "rspec", "~> 3.0"
 
 group :development do
-  gem "ruby_dep", "~> 1.3.1"
-  gem "listen", "~> 3.0.8"
   gem "guard"
   gem "guard-rake"
+  gem "listen", "~> 3.0.8"
+  gem "ruby_dep", "~> 1.3.1"
 end
 
 group :test do
-  gem "simplecov", :require => false
-  gem "coveralls", :require => false
-  gem "rubocop", "~> 0.51.0"
-  gem "rake", "~> 10.0"
   gem "bundler", "~> 1.12"
+  gem "coveralls", :require => false
+  gem "rake", "~> 10.0"
+  gem "rubocop", "~> 0.51.0"
+  gem "simplecov", :require => false
 end

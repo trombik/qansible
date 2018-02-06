@@ -7,7 +7,7 @@ module Qansible
 
       describe "#parse" do
         context "When valid options given" do
-          let(:valid) { %w(--verbose --directory=/ansible-role-foo) }
+          let(:valid) { %w[--verbose --directory=/ansible-role-foo] }
 
           it "does not raise error" do
             expect { p.parse(valid) }.not_to raise_error
@@ -41,7 +41,7 @@ module Qansible
         end
 
         context "When invalid options given" do
-          let(:invalid) { %w(--foo-bar) }
+          let(:invalid) { %w[--foo-bar] }
 
           it "raise OptionParser::InvalidOption" do
             expect { p.parse(invalid) }.to

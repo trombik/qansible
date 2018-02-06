@@ -51,7 +51,7 @@ module Qansible
         end
 
         context "When valid options given" do
-          let(:valid) { %w(--verbose --directory=foo ansible-role-default) }
+          let(:valid) { %w[--verbose --directory=foo ansible-role-default] }
           let(:opts) { p.parse(valid) }
 
           it "does not raise error" do
@@ -76,7 +76,7 @@ module Qansible
         end
 
         context "When --verbose given" do
-          let(:verbose) { %w(--verbose ansible-role-default) }
+          let(:verbose) { %w[--verbose ansible-role-default] }
 
           it "returns verbose on" do
             opts = p.parse(verbose)
