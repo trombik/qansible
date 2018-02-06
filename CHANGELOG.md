@@ -1,3 +1,7 @@
+## Release 2.3.2
+
+* b19e5f1 [bugfix] include rspec-retry (#73)
+
 ## Release 2.3.1
 
 * 1e1d446 [bugfix] fix issue #64 and #66 (#67)
