@@ -70,10 +70,9 @@ module Qansible
 
       def must_not_have_min_ansible_version_less_than_2_0
         load_yaml unless @yaml
-        if @yaml["galaxy_info"]["min_ansible_version"].to_f < 2.0
-          warn "In `%s`, min_ansible_version is %s\n" % [@path, @yaml["galaxy_info"]["min_ansible_version"]]
-          crit "In `%s`, min_ansible_version should be 2.0 or newer" % [@path]
-        end
+        return if @yaml["galaxy_info"]["min_ansible_version"].to_f >= 2.0
+        warn "In `%s`, min_ansible_version is %s\n" % [@path, @yaml["galaxy_info"]["min_ansible_version"]]
+        crit "In `%s`, min_ansible_version should be 2.0 or newer" % [@path]
       end
 
       def must_have_at_least_one_platform_supported
@@ -89,11 +88,10 @@ module Qansible
 
       def should_have_at_least_one_tag
         load_yaml unless @yaml
-        if @yaml["galaxy_info"]["galaxy_tags"].empty?
-          warnings = "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`\n" % [@path]
-          warnings += "Popular tags can be found at https://galaxy.ansible.com/list"
-          warn warnings
-        end
+        return unless @yaml["galaxy_info"]["galaxy_tags"].empty?
+        warnings = "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`\n" % [@path]
+        warnings += "Popular tags can be found at https://galaxy.ansible.com/list"
+        warn warnings
       end
     end
   end

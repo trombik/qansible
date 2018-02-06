@@ -33,24 +33,22 @@ module Qansible
 
       def should_have_idempotency_test_enabled
         @yaml ||= must_be_yaml
-        if !@yaml["provisioner"].key?("idempotency_test") || !@yaml["provisioner"]["idempotency_test"]
-          warnings = "In %s, `idempotency_test` is not set to `true` in `provisioner`. It is strongly recommended to set `idempotency_test` to true\n" % [@path]
-          warnings += "To make a unit test idempotent, see:\n"
-          warnings += "https://github.com/reallyenglish/ansible-role-example/wiki/How_Do_I#how-do-i-run-some-tasks-before-kitchen-coverage\n"
-          warn warnings
-        end
+        return if @yaml["provisioner"].key?("idempotency_test") && @yaml["provisioner"]["idempotency_test"]
+        warnings = "In %s, `idempotency_test` is not set to `true` in `provisioner`. It is strongly recommended to set `idempotency_test` to true\n" % [@path]
+        warnings += "To make a unit test idempotent, see:\n"
+        warnings += "https://github.com/reallyenglish/ansible-role-example/wiki/How_Do_I#how-do-i-run-some-tasks-before-kitchen-coverage\n"
+        warn warnings
       end
 
       def should_have_ansible_vault_password_file
         @yaml ||= must_be_yaml
-        if !@yaml["provisioner"].key?("ansible_vault_password_file") || !@yaml["provisioner"]["ansible_vault_password_file"]
-          warnings = "In %s, `ansible_vault_password_file` is not set.\n" % [@path]
-          warnings += "Even if ansible-vault is not currently used, you would need it later.\n"
-          warnings += "It does not hurt to add it now. Consider to add:\n"
-          warnings += "ansible_vault_password_file: <%%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %%>`\n"
-          warnings += "in %s.\n" % [@path]
-          warn warnings
-        end
+        return if @yaml["provisioner"].key?("ansible_vault_password_file") && @yaml["provisioner"]["ansible_vault_password_file"]
+        warnings = "In %s, `ansible_vault_password_file` is not set.\n" % [@path]
+        warnings += "Even if ansible-vault is not currently used, you would need it later.\n"
+        warnings += "It does not hurt to add it now. Consider to add:\n"
+        warnings += "ansible_vault_password_file: <%%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %%>`\n"
+        warnings += "in %s.\n" % [@path]
+        warn warnings
       end
 
       def must_have_platforms

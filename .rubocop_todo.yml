@@ -9,11 +9,6 @@
 Style/FormatStringToken:
   EnforcedStyle: unannotated
 
-# Offense count: 1
-Lint/UselessAssignment:
-  Exclude:
-    - 'exe/qansible'
-
 # Offense count: 14
 Metrics/AbcSize:
   Max: 43
@@ -35,17 +30,6 @@ Metrics/MethodLength:
 Naming/FileName:
   Enabled: false
 
-# Offense count: 1
-# Configuration parameters: NamePrefix, NamePrefixBlacklist, NameWhitelist, MethodDefinitionMacros.
-# NamePrefix: is_, has_, have_
-# NamePrefixBlacklist: is_, has_, have_
-# NameWhitelist: is_a?
-# MethodDefinitionMacros: define_method, define_singleton_method
-Naming/PredicateName:
-  Exclude:
-    - 'spec/**/*'
-    - 'lib/qansible/checks/base_check.rb'
-
 # Offense count: 6
 Style/ClassVars:
   Exclude:
@@ -54,15 +38,3 @@ Style/ClassVars:
 # Offense count: 25
 Style/Documentation:
   Enabled: false
-
-# Offense count: 20
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'lib/qansible/checks/gemfile.rb'
-    - 'lib/qansible/checks/gitignore.rb'
-    - 'lib/qansible/checks/hier.rb'
-    - 'lib/qansible/checks/jenkinsfile.rb'
-    - 'lib/qansible/checks/kitchen_local_yml.rb'
-    - 'lib/qansible/checks/kitchen_yml.rb'
-    - 'lib/qansible/checks/meta_main_yml.rb'

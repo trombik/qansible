@@ -9,10 +9,10 @@ module Qansible
 
       def check
         must_exist
-        unless should_be_identical
-          info "%s should be identical unless you need additional gems" % [@path]
-          info "Update %s with the latest Gemfile created by `qansible init`" % [@path]
-        end
+        return unless should_be_identical
+        msg = "%s should be identical unless you need additional gems. "\
+          "Update %s with the latest Gemfile created by `qansible init`" % [@path, @path]
+        info msg
       end
     end
   end
