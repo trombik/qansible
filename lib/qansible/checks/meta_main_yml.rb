@@ -25,9 +25,7 @@ module Qansible
 
       def must_have_galaxy_info
         load_yaml unless @yaml
-        unless @yaml.key?("galaxy_info")
-          crit "In `%s`, top level key `galaxy_info` must exist"
-        end
+        crit "In `%s`, top level key `galaxy_info` must exist" unless @yaml.key?("galaxy_info")
       end
 
       def must_have_mandatory_keys_in_galaxy_info
@@ -46,15 +44,15 @@ module Qansible
           not_found << k unless @yaml["galaxy_info"].key?(k)
         end
         unless not_found.empty?
-          warnings = "In `%s`, these keys must exist\n" % [ @path ]
+          warnings = "In `%s`, these keys must exist\n" % [@path]
           mandatory_keys.each do |k|
-            warnings += "%s\n" % [ k ]
+            warnings += "%s\n" % [k]
           end
           not_found.sort.each do |k|
-            warnings += "Missing key: %s\n" % [ k ]
+            warnings += "Missing key: %s\n" % [k]
           end
           warn warnings
-          crit "In `%s`, mandatory keys %s does not exist" % [ @path, not_found.join(", ") ]
+          crit "In `%s`, mandatory keys %s does not exist" % [@path, not_found.join(", ")]
         end
         true
       end
@@ -62,47 +60,37 @@ module Qansible
       def should_not_have_default_description
         load_yaml unless @yaml
         default_description = "Configures something"
-        if @yaml["galaxy_info"]["description"] =~ /#{ default_description }/
-          warn "In `%s`, description should describe the role, rather than the default. Add description in %s" % [ @path, @path ]
-        end
+        warn "In `%s`, description should describe the role, rather than the default. Add description in %s" % [@path, @path] if @yaml["galaxy_info"]["description"] =~ /#{ default_description }/
       end
 
       def must_not_have_categories
         load_yaml unless @yaml
-        if @yaml["galaxy_info"].key?("categories")
-          crit "In `%s`, `galaxy_info` must not have obsolete `categories` as a key. Use `tags` instead" % [ @path ]
-        end
+        crit "In `%s`, `galaxy_info` must not have obsolete `categories` as a key. Use `tags` instead" % [@path] if @yaml["galaxy_info"].key?("categories")
       end
 
       def must_not_have_min_ansible_version_less_than_2_0
         load_yaml unless @yaml
         if @yaml["galaxy_info"]["min_ansible_version"].to_f < 2.0
-          warn "In `%s`, min_ansible_version is %s\n" % [ @path, @yaml["galaxy_info"]["min_ansible_version"] ]
-          crit "In `%s`, min_ansible_version should be 2.0 or newer" % [ @path ]
+          warn "In `%s`, min_ansible_version is %s\n" % [@path, @yaml["galaxy_info"]["min_ansible_version"]]
+          crit "In `%s`, min_ansible_version should be 2.0 or newer" % [@path]
         end
       end
 
       def must_have_at_least_one_platform_supported
         load_yaml unless @yaml
-        if @yaml["galaxy_info"]["platforms"].nil?
-          crit "In `%s`, `platforms` must have at least one supported platform" % [ @path ]
-        end
-        if @yaml["galaxy_info"]["platforms"].empty?
-          crit "In `%s`, `platforms` must have at least one supported platform" % [ @path ]
-        end
+        crit "In `%s`, `platforms` must have at least one supported platform" % [@path] if @yaml["galaxy_info"]["platforms"].nil?
+        crit "In `%s`, `platforms` must have at least one supported platform" % [@path] if @yaml["galaxy_info"]["platforms"].empty?
       end
 
       def must_have_array_of_galaxy_tags
         load_yaml unless @yaml
-        unless @yaml["galaxy_info"]["galaxy_tags"].is_a?(Array)
-          crit "In `%s`, `galaxy_tags` must be an array" % [ @path ]
-        end
+        crit "In `%s`, `galaxy_tags` must be an array" % [@path] unless @yaml["galaxy_info"]["galaxy_tags"].is_a?(Array)
       end
 
       def should_have_at_least_one_tag
         load_yaml unless @yaml
         if @yaml["galaxy_info"]["galaxy_tags"].empty?
-          warnings = "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`\n" % [ @path ]
+          warnings = "In `%s`, `galaxy_tags` should have at least one tag. Add a `galaxy_tags`\n" % [@path]
           warnings += "Popular tags can be found at https://galaxy.ansible.com/list"
           warn warnings
         end

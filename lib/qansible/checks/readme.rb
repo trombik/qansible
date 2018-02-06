@@ -29,7 +29,7 @@ module Qansible
         end
         unless line_numbers.empty?
           line_numbers.each do |l|
-            warn "In %s, at line number %d, `--` is used as heading. use `#` instead" % [ @path, l ]
+            warn "In %s, at line number %d, `--` is used as heading. use `#` instead" % [@path, l]
           end
         end
         !line_numbers.empty?
@@ -44,7 +44,7 @@ module Qansible
         end
         unless line_numbers.empty?
           line_numbers.each do |l|
-            warn "In %s, at line number %d, `--` is used as heading. use `#` instead" % [ @path, l ]
+            warn "In %s, at line number %d, `--` is used as heading. use `#` instead" % [@path, l]
           end
         end
         !line_numbers.empty?
@@ -61,14 +61,14 @@ module Qansible
         unless not_found_sections.empty?
           warnings = "Required sections are:\n"
           @required_sections.sort.each do |s|
-            warnings += "%s\n" % [ s ]
+            warnings += "%s\n" % [s]
           end
           warnings += "Missing sections are:\n"
           not_found_sections.sort.each do |s|
-            warnings += "%s\n" % [ s ]
+            warnings += "%s\n" % [s]
           end
           warn warnings
-          crit "In %s, not all required sections were found." % [ @path ]
+          crit "In %s, not all required sections were found." % [@path]
         end
         !not_found_sections.empty?
       end
@@ -79,14 +79,12 @@ module Qansible
           f.each_line do |line|
             next unless line =~ /^##+\s+(.*)/
             name = Regexp.last_match[1]
-            if @required_sections.include?(name)
-              warnings << { lineno: f.lineno, name: name }
-            end
+            warnings << { lineno: f.lineno, name: name } if @required_sections.include?(name)
           end
         end
         unless warnings.empty?
           warnings.each do |w|
-            warn "In %s, at line number %d, required section `%s` is found in second level section. use `# %s` instead." % [ @path, w[:lineno], w[:name], w[:name] ]
+            warn "In %s, at line number %d, required section `%s` is found in second level section. use `# %s` instead." % [@path, w[:lineno], w[:name], w[:name]]
           end
         end
         !warnings.empty?

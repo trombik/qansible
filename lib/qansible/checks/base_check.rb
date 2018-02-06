@@ -36,32 +36,32 @@ module Qansible
       attr_reader :self, :number_of_warnings, :path
 
       def initialize(opts = {})
-        raise ArgumentError, "BUG: child class passed `%s`, instead of Hash" % [ opts.class ] unless opts.is_a?(Hash)
+        raise ArgumentError, "BUG: child class passed `%s`, instead of Hash" % [opts.class] unless opts.is_a?(Hash)
         valid_options = [
           :path
         ]
         opts.each_key do |k|
-          raise ArgumentError, "BUG: child class passed invalid option %s" % [ k ] unless valid_options.include?(k)
+          raise ArgumentError, "BUG: child class passed invalid option %s" % [k] unless valid_options.include?(k)
         end
         @number_of_warnings = 0
         @path = opts[:path].is_a?(Pathname) ? opts[:path] : Pathname.new(opts[:path]) if opts[:path]
       end
 
       def must_exist
-        debug "%s Checking file `%s`, which must exist" % [ self.class.name, @path ]
+        debug "%s Checking file `%s`, which must exist" % [self.class.name, @path]
         result = File.exist?(@@root + @path)
-        raise FileNotFound, "File `%s` must exist but not found" % [ @@root + @path ] unless result
+        raise FileNotFound, "File `%s` must exist but not found" % [@@root + @path] unless result
       end
 
       def should_exist
-        debug "%s Checking file `%s`, which should exist" % [ self.class.name, @path ]
+        debug "%s Checking file `%s`, which should exist" % [self.class.name, @path]
         result = File.exist?(@@root + @path)
-        warn "File `%s` should exist but not found" % [ @path ] unless result
+        warn "File `%s` should exist but not found" % [@path] unless result
         result
       end
 
       def must_be_yaml
-        debug "%s Checking file `%s`, which should be a valid YAML" % [ self.class.name, @path ]
+        debug "%s Checking file `%s`, which should be a valid YAML" % [self.class.name, @path]
         hash = {}
         begin
           hash = YAML.load_file(@@root.join(@path.to_s))
@@ -72,7 +72,7 @@ module Qansible
       end
 
       def read_file
-        debug "%s Loading file `%s` for read" % [ self.class.name, @path ]
+        debug "%s Loading file `%s` for read" % [self.class.name, @path]
         File.read(@@root.join(@path).to_s)
       end
 
@@ -106,7 +106,7 @@ module Qansible
       end
 
       def crit(text)
-        msg = "[crit] %s" % [ text ]
+        msg = "[crit] %s" % [text]
         msg = colorize(msg, "light red", "black")
         Kernel.warn(msg) unless ENV["QANSIBLE_SILENT"]
         exit 1
@@ -152,20 +152,20 @@ module Qansible
           "light cyan" => "106",
           "white" => "107"
         }
-        raise "colorize: unknown color: %s" % [ color ] unless colors.key?(color)
+        raise "colorize: unknown color: %s" % [color] unless colors.key?(color)
         color_code = colors[color]
-        raise "colorize: unknown bgcolor: %s" % [ bgcolor ] unless colors.key?(bgcolor)
+        raise "colorize: unknown bgcolor: %s" % [bgcolor] unless colors.key?(bgcolor)
         bgcolor_code = bgcolors[bgcolor]
         "\033[#{bgcolor_code};#{color_code}m#{text}\033[0m"
       end
 
       def should_be_identical
-        debug "%s Checking file `%s`, which should be identical" % [ self.class.name, @path ]
+        debug "%s Checking file `%s`, which should be identical" % [self.class.name, @path]
         check_is_identical(action: :warn)
       end
 
       def must_be_identical
-        debug "%s Checking file `%s`, which must be identical" % [ self.class.name, @path ]
+        debug "%s Checking file `%s`, which must be identical" % [self.class.name, @path]
         check_is_identical(action: :crit)
       end
 
@@ -183,11 +183,11 @@ module Qansible
         unless is_same
           case opts[:action]
           when :warn
-            warn("File, %s is not identical\n%s" % [ @path, text ])
+            warn("File, %s is not identical\n%s" % [@path, text])
           when :crit
-            crit("File, %s is not identical\n%s" % [ @path, text ])
+            crit("File, %s is not identical\n%s" % [@path, text])
           else
-            raise ArgumentError, "unknown action %s" % [ opts[:action] ]
+            raise ArgumentError, "unknown action %s" % [opts[:action]]
           end
         end
         is_same
@@ -222,7 +222,7 @@ module Qansible
           end
         end
 
-        [ result, text ]
+        [result, text]
       end
     end
   end

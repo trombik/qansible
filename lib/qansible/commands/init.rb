@@ -31,14 +31,10 @@ module Qansible
 
       def validate_role_name(name)
         raise InvalidRoleName, "No role name given" unless name
-        unless name =~ /^ansible-role-/
-          raise InvalidRoleName, "Invalid role name `%s` given. Role name mus start with `ansible-role`" % [ name ]
-        end
+        raise InvalidRoleName, "Invalid role name `%s` given. Role name mus start with `ansible-role`" % [name] unless name =~ /^ansible-role-/
 
         valid_regex = /^[a-zA-Z0-9\-_]+$/
-        unless name.match(valid_regex)
-          raise InvalidRoleName, "Invalid role name `%s` given. role name must match %s" % [ name, valid_regex.to_s ]
-        end
+        raise InvalidRoleName, "Invalid role name `%s` given. role name must match %s" % [name, valid_regex.to_s] unless name.match(valid_regex)
         true
       end
 
@@ -51,9 +47,7 @@ module Qansible
       end
 
       def run
-        if File.exist?(dest_directory)
-          raise RoleExist, "Directory `%s` already exists" % [ dest_directory ]
-        end
+        raise RoleExist, "Directory `%s` already exists" % [dest_directory] if File.exist?(dest_directory)
         Dir.mkdir(dest_directory)
         Dir.chdir(dest_directory) do
           FileUtils.cp_r "#{templates_directory}/.", "."
@@ -85,7 +79,7 @@ module Qansible
       end
 
       def show_advice
-        info "Successfully created `%s`" % [ @options.role_name ]
+        info "Successfully created `%s`" % [@options.role_name]
         info "You need to run bundle install."
       end
     end

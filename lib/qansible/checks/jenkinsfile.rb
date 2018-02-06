@@ -7,9 +7,7 @@ module Qansible
 
       def check
         must_exist
-        unless should_be_identical
-          notice "You may ignore warnings if integration test stage is uncommented"
-        end
+        notice "You may ignore warnings if integration test stage is uncommented" unless should_be_identical
       end
     end
   end

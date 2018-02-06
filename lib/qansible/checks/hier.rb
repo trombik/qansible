@@ -23,9 +23,7 @@ module Qansible
         raise_at_end = true unless must_have_keepme_in_all_directories
         raise_at_end = true unless must_not_have_test
 
-        if raise_at_end
-          crit "The directory structure does not conform to the hier"
-        end
+        crit "The directory structure does not conform to the hier" if raise_at_end
       end
 
       def must_have_all_directories
@@ -34,8 +32,8 @@ module Qansible
           not_found << d unless File.directory?(@@root + d)
         end
         unless not_found.empty?
-          warn "mkdir %s" % [ not_found.sort.join(" ") ]
-          warn "touch %s" % [ not_found.sort.map { |d| d + ".keepme" }.join(" ") ]
+          warn "mkdir %s" % [not_found.sort.join(" ")]
+          warn "touch %s" % [not_found.sort.map { |d| d + ".keepme" }.join(" ")]
         end
         not_found.empty?
       end
@@ -46,14 +44,12 @@ module Qansible
           keepme = @@root + d + ".keepme"
           not_found << keepme unless File.file?(keepme)
         end
-        warn "touch %s" % [ not_found.sort.join(" ") ] unless not_found.empty?
+        warn "touch %s" % [not_found.sort.join(" ")] unless not_found.empty?
         not_found.empty?
       end
 
       def must_not_have_test
-        if File.directory?(@@root + "test")
-          warn "Directory `%s` must not exist" % [ @@root + "test" ]
-        end
+        warn "Directory `%s` must not exist" % [@@root + "test"] if File.directory?(@@root + "test")
         !File.directory?(@@root + "test")
       end
     end

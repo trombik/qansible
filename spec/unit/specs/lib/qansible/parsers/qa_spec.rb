@@ -44,7 +44,7 @@ module Qansible
           let(:invalid) { %w[--foo-bar] }
 
           it "raise OptionParser::InvalidOption" do
-            expect { p.parse([ "--foo-bar" ]) }
+            expect { p.parse(["--foo-bar"]) }
               .to raise_error(OptionParser::InvalidOption)
           end
         end

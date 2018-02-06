@@ -6,9 +6,7 @@ module Qansible
       end
 
       def check
-        unless should_exist
-          warn "%s is an optional file that overrides .kitchen.yml. It is recommened to create one so that you can use a proxy to make tests faster" % [ @path ]
-        end
+        warn "%s is an optional file that overrides .kitchen.yml. It is recommened to create one so that you can use a proxy to make tests faster" % [@path] unless should_exist
       end
     end
   end

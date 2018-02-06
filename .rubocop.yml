@@ -18,9 +18,6 @@ AllCops:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-Layout/SpaceInsideBrackets:
-  Enabled: false
-
 Style/FormatString:
   Enabled: false
 

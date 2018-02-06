@@ -34,14 +34,14 @@ module Qansible
 
       def create_reference_tree(dir)
         Dir.chdir(dir) do
-          command = "qansible init --quiet --directory=%s %s" % [ dir, Shellwords.escape(@options.role_name) ]
+          command = "qansible init --quiet --directory=%s %s" % [dir, Shellwords.escape(@options.role_name)]
           Open3.popen3(command) do |_stdin, stdout, stderr, process|
             status = process.value.exitstatus
             if status.nonzero?
-              warn "cannot run command: %s" % [ command ]
-              warn "status: %s" % [ status ]
-              warn "stdout: %s" % [ stdout.read ]
-              warn "stderr: %s" % [ stderr.read ]
+              warn "cannot run command: %s" % [command]
+              warn "status: %s" % [status]
+              warn "stdout: %s" % [stdout.read]
+              warn "stderr: %s" % [stderr.read]
               exit 1
             end
           end
@@ -64,17 +64,17 @@ module Qansible
               warnings += instance.number_of_warnings
             end
           rescue StandardError => e
-            error "The check ended with exception `%s`" % [ e ]
+            error "The check ended with exception `%s`" % [e]
             error e.message
             error e.backtrace if @options[:verbose]
             @failed = true
           end
 
           if @failed
-            error "Number of warnings: %d" % [ warnings ]
+            error "Number of warnings: %d" % [warnings]
             exit 1
           else
-            info "Number of warnings: %d" % [ warnings ]
+            info "Number of warnings: %d" % [warnings]
             info "Successfully finished."
           end
         end

@@ -6,7 +6,7 @@ fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
 task default: :spec
 
 desc "Run tests"
-task spec: [ "clean", "spec:test", "spec:rubocop" ]
+task spec: ["clean", "spec:test", "spec:rubocop"]
 
 namespace :spec do
   RSpec::Core::RakeTask.new("test") do |task|

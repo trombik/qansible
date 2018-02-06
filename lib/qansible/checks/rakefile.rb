@@ -21,12 +21,10 @@ module Qansible
             case status
             when 0
               stdout.each_line do |line|
-                if line.split("#").first !~ /^rake\s+test\b/
-                  crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [ @path ]
-                end
+                crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [@path] if line.split("#").first !~ /^rake\s+test\b/
               end
             else
-              crit "command `%s` failed: status: %d stdout: %s stderr: %s" % [ command, status, stdout.read, stderr.read ]
+              crit "command `%s` failed: status: %d stdout: %s stderr: %s" % [command, status, stdout.read, stderr.read]
             end
           end
         end

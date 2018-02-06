@@ -22,8 +22,8 @@ module Qansible
           next unless yaml
           yaml.each do |task|
             next unless task.key?("template") && !task["template"].key?("validate")
-            warnings = "In %s, the following template task does not have validate. Consider validating the file\n" % [ file ]
-            warnings += "%s\n" % [ task.to_yaml ]
+            warnings = "In %s, the following template task does not have validate. Consider validating the file\n" % [file]
+            warnings += "%s\n" % [task.to_yaml]
             warn warnings
           end
         end
@@ -49,8 +49,8 @@ module Qansible
               if (task.keys & exceptions).any?
                 # adding name to these modules has little point
               else
-                warnings = "In %s, the following task does not have `name`. Consider adding `name`\n" % [ file ]
-                warnings += "%s\n" % [ task.to_yaml ]
+                warnings = "In %s, the following task does not have `name`. Consider adding `name`\n" % [file]
+                warnings += "%s\n" % [task.to_yaml]
                 warn warnings
               end
             end
@@ -63,9 +63,7 @@ module Qansible
           yaml = @task_yaml_content[file]
           next unless yaml
           yaml.each do |task|
-            if task.key?("name") && task["name"].match(/^[a-z]/)
-              warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [ file, task["name"] ]
-            end
+            warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [file, task["name"]] if task.key?("name") && task["name"].match(/^[a-z]/)
           end
         end
       end
@@ -91,9 +89,9 @@ module Qansible
             if verbs.any? { |v| v == verb }
               # the name starts with one of the verbs
             else
-              warnings = "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:\n" % [ file, task["name"], verb ]
+              warnings = "In %s, task name `%s` start with `%s` which is not one of recommended verbs. Consider using one of:\n" % [file, task["name"], verb]
               verbs.sort.each do |v|
-                warnings += "%s\n" % [ v ]
+                warnings += "%s\n" % [v]
               end
               warnings += "The verb should be present tense and participle."
               warn warnings

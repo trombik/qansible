@@ -9,11 +9,6 @@
 Style/FormatStringToken:
   EnforcedStyle: unannotated
 
-# Offense count: 2
-Lint/FormatParameterMismatch:
-  Exclude:
-    - 'lib/qansible/checks/kitchen_yml.rb'
-
 # Offense count: 1
 Lint/UselessAssignment:
   Exclude:
@@ -71,11 +66,3 @@ Style/GuardClause:
     - 'lib/qansible/checks/kitchen_local_yml.rb'
     - 'lib/qansible/checks/kitchen_yml.rb'
     - 'lib/qansible/checks/meta_main_yml.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, AllowInnerSlashes.
-# SupportedStyles: slashes, percent_r, mixed
-Style/RegexpLiteral:
-  Exclude:
-    - 'lib/qansible/checks/kitchen_yml.rb'

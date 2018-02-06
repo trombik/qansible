@@ -16,9 +16,9 @@ def main
     option = Qansible::Parser::QA.parse ARGV
     runner = Qansible::Command::QA.new(option)
   when "--help"
-    puts "Usage: %s COMMAND [OPTIONS]" % [ program ]
-    puts "%s COMMAND [OPTIONS]" % [ program ]
-    puts "%s COMMAND --help" % [ program ]
+    puts "Usage: %s COMMAND [OPTIONS]" % [program]
+    puts "%s COMMAND [OPTIONS]" % [program]
+    puts "%s COMMAND --help" % [program]
     puts ""
     puts "Available commands:"
     puts "  qa"
@@ -32,7 +32,7 @@ def main
     puts "init"
     exit
   else
-    puts "unknown command `%s`" % [ command ]
+    puts "unknown command `%s`" % [command]
     exit 1
   end
 

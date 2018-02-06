@@ -24,9 +24,7 @@ module Qansible
           end
         end
         not_found = ignores - found
-        unless not_found.empty?
-          warn "In `%s`,  the following items should be ignored: `%s` but not all items are ignored: `%s`" % [ @path, ignores.to_s, not_found.to_s ]
-        end
+        warn "In `%s`,  the following items should be ignored: `%s` but not all items are ignored: `%s`" % [@path, ignores.to_s, not_found.to_s] unless not_found.empty?
       end
     end
   end
