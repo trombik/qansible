@@ -40,14 +40,14 @@ module Qansible
         warn warnings
       end
 
-      def should_have_ansible_vault_password_file
+      def should_not_have_ansible_vault_password_file
         @yaml ||= must_be_yaml
-        return if @yaml["provisioner"].key?("ansible_vault_password_file") && @yaml["provisioner"]["ansible_vault_password_file"]
-        warnings = "In %s, `ansible_vault_password_file` is not set.\n" % [@path]
-        warnings += "Even if ansible-vault is not currently used, you would need it later.\n"
-        warnings += "It does not hurt to add it now. Consider to add:\n"
-        warnings += "ansible_vault_password_file: <%%= File.expand_path(ENV['ANSIBLE_VAULT_PASSWORD_FILE'] || '') %%>`\n"
-        warnings += "in %s.\n" % [@path]
+        return unless @yaml["provisioner"].key?("ansible_vault_password_file")
+        warnings = "In %s, `ansible_vault_password_file` is set.\n" % [@path]
+        warnings += "ansible_vault_password_file is rarely used in public roles.\n"
+        warnings += "If ansible_vault_password_file is used in a public roles, "
+        warnings += "others without the encryption key cannot test it.\n"
+        warnings += "Use it only when encryption is used in the role."
         warn warnings
       end
 

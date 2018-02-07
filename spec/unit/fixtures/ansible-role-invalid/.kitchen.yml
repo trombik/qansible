@@ -4,6 +4,7 @@ transport:
 
 provisioner:
   idempotency_test: false
+  ansible_vault_password_file: foo
 
 platforms:
   - name: ansible-freebsd-10.3-amd64
