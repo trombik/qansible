@@ -1,3 +1,7 @@
+## Release 2.4.2
+
+* d41bd78 [bugfix] update Rakefile for integration tests (#80)
+
 ## Release 2.4.1
 
 * a57c2f8 [bugfix] add AllowSymlinksInCacheRootDirectory (#78)
