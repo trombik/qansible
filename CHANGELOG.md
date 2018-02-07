@@ -1,3 +1,8 @@
+## Release 2.4.0
+
+* 80f527b [feature] warn if ansible_vault_password_file is used (#76)
+* 2976c43 [bugfix] QA (#75)
+
 ## Release 2.3.2
 
 * b19e5f1 [bugfix] include rspec-retry (#73)
