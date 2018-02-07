@@ -41,10 +41,10 @@ module Qansible
           end
         end
 
-        describe ".should_have_ansible_vault_password_file" do
+        describe ".should_not_have_ansible_vault_password_file" do
           it "warns" do
             expect(instance).to receive(:warn).at_least(:once)
-            instance.should_have_ansible_vault_password_file
+            instance.should_not_have_ansible_vault_password_file
           end
         end
 
