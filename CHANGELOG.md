@@ -1,3 +1,7 @@
+## Release 2.4.1
+
+* a57c2f8 [bugfix] add AllowSymlinksInCacheRootDirectory (#78)
+
 ## Release 2.4.0
 
 * 80f527b [feature] warn if ansible_vault_password_file is used (#76)
