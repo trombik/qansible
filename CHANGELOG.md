@@ -1,3 +1,7 @@
+## Release 2.5.1
+
+* bump VERSION, no functionality changes
+
 ## Release 2.5.0
 
 * 6ede855 [feature] enable cache and update ruby 2.3 (#87)
