@@ -1,3 +1,7 @@
+## Release 2.5.0
+
+* 6ede855 [feature] enable cache and update ruby 2.3 (#87)
+
 ## Release 2.4.2
 
 * d41bd78 [bugfix] update Rakefile for integration tests (#80)
