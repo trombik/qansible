@@ -1,3 +1,7 @@
+## Release 2.5.2
+
+* a364c1c [bugfix] update kitchen-ansible in Gemfile (#91)
+
 ## Release 2.5.1
 
 * bump VERSION, no functionality changes
