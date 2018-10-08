@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Qansible
   class Check
     class KitchenYml < Qansible::Check::Base
@@ -34,6 +36,7 @@ module Qansible
       def should_have_idempotency_test_enabled
         @yaml ||= must_be_yaml
         return if @yaml["provisioner"].key?("idempotency_test") && @yaml["provisioner"]["idempotency_test"]
+
         warnings = "In %s, `idempotency_test` is not set to `true` in `provisioner`. It is strongly recommended to set `idempotency_test` to true\n" % [@path]
         warnings += "To make a unit test idempotent, see:\n"
         warnings += "https://github.com/reallyenglish/ansible-role-example/wiki/How_Do_I#how-do-i-run-some-tasks-before-kitchen-coverage\n"
@@ -43,6 +46,7 @@ module Qansible
       def should_not_have_ansible_vault_password_file
         @yaml ||= must_be_yaml
         return unless @yaml["provisioner"].key?("ansible_vault_password_file")
+
         warnings = "In %s, `ansible_vault_password_file` is set.\n" % [@path]
         warnings += "ansible_vault_password_file is rarely used in public roles.\n"
         warnings += "If ansible_vault_password_file is used in a public roles, "
@@ -87,7 +91,7 @@ module Qansible
       def should_not_have_platforms_with_name_start_with_ansible
         @yaml ||= must_be_yaml
         @yaml["platforms"].each do |platform|
-          if platform["name"] =~ /^ansible-/
+          if /^ansible-/.match?(platform["name"])
             warn "In %s, platform `%s` has `ansible-` prefix. The prefix is redundant and it just makes typing harder. Consider removing it" % [@path, platform["name"]]
           end
         end

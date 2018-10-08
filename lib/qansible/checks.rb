@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "qansible/checks/base_check"
 require "qansible/checks/gitignore"
 require "qansible/checks/hier"

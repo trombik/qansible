@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Qansible
   class Check
     class Tasks < Qansible::Check::Base
@@ -20,8 +22,10 @@ module Qansible
         @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
+
           yaml.each do |task|
             next unless task.key?("template") && !task["template"].key?("validate")
+
             warnings = "In %s, the following template task does not have validate. Consider validating the file\n" % [file]
             warnings += "%s\n" % [task.to_yaml]
             warn warnings
@@ -44,6 +48,7 @@ module Qansible
         @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
+
           yaml.each do |task|
             unless task.key?("name")
               if (task.keys & exceptions).any?
@@ -62,6 +67,7 @@ module Qansible
         @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
+
           yaml.each do |task|
             warn "In %s, task name `%s` does not start with a Capital. Replace the first character with [A-Z]." % [file, task["name"]] if task.key?("name") && task["name"].match(/^[a-z]/)
           end
@@ -83,8 +89,10 @@ module Qansible
         @task_yaml_content.each_key do |file|
           yaml = @task_yaml_content[file]
           next unless yaml
+
           yaml.each do |task|
             next unless task.key?("name")
+
             verb = task["name"].split(" ").first.downcase
             if verbs.any? { |v| v == verb }
               # the name starts with one of the verbs

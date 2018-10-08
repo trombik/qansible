@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "logger"
 
 module Qansible
@@ -52,6 +54,7 @@ module Qansible
 
       def colorize(text, color = "default", bgcolor = "default")
         return text unless tty?
+
         colors = {
           "default" => "38",
           "black" => "30",
@@ -91,8 +94,10 @@ module Qansible
           "white" => "107"
         }
         raise "colorize: unknown color: %s" % [color] unless colors.key?(color)
+
         color_code = colors[color]
         raise "colorize: unknown bgcolor: %s" % [bgcolor] unless colors.key?(bgcolor)
+
         bgcolor_code = bgcolors[bgcolor]
         "\033[#{bgcolor_code};#{color_code}m#{text}\033[0m"
       end

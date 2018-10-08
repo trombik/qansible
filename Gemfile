@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Specify your gem"s dependencies in qansible_qa.gemspec
@@ -16,6 +18,6 @@ group :test do
   gem "bundler", "~> 1.12"
   gem "coveralls", require: false
   gem "rake", "~> 10.0"
-  gem "rubocop", "~> 0.52.1"
+  gem "rubocop", "~> 0.59"
   gem "simplecov", require: false
 end

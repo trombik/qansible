@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "pathname"
 
 module Qansible
@@ -10,6 +12,7 @@ module Qansible
       def check
         must_exist
         return unless should_be_identical
+
         msg = "%s should be identical unless you need additional gems. "\
           "Update %s with the latest Gemfile created by `qansible init`" % [@path, @path]
         info msg

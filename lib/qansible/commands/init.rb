@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "shellwords"
 require "fileutils"
 
@@ -35,6 +37,7 @@ module Qansible
 
         valid_regex = /^[a-zA-Z0-9\-_]+$/
         raise InvalidRoleName, "Invalid role name `%s` given. role name must match %s" % [name, valid_regex.to_s] unless name.match(valid_regex)
+
         true
       end
 
@@ -48,6 +51,7 @@ module Qansible
 
       def run
         raise RoleExist, "Directory `%s` already exists" % [dest_directory] if File.exist?(dest_directory)
+
         Dir.mkdir(dest_directory)
         Dir.chdir(dest_directory) do
           FileUtils.cp_r "#{templates_directory}/.", "."
@@ -56,6 +60,7 @@ module Qansible
           FileUtils.mv "rubocop.yml", ".rubocop.yml"
           Pathname.pwd.find do |file|
             next unless file.file?
+
             content = File.read(file)
             content.gsub!("CHANGEME", @options.role_name.gsub("ansible-role-", ""))
             content.gsub!("YYYY", this_year)
