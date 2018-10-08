@@ -113,7 +113,8 @@ module Qansible
         end
       end
 
-      def _parse_box(text)
+      def _parse_box(box)
+        text = box.dup
         text.gsub!(%r{/ansible-}, "/") if text.split("/").last =~ /^ansible-/
         (platform, platform_version, arch) = text.split("/").last.split("-")
         user = text.split("/").first
