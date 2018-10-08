@@ -1,3 +1,7 @@
+## Release 2.5.4
+
+* 2002e68 bugfix: Illformed requirement
+
 ## Release 2.5.3
 
 * 4a4d090 bugfix: update kitchen-vagrant and rubocop
