@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "qansible/checks"
 require "shellwords"
 require "tmpdir"

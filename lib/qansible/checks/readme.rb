@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Qansible
   class Check
     class README < Qansible::Check::Base
@@ -78,6 +80,7 @@ module Qansible
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
             next unless line =~ /^##+\s+(.*)/
+
             name = Regexp.last_match[1]
             warnings << { lineno: f.lineno, name: name } if @required_sections.include?(name)
           end

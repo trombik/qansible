@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Qansible
   class Check
     class Rubocop < Qansible::Check::Base
