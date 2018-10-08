@@ -1,3 +1,9 @@
+## Release 2.5.5
+
+* 21db2e3 update ruby version in travis
+* c30227c bugfix: update rubocop and QA
+* 6992510 bugfix: make Rakefile rubocop-compliant
+
 ## Release 2.5.4
 
 * 2002e68 bugfix: Illformed requirement
