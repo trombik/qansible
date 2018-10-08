@@ -1,3 +1,8 @@
+## Release 2.5.3
+
+* 4a4d090 bugfix: update kitchen-vagrant and rubocop
+* 9f8467e bugfix: check role_name in meta/main.yml
+
 ## Release 2.5.2
 
 * a364c1c [bugfix] update kitchen-ansible in Gemfile (#91)
