@@ -1,3 +1,7 @@
+## Release 2.5.6
+
+* 9cb187d bugfix: remove role_name
+
 ## Release 2.5.5
 
 * 21db2e3 update ruby version in travis
