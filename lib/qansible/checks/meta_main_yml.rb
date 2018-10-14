@@ -40,7 +40,6 @@ module Qansible
           license
           min_ansible_version
           platforms
-          role_name
         ]
         not_found = []
         mandatory_keys.each do |k|
