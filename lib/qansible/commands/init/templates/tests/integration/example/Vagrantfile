@@ -18,7 +18,7 @@ end
 
 # @return [Integer] default listening port
 def local_port
-  ENV["VAGRANT_PROXY_PORT"] ? ENV["VAGRANT_PROXY_PORT"] : 8080
+  ENV["VAGRANT_PROXY_PORT"] || 8080
 end
 
 # @return [String] the proxy URL
