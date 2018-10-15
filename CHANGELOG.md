@@ -1,3 +1,7 @@
+## Release 2.5.7
+
+* 0a490e8 bugfix: QA
+
 ## Release 2.5.6
 
 * 9cb187d bugfix: remove role_name
