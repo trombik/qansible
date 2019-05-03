@@ -1,6 +1,6 @@
 ---
 language: python
-python: "2.7"
+python: "3.6"
 
 # Use the new container infrastructure
 sudo: false
@@ -11,12 +11,6 @@ addons:
     packages:
     - python-pip
     - curl
-
-cache:
-  directories:
-    - $HOME/.rvm/
-    - $HOME/.bundler/
-    - $HOME/.cache/pip/
 
 install:
   # Install ansible
@@ -46,8 +40,8 @@ script:
   - "if [ ! -f .private_repo ]; then ansible-playbook tests/travisci/tests.yml -i tests/travisci/inventory --syntax-check; fi"
 
   # use recent ruby, instead of default ruby 1.9
-  - rvm install 2.3
-  - rvm use 2.3
+  - rvm install 2.5.1
+  - rvm use 2.5.1
 
   # download the QA scripts
   - git clone https://github.com/trombik/qansible.git
@@ -56,7 +50,7 @@ script:
   - ( cd qansible && git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) )
 
   # install it
-  - ( cd qansible && bundle install --path ${HOME}/.bundler --with "test" && bundle exec rake build && gem install pkg/*.gem )
+  - ( cd qansible && bundle install --path vendor/bundle --with "test" && bundle exec rake build && gem install pkg/*.gem )
   - rm -rf qansible
 
   # git complains if user and email are not set
@@ -70,7 +64,7 @@ script:
   - export PATH="${PATH}:`rvm gemdir`/bin"
 
   # bundle up because rubocop is installed via Gemfile
-  - bundle install --path ${HOME}/.bundler
+  - bundle install --path vendor/bundle
 
   # run rubocop
   - bundle exec rubocop
