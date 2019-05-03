@@ -12,7 +12,6 @@ module Qansible
 
         ignores = [
           ".bundle/",
-          "Gemfile.lock",
           "/.kitchen/",
           ".kitchen.local.yml",
           "*.swp",
