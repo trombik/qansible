@@ -15,9 +15,9 @@ group :development do
 end
 
 group :test do
-  gem "bundler", "~> 1.12"
+  gem "bundler"
   gem "coveralls", require: false
-  gem "rake", "~> 10.0"
+  gem "rake"
   gem "rubocop", "~> 0.59"
   gem "simplecov", require: false
 end
