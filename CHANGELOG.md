@@ -1,3 +1,11 @@
+## Release 2.5.8
+
+* b0298c7 bugfix: after bafe8ad, Gemfile.lock should not be ignored
+* 7563118 bugfix: update Gemfile
+* 9f9821a bugfix: update .travisci to upgrade bundler
+* db35dd2 bugfix: use cache in travisci
+* fcac319 bugfix: update templates
+
 ## Release 2.5.7
 
 * 0a490e8 bugfix: QA
