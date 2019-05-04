@@ -9,8 +9,8 @@ sudo: false
 addons:
   apt:
     packages:
-    - python-pip
-    - curl
+      - python-pip
+      - curl
 cache:
   directories:
     - $HOME/.rvm/
@@ -19,7 +19,7 @@ cache:
 
 install:
   # Install ansible
-  - pip install ansible
+  - pip install ansible yamllint
 
   # Check ansible version
   - ansible --version
@@ -73,6 +73,9 @@ script:
 
   # run rubocop
   - bundle exec rubocop
+
+  # run yamllint
+  - yamllint -c .yamllint.yml .
 
   # run the QA test
   - qansible qa
