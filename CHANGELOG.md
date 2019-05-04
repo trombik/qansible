@@ -1,3 +1,7 @@
+## Release 2.6.0
+
+* 93c93ce feature: run yamllint as part of tests
+
 ## Release 2.5.8
 
 * b0298c7 bugfix: after bafe8ad, Gemfile.lock should not be ignored
