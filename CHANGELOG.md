@@ -1,3 +1,8 @@
+## Release 2.6.1
+
+* 1bc4e74 bugfix: remove rvm, as it is not required anymore
+* e8aaecf bugfix: add role_name
+
 ## Release 2.6.0
 
 * 93c93ce feature: run yamllint as part of tests
