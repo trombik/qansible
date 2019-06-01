@@ -44,10 +44,6 @@ script:
   #
   - "if [ ! -f .private_repo ]; then ansible-playbook tests/travisci/tests.yml -i tests/travisci/inventory --syntax-check; fi"
 
-  # use recent ruby, instead of default ruby 1.9
-  - rvm install 2.5.1
-  - rvm use 2.5.1
-
   # download the QA scripts
   - git clone https://github.com/trombik/qansible.git
 
