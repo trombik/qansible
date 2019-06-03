@@ -1,3 +1,8 @@
+## Release 2.6.2
+
+* 3115c32 bugfix: update regexp
+* e2a41d4 bugfix: update Rakefile
+
 ## Release 2.6.1
 
 * 1bc4e74 bugfix: remove rvm, as it is not required anymore
