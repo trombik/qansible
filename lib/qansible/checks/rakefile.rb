@@ -22,9 +22,11 @@ module Qansible
             status = process.value.exitstatus
             case status
             when 0
+              matched = false
               stdout.each_line do |line|
-                crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [@path] if line.split("#").first !~ /^rake\s+test\b/
+                matched = true if line =~ /^rake\s+test\b/
               end
+              crit "`%s` does not accept target `test`. it must accept the target. add the target to the file" % [@path] unless matched
             else
               crit "command `%s` failed: status: %d stdout: %s stderr: %s" % [command, status, stdout.read, stderr.read]
             end
