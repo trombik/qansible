@@ -1,3 +1,8 @@
+## Release 2.6.3
+
+* ca43331 bugfix: do not ignore Gemfile.lock
+* 15d6f5b bugfix: fix style error and ignore a rubocop rule in Rakefile
+
 ## Release 2.6.2
 
 * 3115c32 bugfix: update regexp
