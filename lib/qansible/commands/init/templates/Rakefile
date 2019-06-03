@@ -7,7 +7,7 @@ integration_test_dirs = Pathname.new(integration_test_dir)
 task default: %w[test]
 
 desc "test kitchen test and integration test"
-task :test => ["kitchen:test", "integration:test"]
+task test: ["kitchen:test", "integration:test"]
 
 namespace :kitchen do
   desc "run test-kitchen"
@@ -21,6 +21,7 @@ namespace :kitchen do
   end
 end
 
+# rubocop:disable Metrics/BlockLength
 namespace :integration do
   desc "run all tests"
   task :test do
@@ -62,3 +63,4 @@ namespace :integration do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
