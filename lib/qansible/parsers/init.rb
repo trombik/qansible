@@ -9,7 +9,7 @@ module Qansible
         args = Qansible::Option::Init.new
         args.directory = Pathname.pwd
         args.verbose = false
-        args.box_name = "trombik/ansible-freebsd-10.3-amd64"
+        args.box_name = "trombik/ansible-freebsd-12.0-amd64"
         args.silent = false
         opt_parser = OptionParser.new do |opts|
           opts.banner = "Usage: init [options] ROLENAME"

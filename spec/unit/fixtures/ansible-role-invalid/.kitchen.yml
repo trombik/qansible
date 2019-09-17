@@ -7,11 +7,11 @@ provisioner:
   ansible_vault_password_file: foo
 
 platforms:
-  - name: ansible-freebsd-10.3-amd64
+  - name: ansible-freebsd-12.0-amd64
     transport:
       name: rsync
     driver:
-      box: trombik/ansible-freebsd-10.3-amd64
+      box: trombik/ansible-freebsd-12.0-amd64
     driver_config:
       ssh:
         shell: '/bin/sh'
