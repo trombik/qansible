@@ -1,3 +1,9 @@
+## Release 2.6.4
+
+* 4d75155 update box version
+* 0f20cfd bugfix: update RubyGem before install
+* b4203ae update: bundler
+
 ## Release 2.6.3
 
 * ca43331 bugfix: do not ignore Gemfile.lock
