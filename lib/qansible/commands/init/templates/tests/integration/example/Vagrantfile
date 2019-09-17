@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     v.memory = 256
     v.cpus = 1
   end
-  config.vm.box = "trombik/ansible-freebsd-10.3-amd64"
+  config.vm.box = "trombik/ansible-freebsd-12.0-amd64"
 
   config.vm.define "client1" do |c|
     c.vm.network "private_network", ip: "192.168.21.100"

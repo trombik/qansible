@@ -27,8 +27,8 @@ module Qansible
             expect(opts.role_name).to eq("ansible-role-default")
           end
 
-          it "returns box_name with default value, trombik/ansible-freebsd-10.3-amd64" do
-            expect(opts.box_name).to eq("trombik/ansible-freebsd-10.3-amd64")
+          it "returns box_name with default value, trombik/ansible-freebsd-12.0-amd64" do
+            expect(opts.box_name).to eq("trombik/ansible-freebsd-12.0-amd64")
           end
         end
 
@@ -47,8 +47,8 @@ module Qansible
             expect(opts.role_name).to eq("ansible-role-default")
           end
 
-          it "returns box_name with default value, trombik/ansible-freebsd-10.3-amd64" do
-            expect(opts.box_name).to eq("trombik/ansible-freebsd-10.3-amd64")
+          it "returns box_name with default value, trombik/ansible-freebsd-12.0-amd64" do
+            expect(opts.box_name).to eq("trombik/ansible-freebsd-12.0-amd64")
           end
         end
 
@@ -73,7 +73,7 @@ module Qansible
           end
 
           it "returns box_name" do
-            expect(opts.box_name).to eq("trombik/ansible-freebsd-10.3-amd64")
+            expect(opts.box_name).to eq("trombik/ansible-freebsd-12.0-amd64")
           end
         end
 

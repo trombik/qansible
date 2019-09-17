@@ -43,7 +43,7 @@ module Qansible
           let(:instance) { Qansible::Command::Init.new(options) }
 
           it "returns platform_name" do
-            expect(instance.platform_name).to eq("freebsd-10.3-amd64")
+            expect(instance.platform_name).to eq("freebsd-12.0-amd64")
           end
         end
 
