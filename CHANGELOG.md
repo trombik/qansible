@@ -1,3 +1,7 @@
+## Release 2.6.5
+
+bundler: update to 2.x
+
 ## Release 2.6.4
 
 * 4d75155 update box version
