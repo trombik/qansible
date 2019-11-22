@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    qansible (2.6.5)
+    qansible (2.7.0)
 
 GEM
   remote: https://rubygems.org/
