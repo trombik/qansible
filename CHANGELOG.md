@@ -1,3 +1,7 @@
+## Release 2.7.0
+
+* fc54718 feature: support molecule
+
 ## Release 2.6.5
 
 bundler: update to 2.x
