@@ -1,3 +1,7 @@
+## Release 2.7.2
+
+* 5ac1450 bugfix: fix path
+
 ## Release 2.7.1
 
 * Fix wrong git tag in 2.7.0
