@@ -1,3 +1,7 @@
+## Release 2.7.3
+
+* 9e0e3c1 bugfix: update .travis.yml
+
 ## Release 2.7.2
 
 * 5ac1450 bugfix: fix path
