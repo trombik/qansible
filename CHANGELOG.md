@@ -1,3 +1,8 @@
+## Release 2.7.4
+
+* 1d683cc Bump rake from 10.5.0 to 13.0.1
+* 96fda72 bugfix: update bundler to 2.x
+
 ## Release 2.7.3
 
 * 9e0e3c1 bugfix: update .travis.yml
