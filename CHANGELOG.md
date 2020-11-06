@@ -1,3 +1,8 @@
+## Release 2.8.0
+
+* 473e89c Bump json from 2.1.0 to 2.3.1
+* b73d06b feature: run test-kitchen in Travis CI
+
 ## Release 2.7.4
 
 * 1d683cc Bump rake from 10.5.0 to 13.0.1
