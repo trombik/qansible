@@ -32,7 +32,7 @@ module Qansible
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-invalid"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Travis.new
+          Rubocop.new
         end
 
         describe ".check" do
@@ -42,11 +42,11 @@ module Qansible
         end
       end
 
-      context "When .travis.yml does not exist" do
+      context "When .rubocop.yml does not exist" do
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Travis.new
+          Rubocop.new
         end
 
         describe ".check" do

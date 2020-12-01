@@ -2,9 +2,9 @@
 
 module Qansible
   class Check
-    class Travis < Qansible::Check::Base
+    class GitHubWorkFlowsRubocop < Qansible::Check::Base
       def initialize
-        super(path: ".travis.yml")
+        super(path: ".github/workflows/rubocop.yml")
       end
 
       def check
