@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    qansible (2.7.4)
+    qansible (2.8.0)
 
 GEM
   remote: https://rubygems.org/
@@ -103,4 +103,4 @@ DEPENDENCIES
   simplecov
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
