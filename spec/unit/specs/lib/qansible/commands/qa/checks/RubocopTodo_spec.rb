@@ -12,7 +12,7 @@ module Qansible
         let(:instance) do
           Qansible::Check::Base.root(Pathname.new("spec/unit/fixtures/ansible-role-empty"))
           Qansible::Check::Base.tmp(Pathname.new("spec/unit/fixtures/ansible-role-latest"))
-          Travis.new
+          RubocopTodo.new
         end
 
         describe ".check" do

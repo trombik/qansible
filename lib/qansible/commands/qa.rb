@@ -19,7 +19,6 @@ module Qansible
           Qansible::Check::Ackrc,
           Qansible::Check::Gemfile,
           Qansible::Check::CHANGELOG,
-          Qansible::Check::Travis,
           Qansible::Check::Tasks,
           Qansible::Check::Hier,
           Qansible::Check::LICENSE,
@@ -30,7 +29,10 @@ module Qansible
           Qansible::Check::Jenkinsfile,
           Qansible::Check::MetaMainYaml,
           Qansible::Check::RubocopTodo,
-          Qansible::Check::Rubocop
+          Qansible::Check::Rubocop,
+          Qansible::Check::GitHubWorkFlowsQansible,
+          Qansible::Check::GitHubWorkFlowsRubocop,
+          Qansible::Check::GitHubWorkFlowsYamllint
         ]
       end
 
