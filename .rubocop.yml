@@ -27,7 +27,3 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   Exclude:
     - "**/*_spec.rb"
-
-Lint/UnneededDisable:
-  Exclude:
-    - "lib/qansible/commands/init/templates/tests/integration/example/spec/spec_helper.rb"
