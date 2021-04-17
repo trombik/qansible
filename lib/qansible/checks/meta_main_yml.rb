@@ -62,7 +62,7 @@ module Qansible
       def should_not_have_default_description
         load_yaml unless @yaml
         default_description = "Configures something"
-        warn "In `%s`, description should describe the role, rather than the default. Add description in %s" % [@path, @path] if @yaml["galaxy_info"]["description"] =~ /#{ default_description }/
+        warn "In `%s`, description should describe the role, rather than the default. Add description in %s" % [@path, @path] if @yaml["galaxy_info"]["description"] =~ /#{default_description}/
       end
 
       def must_not_have_categories
