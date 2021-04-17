@@ -21,7 +21,7 @@ module Qansible
         f = read_file
         f.each_line do |line|
           ignores.each do |i|
-            found << i if line =~ /^#{ Regexp.escape(i) }$/
+            found << i if line =~ /^#{Regexp.escape(i)}$/
           end
         end
         not_found = ignores - found
