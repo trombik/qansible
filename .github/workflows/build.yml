@@ -23,6 +23,9 @@ jobs:
           git config --global init.defaultBranch master
 
       - name: Run rake
+        # XXX allocate (dumb) tty to the process, so that STDOUT.tty? works in
+        # the test
+        shell: 'script -q -e -c "bash {0}"'
         run: |
           bundle exec rake
 
