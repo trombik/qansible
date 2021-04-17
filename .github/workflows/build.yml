@@ -16,6 +16,11 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
 
+      - name: Setup git-config
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+
       - name: Run rake
         run: |
           bundle exec rake
