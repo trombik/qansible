@@ -6,8 +6,6 @@ require "etc"
 module Qansible
   describe Author do
     let(:instance) { Qansible::Author.new }
-    let(:whoami) { Etc.getpwuid(Process.uid).name }
-    let(:gecos) { Etc.getpwuid(Process.uid).gecos }
 
     describe "#new" do
       it "returns an Object" do
@@ -15,21 +13,10 @@ module Qansible
       end
     end
 
-    describe ".whoami" do
-      it "returns user name" do
-        expect(instance.whoami).to eq(whoami)
-      end
-    end
-
-    describe ".login_name" do
-      it "returns user name" do
-        expect(instance.login_name).to eq(whoami)
-      end
-    end
-
     describe ".fullname" do
       it "returns full name" do
-        expect(instance.fullname).to eq(gecos)
+        expect(instance).to receive(:`).with("git config --get user.name").and_return("Foo Bar")
+        expect(instance.fullname).to eq("Foo Bar")
       end
     end
 
