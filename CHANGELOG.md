@@ -1,3 +1,17 @@
+## Release 2.8.1
+
+* 8e8acd6 bugfix: do not use Unix password database for full name
+* c33440b bugfix: allocate tty to action
+* b4e5b8d bugfix: surpress warnings from git
+* b9feecc bugfix: setup default identity for git
+* e4c8621 ci: update rubocop_todo
+* f03f204 bugfix: remove (unused) coveralls
+* 858b31d bugfix: QA
+* 39adce2 bugfix: update gems
+* 636e91f update Gemfile.lock
+* e8e7e94 ci: build qansible on Github Actions
+* 2904cf0 imp: remove Travis CI, add Github Actions workflows
+
 ## Release 2.8.0
 
 * 473e89c Bump json from 2.1.0 to 2.3.1
