@@ -11,7 +11,6 @@ group :development do
   gem "guard"
   gem "guard-rake"
   gem "listen", "~> 3.0.8"
-  gem "ruby_dep", "~> 1.3.1"
 end
 
 group :test do
