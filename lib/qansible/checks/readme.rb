@@ -26,7 +26,7 @@ module Qansible
         line_numbers = []
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
-            line_numbers << f.lineno if line =~ /^--[-]*\s*$/
+            line_numbers << f.lineno if line =~ /^---*\s*$/
           end
         end
         unless line_numbers.empty?
@@ -41,7 +41,7 @@ module Qansible
         line_numbers = []
         File.open(@@root + @path, "r") do |f|
           f.each_line do |line|
-            line_numbers << f.lineno if line =~ /^==[=]*\s*$/
+            line_numbers << f.lineno if line =~ /^===*\s*$/
           end
         end
         unless line_numbers.empty?

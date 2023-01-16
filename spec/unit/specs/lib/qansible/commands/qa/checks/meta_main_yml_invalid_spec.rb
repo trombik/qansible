@@ -66,9 +66,9 @@ module Qansible
           end
         end
 
-        describe ".must_not_have_min_ansible_version_less_than_2_0" do
+        describe ".must_not_have_min_ansible_version_less_than20" do
           it "raise_error" do
-            expect { instance.must_not_have_min_ansible_version_less_than_2_0 }.to raise_error(SystemExit)
+            expect { instance.must_not_have_min_ansible_version_less_than20 }.to raise_error(SystemExit)
           end
         end
 

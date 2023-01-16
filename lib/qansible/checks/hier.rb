@@ -35,7 +35,7 @@ module Qansible
         end
         unless not_found.empty?
           warn "mkdir %s" % [not_found.sort.join(" ")]
-          warn "touch %s" % [not_found.sort.map { |d| d + ".keepme" }.join(" ")]
+          warn "touch %s" % [not_found.sort.map { |d| d / ".keepme" }.join(" ")]
         end
         not_found.empty?
       end
@@ -43,7 +43,7 @@ module Qansible
       def must_have_keepme_in_all_directories
         not_found = []
         @required_directories.each do |d|
-          keepme = @@root + d + ".keepme"
+          keepme = @@root / d / ".keepme"
           not_found << keepme unless File.file?(keepme)
         end
         warn "touch %s" % [not_found.sort.join(" ")] unless not_found.empty?
@@ -51,8 +51,8 @@ module Qansible
       end
 
       def must_not_have_test
-        warn "Directory `%s` must not exist" % [@@root + "test"] if File.directory?(@@root + "test")
-        !File.directory?(@@root + "test")
+        warn "Directory `%s` must not exist" % [@@root / "test"] if File.directory?(@@root / "test")
+        !File.directory?(@@root / "test")
       end
     end
   end

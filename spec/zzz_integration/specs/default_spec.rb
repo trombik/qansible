@@ -3,7 +3,7 @@
 require "spec_helper"
 require "open3"
 
-ENV["PATH"] = ENV["PATH"] + ":" + Pathname.pwd.join("exe").to_s
+ENV["PATH"] += ":#{Pathname.pwd.join('exe')}"
 
 describe "qansible init" do
   before(:all) do

@@ -109,7 +109,7 @@ module Qansible
       end
 
       def _find_all_task_files
-        tasks_dir = @@root + "tasks"
+        tasks_dir = @@root / "tasks"
         @task_files = tasks_dir.children.select { |f| f.file? && f.basename.to_s =~ /\.yml$/ }
       end
 
