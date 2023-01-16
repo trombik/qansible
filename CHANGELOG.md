@@ -1,3 +1,9 @@
+## Release 2.8.2
+
+* 9265be8 update: update rubocop to the latest
+* 0dc424f update: github-actions and ruby version
+* 9ef81c9 update: gems
+
 ## Release 2.8.1
 
 * 8e8acd6 bugfix: do not use Unix password database for full name
