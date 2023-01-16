@@ -4,7 +4,7 @@ require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 require "pathname"
 
-fixtures_dir = Pathname.new("spec") + "unit" + "fixtures"
+fixtures_dir = Pathname.new("spec") / "unit" / "fixtures"
 task default: :spec
 
 desc "Run tests"
@@ -22,7 +22,7 @@ namespace :spec do
 end
 
 task :clean do
-  sh "rm -rf #{fixtures_dir + 'ansible-role-latest'}"
+  sh "rm -rf #{fixtures_dir / 'ansible-role-latest'}"
   sh "rm -rf tmp/*"
   sh "rm -rf pkg/*"
 end

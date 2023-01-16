@@ -80,31 +80,31 @@ module Qansible
       end
 
       def tty?
-        STDOUT.isatty
+        $stdout.isatty
       end
 
       def debug(msg)
         msg = "[debug] %s" % msg
         msg = colorize(msg, "gray", "black")
-        STDOUT.puts(msg) if @@verbose && !ENV["QANSIBLE_SILENT"]
+        $stdout.puts(msg) if @@verbose && !ENV["QANSIBLE_SILENT"]
       end
 
       def info(msg)
         msg = "[info] %s" % msg
         msg = colorize(msg, "cyan", "black")
-        STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
+        $stdout.puts(msg) unless ENV["QANSIBLE_SILENT"]
       end
 
       def notice(msg)
         msg = "[notice] %s" % msg
         msg = colorize(msg, "green", "black")
-        STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
+        $stdout.puts(msg) unless ENV["QANSIBLE_SILENT"]
       end
 
       def warn(msg)
         msg = "[warn] %s" % msg
         msg = colorize(msg, "yellow", "black")
-        STDOUT.puts(msg) unless ENV["QANSIBLE_SILENT"]
+        $stdout.puts(msg) unless ENV["QANSIBLE_SILENT"]
         @number_of_warnings += 1
       end
 

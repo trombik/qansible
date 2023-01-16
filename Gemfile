@@ -17,6 +17,6 @@ group :test do
   gem "bundler"
   gem "coveralls", require: false
   gem "rake"
-  gem "rubocop", "~> 0.59"
+  gem "rubocop"
   gem "simplecov", require: false
 end

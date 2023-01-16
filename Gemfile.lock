@@ -30,6 +30,7 @@ GEM
     guard-rake (1.0.0)
       guard
       rake
+    json (2.6.3)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -71,15 +72,16 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
-    rubocop (0.93.1)
+    rubocop (1.43.0)
+      json (~> 2.3)
       parallel (~> 1.10)
-      parser (>= 2.7.1.5)
+      parser (>= 3.2.0.0)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8)
-      rexml
-      rubocop-ast (>= 0.6.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.24.1, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 2.0)
+      unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.24.1)
       parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
@@ -94,7 +96,7 @@ GEM
       tins (~> 0.8)
     thor (0.18.1)
     tins (0.13.2)
-    unicode-display_width (1.8.0)
+    unicode-display_width (2.4.2)
 
 PLATFORMS
   ruby
@@ -108,7 +110,7 @@ DEPENDENCIES
   qansible!
   rake
   rspec (~> 3.0)
-  rubocop (~> 0.59)
+  rubocop
   simplecov
 
 BUNDLED WITH

@@ -8,7 +8,7 @@ module Qansible
       attr_reader :logger
 
       def initialize(_options)
-        @logger = Logger.new(STDOUT)
+        @logger = Logger.new($stdout)
         @logger.level = Logger::DEBUG
         @logger.formatter = proc do |severity, _datetime, _progname, msg|
           if silent?
@@ -49,7 +49,7 @@ module Qansible
       end
 
       def tty?
-        STDOUT.isatty
+        $stdout.isatty
       end
 
       def colorize(text, color = "default", bgcolor = "default")

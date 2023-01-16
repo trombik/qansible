@@ -15,7 +15,7 @@ module Qansible
         must_have_mandatory_keys_in_galaxy_info
         should_not_have_default_description
         must_not_have_categories
-        must_not_have_min_ansible_version_less_than_2_0
+        must_not_have_min_ansible_version_less_than20
         must_have_at_least_one_platform_supported
         must_have_array_of_galaxy_tags
         should_have_at_least_one_tag
@@ -70,7 +70,7 @@ module Qansible
         crit "In `%s`, `galaxy_info` must not have obsolete `categories` as a key. Use `tags` instead" % [@path] if @yaml["galaxy_info"].key?("categories")
       end
 
-      def must_not_have_min_ansible_version_less_than_2_0
+      def must_not_have_min_ansible_version_less_than20
         load_yaml unless @yaml
         return if @yaml["galaxy_info"]["min_ansible_version"].to_f >= 2.0
 
